@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class Sphere3Gizmos : MonoBehaviour
 {
-    public Sphere3 sphere = new Sphere3(Vector3.zero);
+    public Sphere3 sphere = new Sphere3();
     public Vector3 zero = Vector3.zero;
     public Color color = Color.white;
     [SerializeField]
     private GameObject desiredPoint;
     
     void OnDrawGizmosSelected() { 
-        sphere.FromVector3(desiredPoint.transform.localPosition);
+        sphere.FromVector3(desiredPoint.transform.localPosition, transform.position);
        SphereGizmo();
        DrawRay();
     }
@@ -24,12 +24,12 @@ public class Sphere3Gizmos : MonoBehaviour
     void SphereGizmo() {
         Gizmos.color = color;
         Gizmos.DrawWireSphere(transform.TransformPoint(zero), sphere.Radius);
-        Gizmos.DrawSphere(transform.TransformPoint(sphere.ToVector3()), 0.05f);
+        Gizmos.DrawSphere(transform.TransformPoint(sphere.ToLocalVector3()), 0.05f);
     }
     
     void DrawRay()
     {
         Gizmos.color = color;
-        Gizmos.DrawRay(transform.TransformPoint(zero), transform.TransformPoint(sphere.ToVector3()-transform.TransformPoint(zero)));
+        Gizmos.DrawRay(transform.TransformPoint(zero), transform.TransformPoint(sphere.ToLocalVector3()-transform.TransformPoint(zero)));
     }
 }
