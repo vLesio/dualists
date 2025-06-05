@@ -24,8 +24,6 @@ public class Sphere3Gizmos : MonoBehaviour
     void SphereGizmo() {
         Gizmos.color = color;
         Gizmos.DrawWireSphere(transform.TransformPoint(zero), sphere.Radius);
-        
-        
         Gizmos.DrawSphere(transform.TransformPoint(sphere.ToVector3()), 0.05f);
     }
     
