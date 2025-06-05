@@ -8689,7 +8689,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &744226939
 Transform:
   m_ObjectHideFlags: 0
@@ -12585,7 +12585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 800699210925823453, guid: bc5f77a46cd025b4188697d2d9576751, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1.306
       objectReference: {fileID: 0}
     - target: {fileID: 800699210925823453, guid: bc5f77a46cd025b4188697d2d9576751, type: 3}
       propertyPath: m_LocalRotation.w
@@ -17449,6 +17449,22 @@ PrefabInstance:
     - target: {fileID: 2916679147461823238, guid: f4f395dcc2a4eed408985aca4417ef6f, type: 3}
       propertyPath: m_Name
       value: Handgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510189290143143443, guid: f4f395dcc2a4eed408985aca4417ef6f, type: 3}
+      propertyPath: m_UseCustomVertexStreams
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510189290143143443, guid: f4f395dcc2a4eed408985aca4417ef6f, type: 3}
+      propertyPath: m_VertexStreams.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510189290143143443, guid: f4f395dcc2a4eed408985aca4417ef6f, type: 3}
+      propertyPath: m_VertexStreams.Array.data[2]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510189290143143443, guid: f4f395dcc2a4eed408985aca4417ef6f, type: 3}
+      propertyPath: m_VertexStreams.Array.data[3]
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
