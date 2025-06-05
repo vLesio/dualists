@@ -39,10 +39,16 @@ public class Sphere3 {
         return new Vector3(x, y, z);
     }
     
-    public void FromVector3(Vector3 position) {
+    public void FromVector3(Vector3 position)
+    {
         Radius = position.magnitude;
-        Theta = Mathf.Atan2(position.y, position.x);
-        Phi = Mathf.Atan2((Mathf.Sqrt((float)Math.Pow(position.x,2) + Mathf.Pow(position.y, 2))), position.z);
+        if (Radius == 0) {
+            Theta = 0;
+        }
+        else {
+            Theta = Mathf.Acos(position.z / Radius);
+        }
+        Phi = Mathf.Atan2(position.y, position.x);
     }
 }
 
