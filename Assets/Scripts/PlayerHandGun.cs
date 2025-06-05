@@ -29,6 +29,7 @@ public class PlayerHandGun : MonoBehaviour {
     private void OnGrab(PointerEvent eventData) {
         Debug.Log("Grabbed");
         InputActions.Enable();
+        GameManager.I.RegisterPistolPickup();
     }
 
     private void OnRelease(PointerEvent eventData) {

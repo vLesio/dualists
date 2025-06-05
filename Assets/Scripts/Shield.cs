@@ -1,19 +1,28 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Oculus.Interaction;
 using UnityEngine;
 
 public class Shield : MonoBehaviour {
     public MeshRenderer rend;
     public Color hitColor;
+    public Color pickupColor;
     public float hitIndicatorTime = 0.5f;
+    public float pickupIndicatorTime = 2f;
 
     private float _timePassed;
     private Color _baseEmissionColor;
     private AudioSource _audioSource;
+    private PointableUnityEventWrapper _eventWrapper;
     private void Start() {
         _baseEmissionColor = rend.material.GetColor("_EmissionColor");
         _audioSource = GetComponent<AudioSource>();
+        _eventWrapper.WhenSelect.AddListener(ShieldPickedUp);
+    }
+
+    private void OnDestroy() {
+        _eventWrapper.WhenSelect.RemoveListener(ShieldPickedUp);
     }
 
     private void Update() {
@@ -24,11 +33,11 @@ public class Shield : MonoBehaviour {
         }
     }
 
-    IEnumerator ShowShieldHit() {
+    IEnumerator ShowShieldAnimation(Color color, float duration) {
         var timePassed = 0f;
-        while (timePassed <= hitIndicatorTime) {
+        while (timePassed <= duration) {
             timePassed += Time.deltaTime;
-            var lerpedColor = Color.Lerp(hitColor, _baseEmissionColor, timePassed / hitIndicatorTime);
+            var lerpedColor = Color.Lerp(color, _baseEmissionColor, timePassed / duration);
             rend.material.SetColor("_EmissionColor", lerpedColor);
             yield return null;
         }
@@ -38,7 +47,7 @@ public class Shield : MonoBehaviour {
     void HandleBulletHit() {
         _audioSource.Play();
         StopAllCoroutines();
-        StartCoroutine(ShowShieldHit());
+        StartCoroutine(ShowShieldAnimation(hitColor, hitIndicatorTime));
     }
 
     void OnCollisionEnter(Collision collision) {
@@ -47,5 +56,11 @@ public class Shield : MonoBehaviour {
         // }
 
         HandleBulletHit();
+    }
+    
+    private void ShieldPickedUp(PointerEvent pointerEvent) {
+        GameManager.I.RegisterShieldPickup();
+        StopAllCoroutines();
+        StartCoroutine(ShowShieldAnimation(pickupColor, pickupIndicatorTime));
     }
 }
