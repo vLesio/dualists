@@ -34,4 +34,10 @@ public class Bullet : MonoBehaviour {
         Instantiate(hitEffect, transform.position, Quaternion.identity);
         Destroy(this);
     }
+    
+    // TODO : REMOVE THAT
+    /*private void Start()
+    {
+        StartBullet(Vector3.forward);
+    }*/
 }
