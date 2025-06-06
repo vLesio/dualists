@@ -12,7 +12,7 @@ public class Sphere3Gizmos : MonoBehaviour
     private GameObject desiredPoint;
     
     void OnDrawGizmosSelected() { 
-        sphere.FromVector3(desiredPoint.transform.localPosition, transform.position);
+        sphere.FromGlobalVector3(desiredPoint.transform.position, transform.position);
        SphereGizmo();
        DrawRay();
     }
@@ -24,12 +24,12 @@ public class Sphere3Gizmos : MonoBehaviour
     void SphereGizmo() {
         Gizmos.color = color;
         Gizmos.DrawWireSphere(transform.TransformPoint(zero), sphere.Radius);
-        Gizmos.DrawSphere(transform.TransformPoint(sphere.ToLocalVector3()), 0.05f);
+        Gizmos.DrawSphere(sphere.ToGlobalVector3(), 0.05f);
     }
     
     void DrawRay()
     {
         Gizmos.color = color;
-        Gizmos.DrawRay(transform.TransformPoint(zero), transform.TransformPoint(sphere.ToLocalVector3()-transform.TransformPoint(zero)));
+        Gizmos.DrawRay(transform.TransformPoint(zero), transform.TransformDirection(sphere.ToLocalVector3()));
     }
 }
