@@ -11,7 +11,7 @@ public class Sphere3Gizmos : MonoBehaviour
     [SerializeField]
     private GameObject desiredPoint;
     
-    void OnDrawGizmosSelected() { 
+    void OnDrawGizmos() { 
         sphere.FromGlobalVector3(desiredPoint.transform.position, transform.position);
        SphereGizmo();
        DrawRay();

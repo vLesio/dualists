@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2742288855316376444}
   - component: {fileID: 4943601783850419089}
   - component: {fileID: 434181023698819511}
+  - component: {fileID: 2326816592069710943}
+  - component: {fileID: 7239870305871072426}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -120,6 +122,46 @@ MonoBehaviour:
   rightHandTrigger: {fileID: 4257381129507843669}
   sendMovementInfo: 0
   sendingIntervalInSeconds: 1
+--- !u!114 &2326816592069710943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372715615853138785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf2547ec58c1654891608d5f4166700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sphere:
+    Radius: 0
+    Theta: 0
+    Phi: 0
+    globalPositionReferencePoint: {x: -0.51, y: 0.697, z: -4.96}
+  zero: {x: 0, y: 0, z: 0}
+  color: {r: 1, g: 0.44250402, b: 0.2999999, a: 1}
+  desiredPoint: {fileID: 8781868243929923229}
+--- !u!114 &7239870305871072426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372715615853138785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf2547ec58c1654891608d5f4166700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sphere:
+    Radius: 0
+    Theta: 0
+    Phi: 0
+    globalPositionReferencePoint: {x: -0.51, y: 0.697, z: -4.96}
+  zero: {x: 0, y: 0, z: 0}
+  color: {r: 0.28490567, g: 0.40962517, b: 1, a: 1}
+  desiredPoint: {fileID: 4257381129507843669}
 --- !u!1 &2292245512357116727
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,6 +482,10 @@ PrefabInstance:
     - target: {fileID: 4171566635487921925, guid: 2e99864b63e0a9849818e58b9b36d1d9, type: 3}
       propertyPath: m_Name
       value: Shield
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171566635487921925, guid: 2e99864b63e0a9849818e58b9b36d1d9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5429108572145327449, guid: 2e99864b63e0a9849818e58b9b36d1d9, type: 3}
       propertyPath: m_LocalPosition.x
