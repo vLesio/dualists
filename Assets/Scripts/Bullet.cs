@@ -26,18 +26,41 @@ public class Bullet : MonoBehaviour {
         startPosition = transform.position;
     }
 
-    public void OnTriggerEnter(Collider other) {
+    private void OnTriggerEnter(Collider other)
+    {
+        Vector3 hitPoint = transform.position;
+
+        if (Physics.Raycast(transform.position - _direction * 0.1f, _direction, out RaycastHit hit, 1f))
+        {
+            hitPoint = hit.point;
+
+            Vector3 incoming = _direction;
+            Vector3 normal = hit.normal;
+            Vector3 reflected = Vector3.Reflect(incoming, normal);
+
+            Quaternion rotation = Quaternion.LookRotation(reflected);
+
+            Instantiate(hitEffect, hitPoint, rotation);
+        }
+        else
+        {
+            Debug.LogWarning("[Bullet] Raycast failed, fallback to approximate hit point");
+
+            Vector3 fallbackReflected = Vector3.Reflect(_direction, -_direction);
+            Quaternion fallbackRot = Quaternion.LookRotation(fallbackReflected);
+
+            Instantiate(hitEffect, hitPoint, fallbackRot);
+        }
         DestroyBullet();
     }
 
     public void DestroyBullet() {
-        Instantiate(hitEffect, transform.position, Quaternion.identity);
-        Destroy(this);
+        Destroy(gameObject);
     }
     
     // TODO : REMOVE THAT
-    /*private void Start()
+    private void Start()
     {
-        StartBullet(Vector3.forward);
-    }*/
+        StartBullet(-transform.up);
+    }
 }
