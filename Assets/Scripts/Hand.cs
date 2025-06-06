@@ -85,6 +85,7 @@ public class Hand : MonoBehaviour
             _rb.velocity = -_rb.velocity;
     }
     private void OnDrawGizmos() {
+        if (!Application.isPlaying) return;
         Gizmos.color = new Color(0,0,1,0.2f);
         Gizmos.DrawSphere(globalPositionBoundarySphereCenter, boundarySphereRadius);
     }
