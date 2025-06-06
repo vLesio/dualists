@@ -5,6 +5,8 @@ using Oculus.Interaction;
 using UnityEngine;
 
 public class Shield : MonoBehaviour {
+    public string playerName = "PlayerVR"; // Name of the player using the shield
+    
     public MeshRenderer rend;
     public Color hitColor;
     public Color pickupColor;
@@ -59,7 +61,7 @@ public class Shield : MonoBehaviour {
     }
     
     private void ShieldPickedUp(PointerEvent pointerEvent) {
-        GameManager.I.RegisterShieldPickup();
+        GameManager.I.RegisterShieldPickup(playerName);
         StopAllCoroutines();
         StartCoroutine(ShowShieldAnimation(pickupColor, pickupIndicatorTime));
     }

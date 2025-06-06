@@ -6,10 +6,10 @@ namespace Singleton {
         
         protected virtual void Awake() {
             if (I != null) {
-                throw new SingletonOverrideException($"Tried to overwrite {typeof(T)} singleton.");
+                throw new SingletonOverrideException($"[Singleton] Tried to overwrite {typeof(T)} singleton.");
             }
             I = FindObjectOfType<T>();
-            Debug.Log($"Created singleton instance for {typeof(T)}", gameObject);
+            Debug.Log($"[Singleton] Created singleton instance for {typeof(T)}", gameObject);
         }
     }
 }
