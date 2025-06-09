@@ -145,7 +145,7 @@ MonoBehaviour:
     Radius: 0
     Theta: 0
     Phi: 0
-    globalPositionReferencePoint: {x: 0.174, y: 0.697, z: -5.787}
+    globalPositionReferencePoint: {x: 0.249, y: 1.289, z: 3.529}
   zero: {x: 0, y: 0, z: 0}
   color: {r: 1, g: 0.44250402, b: 0.2999999, a: 1}
   desiredPoint: {fileID: 8781868243929923229}
@@ -165,7 +165,7 @@ MonoBehaviour:
     Radius: 0
     Theta: 0
     Phi: 0
-    globalPositionReferencePoint: {x: 0.174, y: 0.697, z: -5.787}
+    globalPositionReferencePoint: {x: 0.249, y: 1.289, z: 3.529}
   zero: {x: 0, y: 0, z: 0}
   color: {r: 0.28490567, g: 0.40962517, b: 1, a: 1}
   desiredPoint: {fileID: 4257381129507843669}
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_DetectableTags: []
   m_RaysPerDirection: 3
   m_MaxRayDegrees: 15
-  m_SphereCastRadius: 0.5
+  m_SphereCastRadius: 0.7
   m_RayLength: 15
   m_RayLayerMask:
     serializedVersion: 2
@@ -296,7 +296,7 @@ MonoBehaviour:
   m_DetectableTags: []
   m_RaysPerDirection: 3
   m_MaxRayDegrees: 15
-  m_SphereCastRadius: 0.5
+  m_SphereCastRadius: 0.7
   m_RayLength: 15
   m_RayLayerMask:
     serializedVersion: 2
@@ -322,7 +322,7 @@ MonoBehaviour:
   m_DetectableTags: []
   m_RaysPerDirection: 3
   m_MaxRayDegrees: 15
-  m_SphereCastRadius: 0.5
+  m_SphereCastRadius: 0.7
   m_RayLength: 15
   m_RayLayerMask:
     serializedVersion: 2

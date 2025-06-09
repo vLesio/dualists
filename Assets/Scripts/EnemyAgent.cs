@@ -58,6 +58,9 @@ public class EnemyAgent : Agent
     public bool gunNotAimsAtShieldReward;
     public bool gunNotAimsAtShieldRewardAmount;
     
+    public bool gunAimsAtPlayerReward;
+    public bool gunAimsAtPlayerRewardAmount;
+    
     public bool bulletBlockedReward;
     public bool bulletBlockedRewardAmount;
     
