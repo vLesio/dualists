@@ -15,6 +15,12 @@ GameObject:
   - component: {fileID: 434181023698819511}
   - component: {fileID: 2326816592069710943}
   - component: {fileID: 7239870305871072426}
+  - component: {fileID: 1113319176166449526}
+  - component: {fileID: 245399687472463721}
+  - component: {fileID: 2388153978236475002}
+  - component: {fileID: 2574985574849791384}
+  - component: {fileID: 3892842201870916919}
+  - component: {fileID: 5973642065131044768}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -121,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftHandTrigger: {fileID: 8781868243929923229}
   rightHandTrigger: {fileID: 4257381129507843669}
-  sendMovementInfo: 0
+  sendDirectMovementInfo: 0
   sendingIntervalInSeconds: 1
 --- !u!114 &2326816592069710943
 MonoBehaviour:
@@ -139,7 +145,7 @@ MonoBehaviour:
     Radius: 0
     Theta: 0
     Phi: 0
-    globalPositionReferencePoint: {x: -0.991, y: 0.634, z: -1.746}
+    globalPositionReferencePoint: {x: 0.174, y: 0.697, z: -5.787}
   zero: {x: 0, y: 0, z: 0}
   color: {r: 1, g: 0.44250402, b: 0.2999999, a: 1}
   desiredPoint: {fileID: 8781868243929923229}
@@ -159,10 +165,173 @@ MonoBehaviour:
     Radius: 0
     Theta: 0
     Phi: 0
-    globalPositionReferencePoint: {x: -0.991, y: 0.634, z: -1.746}
+    globalPositionReferencePoint: {x: 0.174, y: 0.697, z: -5.787}
   zero: {x: 0, y: 0, z: 0}
   color: {r: 0.28490567, g: 0.40962517, b: 1, a: 1}
   desiredPoint: {fileID: 4257381129507843669}
+--- !u!114 &1113319176166449526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372715615853138785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BrainParameters:
+    VectorObservationSize: 30
+    NumStackedVectorObservations: 5
+    m_ActionSpec:
+      m_NumContinuousActions: 6
+      BranchSizes: 01000000
+    VectorActionSize: 
+    VectorActionDescriptions: []
+    VectorActionSpaceType: 1
+    hasUpgradedBrainParametersWithActionSpec: 1
+  m_Model: {fileID: 0}
+  m_InferenceDevice: 1
+  m_BehaviorType: 0
+  m_BehaviorName: Dueler
+  TeamId: 0
+  m_UseChildSensors: 1
+  m_UseChildActuators: 1
+  m_ObservableAttributeHandling: 0
+--- !u!114 &245399687472463721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372715615853138785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf7163c126bab74b8c6566768540765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 100000000
+  enableGradeLogging: 0
+  enableDetailedGradeLogging: 0
+  enableDetailedObservationLogging: 0
+  handsSpherePosition: 1
+  handsEuclideanGlobalPosition: 1
+  handsRotation: 1
+  handsEuclideanVelocity: 1
+  handsAngularVelocity: 1
+  playerEuclideanPosition: 0
+  playerSpherePosition: 0
+  playerShieldEuclideanPosition: 0
+  playerShieldSpherePosition: 0
+  playerShieldRotation: 0
+  playerGunEuclideanPosition: 0
+  playerGunSpherePosition: 0
+  playerGunRotation: 0
+  shieldAimsAtGunReward: 0
+  shieldAimsAtGunRewardAmount: 0
+  gunNotAimsAtShieldReward: 0
+  gunNotAimsAtShieldRewardAmount: 0
+  bulletBlockedReward: 0
+  bulletBlockedRewardAmount: 0
+  hitPlayerReward: 0
+  hitPlayerRewardAmount: 0
+  dupa: 
+--- !u!114 &2388153978236475002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372715615853138785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DecisionPeriod: 3
+  TakeActionsBetweenDecisions: 1
+--- !u!114 &2574985574849791384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372715615853138785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SensorName: TopBulletSensors
+  m_DetectableTags: []
+  m_RaysPerDirection: 3
+  m_MaxRayDegrees: 15
+  m_SphereCastRadius: 0.5
+  m_RayLength: 15
+  m_RayLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  m_ObservationStacks: 1
+  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
+  rayMissColor: {r: 1, g: 0.74754155, b: 0.5235849, a: 1}
+  m_StartVerticalOffset: 0.75
+  m_EndVerticalOffset: 0.75
+--- !u!114 &3892842201870916919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372715615853138785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SensorName: MiddleBulletSensors
+  m_DetectableTags: []
+  m_RaysPerDirection: 3
+  m_MaxRayDegrees: 15
+  m_SphereCastRadius: 0.5
+  m_RayLength: 15
+  m_RayLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  m_ObservationStacks: 1
+  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
+  rayMissColor: {r: 0.7831971, g: 1, b: 0.5707547, a: 1}
+  m_StartVerticalOffset: 0.1
+  m_EndVerticalOffset: 0.1
+--- !u!114 &5973642065131044768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372715615853138785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SensorName: BottomBulletSensors
+  m_DetectableTags: []
+  m_RaysPerDirection: 3
+  m_MaxRayDegrees: 15
+  m_SphereCastRadius: 0.5
+  m_RayLength: 15
+  m_RayLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  m_ObservationStacks: 1
+  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
+  rayMissColor: {r: 0.5235849, g: 0.816091, b: 1, a: 1}
+  m_StartVerticalOffset: -0.5
+  m_EndVerticalOffset: -0.5
 --- !u!1 &2292245512357116727
 GameObject:
   m_ObjectHideFlags: 0

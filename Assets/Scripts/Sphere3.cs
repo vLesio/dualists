@@ -58,6 +58,10 @@ public class Sphere3 {
         FromVector3(localPos, globalReferencePoint);
         globalPositionReferencePoint = globalReferencePoint;
     }
+    public Vector3 GetPositionObservation()
+    {
+        return new Vector3(Radius, Theta, Phi);
+    }
 }
 
 public static class CoordinatesTranslator

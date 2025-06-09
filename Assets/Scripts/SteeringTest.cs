@@ -2,12 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+public struct AgentOutput
+{
+    
+}
+
 [RequireComponent(typeof(HandSteering))]
 public class SteeringTest : MonoBehaviour
 {
     [SerializeField] private GameObject leftHandTrigger;
     [SerializeField] private GameObject rightHandTrigger;
-    [SerializeField] private bool sendMovementInfo;
+    [SerializeField] private bool sendDirectMovementInfo;
     [SerializeField] private float sendingIntervalInSeconds;
     private float _lastSendTime;
     private HandSteering _handSteering;
@@ -19,7 +25,7 @@ public class SteeringTest : MonoBehaviour
 
     void Update()
     {
-        if (sendMovementInfo)
+        if (sendDirectMovementInfo)
         {
             if (Time.time - _lastSendTime >= sendingIntervalInSeconds)
             {
@@ -27,7 +33,11 @@ public class SteeringTest : MonoBehaviour
                 _lastSendTime = Time.time;
             }
         }
-        
+    }
+
+    public AgentOutput GetTestAgentOutput()
+    {
+        return new AgentOutput();
     }
 
     private void PrepareAndSendHandsActions()
