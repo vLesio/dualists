@@ -6,25 +6,11 @@ using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
 [RequireComponent(typeof(HandSteering))]
+[RequireComponent(typeof(SteeringTest))]
 public class EnemyAgent : Agent
 {
- private readonly Dictionary<int, int> _agentInputToPlayerControls = new()
-    {
-        { 0, 0 },
-        { 1, 1 },
-        { 2, -1 },
-        { -1, -1 },
-    };
-
-    private readonly Dictionary<int, int> _playerInputToAgentControls = new()
-    {
-        { 0, 0 },
-        { 1, 1 },
-        { -1, 2 },
-    };
-
-
     private HandSteering _handSteering;
+    private SteeringTest _steeringTest;
     private GameManager _gameManager;
 
     private double _cumReward = 0;
@@ -145,6 +131,7 @@ public class EnemyAgent : Agent
     public override void OnActionReceived(ActionBuffers actions)
     {
         HandsDesiredActions handsDesiredActions = CalculateHandDesiredActions(actions);
+        PropagateHandsDesiredActions(handsDesiredActions);
         // _handSteering.PropagateHandsActions();
         //     new Vector2(
         //         _agentInputToPlayerControls[actions.DiscreteActions[0]],
@@ -184,23 +171,38 @@ public class EnemyAgent : Agent
             Debug.Log(detailedGradeLog);
         }
     }
-    
+    private void PropagateHandsDesiredActions(HandsDesiredActions handsDesiredActions)
+    {
+        _handSteering.PropagateHandsActions(handsDesiredActions);
+    }
     public override void Heuristic(in ActionBuffers actionsOut)
     {
-        ActionSegment<int> discreteActions = actionsOut.DiscreteActions;
-        Vector2 input = Vector2.zero;
-        if (Input.GetKey(KeyCode.W)) input.x -= 1f;
-        if (Input.GetKey(KeyCode.S)) input.x += 1f;
-        if (Input.GetKey(KeyCode.D)) input.y += 1f;
-        if (Input.GetKey(KeyCode.A)) input.y -= 1f;
-
-        discreteActions[0] = _playerInputToAgentControls[(int)input.x];
-        discreteActions[1] = _playerInputToAgentControls[(int)input.y];
+        var discreteActions = actionsOut.DiscreteActions;
+        var continuousActions = actionsOut.ContinuousActions;
+        
+        continuousActions[0] = 0;
+        continuousActions[1] = 0;
+        continuousActions[2] = 0;
+        
+        continuousActions[3] = 0;
+        continuousActions[4] = 0;
+        continuousActions[5] = 0;
+        discreteActions[0] = 0;
     }
     
     private HandsDesiredActions CalculateHandDesiredActions(ActionBuffers actions)
     {
-        throw new NotImplementedException();
+        HandsDesiredActions returnActions = new HandsDesiredActions();
+
+        //TODO: Exclude agent output mapping logic to other class 18 continuous vars
+        // for (int i = 0; i < 2; i++) {
+        //     HandDesiredActions handDesiredActions = new HandDesiredActions();
+        //     handDesiredActions.handSide = i == 0 ? HandSide.left :  HandSide.right;
+        //     returnActions.Hands.Add();
+        //     
+        // }
+
+        return returnActions;
     }
     
     private void RegisterEvents() {

@@ -185,7 +185,7 @@ MonoBehaviour:
     VectorObservationSize: 30
     NumStackedVectorObservations: 5
     m_ActionSpec:
-      m_NumContinuousActions: 6
+      m_NumContinuousActions: 18
       BranchSizes: 01000000
     VectorActionSize: 
     VectorActionDescriptions: []
@@ -235,6 +235,8 @@ MonoBehaviour:
   shieldAimsAtGunRewardAmount: 0
   gunNotAimsAtShieldReward: 0
   gunNotAimsAtShieldRewardAmount: 0
+  gunAimsAtPlayerReward: 0
+  gunAimsAtPlayerRewardAmount: 0
   bulletBlockedReward: 0
   bulletBlockedRewardAmount: 0
   hitPlayerReward: 0
