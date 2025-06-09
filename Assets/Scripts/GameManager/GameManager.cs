@@ -8,7 +8,8 @@ public class GameManager : Singleton.Singleton<GameManager>
 {
     public UnityEvent onGameStarted;
     public UnityEvent onGameEnded;
-
+    public UnityEvent onGameReset;
+    
     public GameMode currentMode = GameMode.VRvsAI;
 
     private GameState _gameState = GameState.NotStarted;
@@ -27,42 +28,35 @@ public class GameManager : Singleton.Singleton<GameManager>
 
     private Dictionary<string, PlayerState> players = new Dictionary<string, PlayerState>();
 
-    public void RegisterPlayer(string playerName, bool isHuman)
+    public void RegisterPlayer()
     {
-        if (players.ContainsKey(playerName))
-        {
-            Debug.LogWarning($"[GameManager] Player {playerName} is already registered.");
-            return;
-        }
+        // if (players.ContainsKey(playerName))
+        // {
+        //     Debug.LogWarning($"[GameManager] Player {playerName} is already registered.");
+        //     return;
+        // }
+        //
+        // players[playerName] = new PlayerState { isHuman = isHuman };
+        // Debug.Log($"[GameManager] Player {playerName} registered. IsHuman: {isHuman}");
+        //
+        // TryStartGame();
+    }
 
-        players[playerName] = new PlayerState { isHuman = isHuman };
-        Debug.Log($"[GameManager] Player {playerName} registered. IsHuman: {isHuman}");
-
+    public void RegisterShieldPickup()
+    {
         TryStartGame();
     }
 
-    public void RegisterShieldPickup(string playerName)
+    public void RegisterPistolPickup()
     {
-        if (!players.ContainsKey(playerName))
-        {
-            Debug.LogWarning($"[GameManager] Player {playerName} not registered yet.");
-            return;
-        }
-
-        players[playerName].shieldPicked = true;
-        TryStartGame();
-    }
-
-    public void RegisterPistolPickup(string playerName)
-    {
-        if (!players.ContainsKey(playerName))
-        {
-            Debug.LogWarning($"[GameManager] Player {playerName} not registered yet.");
-            return;
-        }
-
-        players[playerName].pistolPicked = true;
-        TryStartGame();
+        // if (!players.ContainsKey(playerName))
+        // {
+        //     Debug.LogWarning($"[GameManager] Player {playerName} not registered yet.");
+        //     return;
+        // }
+        //
+        // players[playerName].pistolPicked = true;
+        // TryStartGame();
     }
 
     private void TryStartGame()

@@ -7,12 +7,6 @@ public class TEST_GameManager : MonoBehaviour
     public PlayerHandGun playerHandGun;
     void Start()
     {
-
-        
-        GameManager.I.RegisterPistolPickup("PlayerVR");
-        GameManager.I.RegisterShieldPickup("PlayerVR");
-
-        playerHandGun.Shoot();
     }
 
  
