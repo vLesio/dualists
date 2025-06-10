@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     private bool _shouldPlay = false;
     [SerializeField] private float maxDistance = 1000f;
     [SerializeField] private GameObject hitEffect;
+    [SerializeField] private GameObject bloodEffect;
     private Vector3 startPosition;
 
     private void Update()
@@ -35,35 +36,61 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Vector3 hitPoint = transform.position;
-
         PlayerHitbox hitbox = other.GetComponent<PlayerHitbox>();
         if (hitbox != null)
         {
             hitbox.OnHit();
         }
 
-        GameObject effect;
+        Vector3 hitPoint = transform.position;
+
+        HandleRaycastAndInstantiateEffect(other, ref hitPoint, out var effectRotation);
+        InstantiateSfxEffect(hitPoint, effectRotation, other.tag);
+
+        DestroyBullet();
+    }
+    
+    private void HandleRaycastAndInstantiateEffect(Collider other, ref Vector3 hitPoint, out Quaternion rotation)
+    {
         if (Physics.Raycast(transform.position - _direction * 0.1f, _direction, out RaycastHit hit, 1f))
         {
             hitPoint = hit.point;
             Vector3 reflected = Vector3.Reflect(_direction, hit.normal);
-            Quaternion rotation = Quaternion.LookRotation(reflected);
-            effect = Instantiate(hitEffect, hitPoint, rotation);
+            rotation = Quaternion.LookRotation(reflected);
         }
         else
         {
             Debug.LogWarning("[Bullet] Raycast failed, fallback to approximate hit point");
-            Quaternion fallbackRot = Quaternion.LookRotation(Vector3.Reflect(_direction, -_direction));
-            effect = Instantiate(hitEffect, hitPoint, fallbackRot);
+            rotation = Quaternion.LookRotation(Vector3.Reflect(_direction, -_direction));
         }
-        if(effect) Destroy(effect, 1f); 
-
-        DestroyBullet();
     }
 
+    private void InstantiateSfxEffect(Vector3 position, Quaternion rotation, string colliderTag)
+    {
+        GameObject effect = null;
+        switch (colliderTag)
+        {
+            case "Dualist":
+                effect = Instantiate(bloodEffect, position, rotation);
+                break;
+            default:
+                effect = Instantiate(hitEffect, position, rotation);
+                break;
+        }
+        if (effect != null)
+        {
+            Destroy(effect, 1f);
+        }
+    }
+    
     public void DestroyBullet()
     {
         Destroy(gameObject);
+    }
+    
+    //TEST
+    private void Start()
+    {
+        StartBullet(-transform.up);
     }
 }
