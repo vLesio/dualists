@@ -1,140 +1,164 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
 public enum GameMode { VRvsAI, AIvsAI }
 
+public class PlayerState
+{
+    public IPlayerController Controller;
+    public bool IsAlive = true;
+    public bool HasShield = false;
+    public bool HasPistol = false;
+    public bool IsOutOfAmmo = false;
+
+    public override string ToString()
+    {
+        return $"{Controller} | Alive: {IsAlive}, Ammo: {!IsOutOfAmmo}, Pistol: {HasPistol}, Shield: {HasShield}";
+    }
+}
+
 public class GameManager : Singleton.Singleton<GameManager>
 {
-    public UnityEvent onGameStarted;
-    public UnityEvent onGameEnded;
-    public UnityEvent onGameReset;
-    
     public GameMode currentMode = GameMode.VRvsAI;
 
-    private GameState _gameState = GameState.NotStarted;
-    public GameState CurrentGameState => _gameState;
+    private readonly List<PlayerState> playerStates = new();
+    private GameState _gameState = new();
 
-    private class PlayerState
+    private void Start()
     {
-        public bool isHuman = false;
-        public bool shieldPicked = false;
-        public bool pistolPicked = false;
-        public bool outOfAmmo = false;
-        public bool isAlive = true;
-
-        public bool IsReady => shieldPicked && pistolPicked;
+        RegisterPlayers();
+        StartGameIfReady();
     }
 
-    private Dictionary<string, PlayerState> players = new Dictionary<string, PlayerState>();
-
-    public void RegisterPlayer()
+    private void RegisterPlayers()
     {
-        // if (players.ContainsKey(playerName))
-        // {
-        //     Debug.LogWarning($"[GameManager] Player {playerName} is already registered.");
-        //     return;
-        // }
-        //
-        // players[playerName] = new PlayerState { isHuman = isHuman };
-        // Debug.Log($"[GameManager] Player {playerName} registered. IsHuman: {isHuman}");
-        //
-        // TryStartGame();
+        playerStates.Clear();
+
+        foreach (Transform child in transform)
+        {
+            var controller = child.GetComponent<IPlayerController>();
+            if (controller != null)
+            {
+                playerStates.Add(new PlayerState
+                {
+                    Controller = controller,
+                    IsAlive = true,
+                    HasShield = !controller.IsHuman, // AI players start with shield
+                    HasPistol = !controller.IsHuman, // AI players start with pistol
+                });
+            }
+        }
+    }
+
+    private void StartGameIfReady()
+    {
+        if (_gameState.IsRunning || playerStates.Count < 2) return;
+
+        if (playerStates.Count > 2)
+        {
+            Debug.LogWarning("[GameManager] More than 2 players detected. Only the first two will be used.");
+            playerStates.RemoveRange(2, playerStates.Count - 2);
+        }
+
+        if (currentMode == GameMode.AIvsAI)
+        {
+            _gameState.Start();
+            Debug.Log("[GameManager] Game Started");
+        }
+
+        // TODO: Implement VRvsAI mode
+        if (currentMode == GameMode.VRvsAI)
+        {
+            Debug.LogWarning("[GameManager] VRvsAI mode is not implemented yet.");
+            return;
+        }
+    }
+
+    public void RegisterPlayerHit(IPlayerController hitPlayer)
+    {
+        if (!_gameState.IsRunning) return;
+
+        var hitState = playerStates.FirstOrDefault(p => p.Controller == hitPlayer);
+        if (hitState == null || !hitState.IsAlive) return;
+
+        hitState.IsAlive = false;
+
+        var alive = playerStates.Where(p => p.IsAlive).ToList();
+        if (alive.Count == 1)
+        {
+            _gameState.End(alive[0].Controller);
+            Debug.Log($"[GameManager] Game Over. Winner: {alive[0].Controller}");
+        }
+        else if (alive.Count == 0)
+        {
+            _gameState.End(null);
+            Debug.Log("[GameManager] Game Over. Tie (both died)");
+        }
+        else
+        {
+            Debug.LogError("[GameManager] More than one player is still alive after a hit. This should not happen.");
+        }
+
+        ResetGame();
+    }
+
+    public void RegisterPlayerOutOfAmmo(IPlayerController player)
+    {
+        var state = playerStates.FirstOrDefault(p => p.Controller == player);
+        if (state == null || !state.IsAlive) return;
+
+        state.IsOutOfAmmo = true;
+
+        bool allAliveOutOfAmmo = playerStates
+            .Where(p => p.IsAlive)
+            .All(p => p.IsOutOfAmmo);
+
+        if (allAliveOutOfAmmo)
+        {
+            _gameState.End(null);
+            Debug.Log("[GameManager] Game Over. Tie (all alive players out of ammo)");
+            ResetGame();
+        }
+    }
+
+    private void ResetGame()
+    {
+        BulletManager.I.Reset();
+
+        foreach (var state in playerStates)
+        {
+            state.IsAlive = true;
+            state.HasShield = false;
+            state.HasPistol = false;
+            state.IsOutOfAmmo = false;
+            state.Controller.Reset();
+        }
+        _gameState = new GameState();
+
+        StartGameIfReady();
+    }
+
+    public bool IsRunning() => _gameState.IsRunning;
+
+    public void RegisterPistolPickup()
+    {
+        /*
+        var state = playerStates.FirstOrDefault()?;
+        if (state != null)
+        {
+            state.HasPistol = true;
+        }*/
     }
 
     public void RegisterShieldPickup()
     {
-        TryStartGame();
-    }
-
-    public void RegisterPistolPickup()
-    {
-        // if (!players.ContainsKey(playerName))
-        // {
-        //     Debug.LogWarning($"[GameManager] Player {playerName} not registered yet.");
-        //     return;
-        // }
-        //
-        // players[playerName].pistolPicked = true;
-        // TryStartGame();
-    }
-
-    private void TryStartGame()
-    {
-        if (_gameState.IsRunning) return;
-
-        if (currentMode == GameMode.VRvsAI)
+        /*
+        var state = playerStates.FirstOrDefault()?;
+        if (state != null)
         {
-            foreach (var pair in players)
-            {
-                var state = pair.Value;
-                if (state.isHuman && state.IsReady)
-                {
-                    StartGame();
-                    return;
-                }
-            }
-        }
-        else if (currentMode == GameMode.AIvsAI)
-        {
-            foreach (var state in players.Values)
-            {
-                if (!state.IsReady)
-                    return;
-            }
-
-            StartGame();
-        }
-    }
-
-    private void StartGame()
-    {
-        _gameState = GameState.Running;
-        Debug.Log("[GameManager] Game Started!");
-        onGameStarted.Invoke();
-    }
-
-    public void RegisterPlayerHit(string playerName)
-    {
-        if (_gameState.IsEnded) return;
-        if (!players.ContainsKey(playerName)) return;
-
-        players[playerName].isAlive = false;
-
-        string winner = GetOpponent(playerName);
-        _gameState = GameState.EndedWithWinner(winner);
-
-        Debug.Log($"[GameManager] Game Over! {playerName} was hit. {winner} wins!");
-        onGameEnded.Invoke();
-    }
-
-    public void RegisterOutOfAmmo(string playerName)
-    {
-        if (_gameState.IsEnded) return;
-        if (!players.ContainsKey(playerName)) return;
-
-        players[playerName].outOfAmmo = true;
-
-        foreach (var state in players.Values)
-        {
-            if (!state.outOfAmmo)
-                return;
-        }
-
-        _gameState = GameState.EndedWithTie;
-        Debug.Log("[GameManager] Game Over! Draw – all players out of ammo.");
-        onGameEnded.Invoke();
-    }
-
-    public bool HasGameStarted() => _gameState.IsRunning;
-
-    private string GetOpponent(string playerName)
-    {
-        foreach (var name in players.Keys)
-        {
-            if (name != playerName)
-                return name;
-        }
-        return "Unknown";
+            state.HasShield = true;
+        }*/
     }
 }

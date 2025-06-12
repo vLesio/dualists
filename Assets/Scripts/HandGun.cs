@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class HandGun : MonoBehaviour {
+public class HandGun : MonoBehaviour, IResettable {
     [Header("Pistol settings")]
     [SerializeField] private int startAmmo = 20;
     [SerializeField] private float cooldownTime = 0.1f;
@@ -19,6 +19,18 @@ public class HandGun : MonoBehaviour {
     private int _currentAmmo;
     private float _lastShootTime;
 
+    private IPlayerController _owner;
+
+    private void Awake()
+    {
+        _owner = GetComponentInParent<IPlayerController>();
+        if (_owner == null)
+            Debug.LogError("[HandGun] No IPlayerController found in parent!");
+        
+        _currentAmmo = startAmmo;
+        _lastShootTime = -999f;
+    }
+    
     public void Reset() {
         _currentAmmo = startAmmo;
     }
@@ -28,6 +40,12 @@ public class HandGun : MonoBehaviour {
         
         SpawnNewBullet();
         _currentAmmo--;
+        
+        if (_currentAmmo <= 0) { // IPlayerController is out of ammo
+            if (_owner != null) {
+                _owner.OnOutOfAmmo();
+            }
+        }
     }
 
     public bool IsOnCooldown() {
@@ -38,8 +56,10 @@ public class HandGun : MonoBehaviour {
         return _currentAmmo <= 0;
     }
 
-    private void SpawnNewBullet() {
-        var bullet = Instantiate(bulletPrefab, bulletStartPosition.position, bulletStartPosition.rotation);
+    private void SpawnNewBullet()
+    {
+        var bullet = Instantiate(bulletPrefab, bulletStartPosition.position, bulletStartPosition.rotation,
+            BulletManager.I.transform);
         bullet.GetComponent<Bullet>()?.StartBullet(bulletStartPosition.position - directionMaker.position);
     }
 }

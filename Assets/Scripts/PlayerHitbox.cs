@@ -1,19 +1,38 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 
-public class PlayerHitbox : MonoBehaviour
+public class PlayerHitbox : MonoBehaviour, IResettable
 {
-    public string playerName = "PlayerVR";
-
     private bool _alreadyHit = false;
+    private IPlayerController _controller;
+
+    private void Awake()
+    {
+        _controller = GetComponentInParent<IPlayerController>();
+        if (_controller == null)
+        {
+            Debug.LogError("PlayerHitbox must be a child of IPlayerController!");
+        }
+    }
 
     public void OnHit()
     {
-        if (_alreadyHit) return;
+        if (_alreadyHit || !GameManager.I.IsRunning()) return;
 
         _alreadyHit = true;
-        Debug.Log($"[Player Hitbox] {playerName} was hit by a bullet!");
-        GameManager.I.RegisterPlayerHit(playerName);
+
+        if (_controller != null)
+        {
+            _controller.OnHit();
+        }
+    }
+    
+    public void Reset()
+    {
+        _alreadyHit = false;
     }
 }

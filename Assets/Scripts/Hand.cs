@@ -5,7 +5,7 @@ using Unity.Mathematics;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Hand : MonoBehaviour
+public class Hand : MonoBehaviour, IResettable
 {
     private Rigidbody _rb;
     [SerializeField]
@@ -23,6 +23,22 @@ public class Hand : MonoBehaviour
     private float boundarySphereRadius;
     [SerializeField]
     private Vector3 globalPositionBoundarySphereCenter;
+    
+    // Start variables
+    private Vector3 _startPosition;
+    private Quaternion _startRotation;
+    
+    private void Start()
+    {
+        _startPosition = transform.localPosition;
+        _startRotation = transform.localRotation;
+    }
+    
+    public void Reset()
+    {
+        transform.localPosition = _startPosition;
+        transform.localRotation = _startRotation;
+    }
     
     public void SetBoundarySphere(Vector3 globalPositionCenter, float radius) {
         globalPositionBoundarySphereCenter = globalPositionCenter;

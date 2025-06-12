@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandSteering : MonoBehaviour
+public class HandSteering : MonoBehaviour, IResettable
 {
     [SerializeField]
     private Transform sphereCenterPoint;
@@ -59,6 +59,12 @@ public class HandSteering : MonoBehaviour
                 _rightHand = hand;
             }
         }
+    }
+
+    public void Reset()
+    {
+        _leftHand.Reset();
+        _rightHand.Reset();
     }
 }
 public struct HandsObservation

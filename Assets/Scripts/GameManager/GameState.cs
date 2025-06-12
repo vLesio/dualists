@@ -1,30 +1,19 @@
-
-public enum GamePhase
+public class GameState
 {
-    NotStarted,
-    Running,
-    EndedWithWin,
-    EndedWithTie
-}
+    public bool IsRunning { get; private set; }
+    public bool IsEnded => !IsRunning;
+    public IPlayerController Winner { get; private set; }
+    public bool IsTie => Winner == null && IsEnded;
 
-public readonly struct GameState
-{
-    public GamePhase Phase { get; }
-    public string Winner { get; }
-
-    private GameState(GamePhase phase, string winner = null)
+    public void Start()
     {
-        Phase = phase;
-        Winner = winner;
+        IsRunning = true;
+        Winner = null;
     }
 
-    public static GameState NotStarted => new GameState(GamePhase.NotStarted);
-    public static GameState Running => new GameState(GamePhase.Running);
-    public static GameState EndedWithWinner(string winner) => new GameState(GamePhase.EndedWithWin, winner);
-    public static GameState EndedWithTie => new GameState(GamePhase.EndedWithTie);
-
-    public bool IsRunning => Phase == GamePhase.Running;
-    public bool IsEnded => Phase == GamePhase.EndedWithWin || Phase == GamePhase.EndedWithTie;
-    public bool IsTie => Phase == GamePhase.EndedWithTie;
-    public bool HasWinner => Phase == GamePhase.EndedWithWin && !string.IsNullOrEmpty(Winner);
+    public void End(IPlayerController winner = null)
+    {
+        IsRunning = false;
+        Winner = winner;
+    }
 }
