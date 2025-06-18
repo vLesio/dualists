@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BulletManager : Singleton.Singleton<BulletManager>, IResettable
 {
+    [SerializeField] private bool debugLogging = false;
+    
     public void Reset()
     {
         var bulletsToDestroy = new List<GameObject>();
@@ -19,6 +21,11 @@ public class BulletManager : Singleton.Singleton<BulletManager>, IResettable
         foreach (var bullet in bulletsToDestroy)
         {
             Destroy(bullet);
+        }
+        
+        if (debugLogging)
+        {
+            Debug.Log($"[BulletManager] Reset called, {bulletsToDestroy.Count} bullets  destroyed.");
         }
     }
 }

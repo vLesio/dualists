@@ -21,11 +21,16 @@ public class PlayerState
 
 public class GameManager : Singleton.Singleton<GameManager>
 {
+    // Game mode
     public GameMode currentMode = GameMode.VRvsAI;
 
+    // Game state
     private readonly List<PlayerState> playerStates = new();
     private GameState _gameState = new();
-
+    
+    // Debugging
+    [SerializeField] private bool debugLogging = false;
+    
     private void Start()
     {
         RegisterPlayers();
@@ -65,7 +70,8 @@ public class GameManager : Singleton.Singleton<GameManager>
         if (currentMode == GameMode.AIvsAI)
         {
             _gameState.Start();
-            Debug.Log("[GameManager] Game Started");
+            if (debugLogging)
+                Debug.Log($"[GameManager] Game Started! Game Mode: {currentMode}, Players: {string.Join(", ", playerStates.Select(p => p.Controller))}");
         }
 
         // TODO: Implement VRvsAI mode
@@ -89,13 +95,15 @@ public class GameManager : Singleton.Singleton<GameManager>
         if (alive.Count == 1)
         {
             _gameState.End(alive[0].Controller);
-            Debug.Log($"[GameManager] Game Over. Winner: {alive[0].Controller}");
+            if(debugLogging)
+                Debug.Log($"[GameManager] Game Over. Winner: {alive[0].Controller}");
         }
         else if (alive.Count == 0)
         {
             _gameState.End(null);
-            Debug.Log("[GameManager] Game Over. Tie (both died)");
-        }
+            if(debugLogging)
+                Debug.Log("[GameManager] Game Over. Tie (both died)");
+        }  
         else
         {
             Debug.LogError("[GameManager] More than one player is still alive after a hit. This should not happen.");
@@ -118,7 +126,8 @@ public class GameManager : Singleton.Singleton<GameManager>
         if (allAliveOutOfAmmo)
         {
             _gameState.End(null);
-            Debug.Log("[GameManager] Game Over. Tie (all alive players out of ammo)");
+            if(debugLogging)
+                Debug.Log("[GameManager] Game Over. Tie (all alive players out of ammo)");
             ResetGame();
         }
     }

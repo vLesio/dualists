@@ -53,9 +53,6 @@ public class EnemyAgent : Agent
     public bool hitPlayerReward;
     public bool hitPlayerRewardAmount;
     
-    [Header("Important Vars")] 
-    public string dupa;
-    
     public bool IsActive { get; set; }
     
     public void Awake()

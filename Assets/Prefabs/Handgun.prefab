@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 1883748277762546508}
   - component: {fileID: 7087133817285981422}
   - component: {fileID: 8050379848411256657}
+  - component: {fileID: 706040113592681672}
   m_Layer: 0
   m_Name: Handgun
   m_TagString: Untagged
@@ -261,28 +262,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f063a6c9190b32f46b3d35fbf3de0542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: PlayerVR
-  InputActions:
-    m_Name: Input Actions
-    m_Type: 1
-    m_ExpectedControlType: Button
-    m_Id: a3b42aaa-4a42-4517-b39d-21292101ea8c
+  inputActions:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 8da615a2-05a1-40e5-80eb-0ce491f47a33
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 5a165661-e640-43bf-917a-a8a2c72b14ba
-      m_Path: <XRController>{RightHand}/{TriggerButton}
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Input Actions
-      m_Flags: 0
+    m_SingletonActionBindings: []
     m_Flags: 0
-  bulletPrefab: {fileID: 1858532122769943178, guid: fd762a183f44eeb4392e78fb4c5e4158, type: 3}
-  bulletStartPosition: {fileID: 358907498894520000}
-  directionMaker: {fileID: 1710787358253027460}
-  maxAmmo: 5
+--- !u!114 &706040113592681672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2916679147461823238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7efc91763c734ecb9ab6d744b93082cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startAmmo: 20
+  cooldownTime: 0.1
+  bulletPrefab: {fileID: 0}
+  bulletStartPosition: {fileID: 0}
+  directionMaker: {fileID: 0}
+  outOfAmmo:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5007152275319026065
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,6 +502,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 358907498894520000}
+  - component: {fileID: 1673958707409430603}
   m_Layer: 0
   m_Name: BulletStartPosition
   m_TagString: Untagged
@@ -516,3 +525,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 666826034927185137}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1673958707409430603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8887024480494439205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4cca6b2b4acb2843bb2be1c57e5acd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  show: 0
+  gizmoLength: 20

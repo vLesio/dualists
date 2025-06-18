@@ -25,7 +25,7 @@ public class HandGun : MonoBehaviour, IResettable {
     {
         _owner = GetComponentInParent<IPlayerController>();
         if (_owner == null)
-            Debug.LogError("[HandGun] No IPlayerController found in parent!");
+            Debug.LogError("[HandGun] No IPlayerController found in parent! The gun will not function with controller actions.");
         
         _currentAmmo = startAmmo;
         _lastShootTime = -999f;
@@ -41,7 +41,7 @@ public class HandGun : MonoBehaviour, IResettable {
         SpawnNewBullet();
         _currentAmmo--;
         
-        if (_currentAmmo <= 0) { // IPlayerController is out of ammo
+        if (_currentAmmo <= 0) { // Notifying IPlayerController that the gun is out of ammo
             if (_owner != null) {
                 _owner.OnOutOfAmmo();
             }

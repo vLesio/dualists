@@ -10,6 +10,7 @@ using UnityEngine.Serialization;
 [RequireComponent(typeof(PlayerHitbox))]
 public class AIPlayerController : MonoBehaviour, IPlayerController
 {
+    // Components
     [Header("Components")]
     public HandSteering handSteering;
     public HandGun handGun;
@@ -23,6 +24,9 @@ public class AIPlayerController : MonoBehaviour, IPlayerController
     private bool _isOutOfAmmo = false;
     public bool IsOutOfAmmo => _isOutOfAmmo;
     
+    // Debug
+    [SerializeField] private bool debugLogging = false;
+    
     public void ParseNNActions(ActionBuffers actions)
     {
         
@@ -33,13 +37,18 @@ public class AIPlayerController : MonoBehaviour, IPlayerController
         if(!_isAlive || !GameManager.I.IsRunning()) return;
         
         _isAlive = false;
-        Debug.Log("[AI] Hit received!");
+        if(debugLogging)
+            Debug.Log($"[AI Player Controller] Player: {this.ToString()} : Hit received!");
+        
         GameManager.I.RegisterPlayerHit(this);
     }
 
     public void OnOutOfAmmo()
     {
         if (_isOutOfAmmo || !_isAlive) return;
+        
+        if (debugLogging)
+            Debug.Log($"[AI Player Controller] Player: {this.ToString()} : Out of ammo!");
         _isOutOfAmmo = true;
         GameManager.I.RegisterPlayerOutOfAmmo(this);
     }
@@ -51,6 +60,12 @@ public class AIPlayerController : MonoBehaviour, IPlayerController
         playerHitbox.Reset();
         handSteering.Reset();
         handGun.Reset();
-        Debug.Log("[AI] Reset called, player is alive and has ammo.");
+        if (debugLogging)
+            Debug.Log($"[AI Player Controller] Player: {this.ToString()} : Reset called, player is alive and has ammo.");
+    }
+    
+    public override string ToString()
+    {
+        return $"AI[{gameObject.name}]";
     }
 }
