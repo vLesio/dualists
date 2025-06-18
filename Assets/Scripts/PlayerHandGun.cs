@@ -13,6 +13,8 @@ public class PlayerHandGun : MonoBehaviour
     public InputAction inputActions;
     private PointableUnityEventWrapper _eventWrapper;
     private HandGun _handgun;
+    
+    private VRPlayerController _owner;
 
     private void Awake() {
         _handgun = GetComponent<HandGun>();
@@ -21,6 +23,11 @@ public class PlayerHandGun : MonoBehaviour
         _eventWrapper.WhenUnselect.AddListener(OnRelease);
         inputActions.performed += OnUse;
         inputActions.Disable();
+        
+        _owner = GetComponentInParent<VRPlayerController>();
+        if (_owner == null) {
+            Debug.LogWarning("[PlayerHandGun] No VRPlayerController found in parent! The gun will not register pickups in the game.");
+        }
     }
 
     private void OnDestroy() {
@@ -32,7 +39,10 @@ public class PlayerHandGun : MonoBehaviour
     private void OnGrab(PointerEvent eventData)
     {
         inputActions.Enable();
-        GameManager.I.RegisterPistolPickup();
+        if (_owner != null) // Notifying the controller that the pistol was picked up
+        {
+            _owner.OnPistolPickup();
+        }
     }
 
     private void OnRelease(PointerEvent eventData)

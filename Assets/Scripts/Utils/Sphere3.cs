@@ -7,8 +7,8 @@ using UnityEngine;
 public class Sphere3 {
 
     public float Radius = 0f;
-    public float Theta = 0f; // Left/Right
-    public float Phi = 0f;   // Up/Down
+    public float Theta = 0f; // Left/Right - [-π, π]
+    public float Phi = 0f;   // Up/Down - [-π/2, π/2]
     public Vector3 globalPositionReferencePoint = Vector3.zero;
     public Sphere3() {
         Radius = 0;
@@ -62,9 +62,25 @@ public class Sphere3 {
     {
         return new Vector3(Radius, Theta, Phi);
     }
+
+    /// <summary>
+    ///     Transforms a normalized sphere observation into a Sphere3 object.
+    /// </summary>
+    /// <param name="normR"> Normalized radius in the range [-1, 1]</param>
+    /// <param name="normTheta"> Normalized theta in the range [-1, 1]</param>
+    /// <param name="normPhi"> Normalized phi in the range [-1, 1]</param>
+    /// <param name="center"> Global center point of the sphere</param>
+    /// <param name="maxR"> Maximum radius of the sphere.</param>
+    /// <param name="minR"> Minimum radius of the sphere, default is 0</param>
+    /// <returns> Sphere3 object representing a point in spherical coordinates.</returns>
+    public static Sphere3 FromNormalized(float normR, float normTheta, float normPhi, Vector3 center, float maxR, float minR = 0f)
+    {
+        float r = (normR + 1f / 2f); // [-1, 1] -> [0, 1]
+        float radius = Mathf.Lerp(minR, maxR, r); // [0, 1] -> [min, max]
+        float theta = normTheta * Mathf.PI; // [-π, π]
+        float phi = normPhi * (Mathf.PI / 2f); // [-π/2, π/2]
+
+        return new Sphere3(radius, theta, phi, center);
+    }
 }
 
-public static class CoordinatesTranslator
-{
-    
-}

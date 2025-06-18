@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public enum GameMode { VRvsAI, AIvsAI }
 
@@ -22,10 +23,10 @@ public class PlayerState
 public class GameManager : Singleton.Singleton<GameManager>
 {
     // Game mode
-    public GameMode currentMode = GameMode.VRvsAI;
+    [FormerlySerializedAs("currentMode")] public GameMode gameMode = GameMode.VRvsAI;
 
     // Game state
-    private readonly List<PlayerState> playerStates = new();
+    private readonly List<PlayerState> _playerStates = new();
     private GameState _gameState = new();
     
     // Debugging
@@ -39,14 +40,14 @@ public class GameManager : Singleton.Singleton<GameManager>
 
     private void RegisterPlayers()
     {
-        playerStates.Clear();
+        _playerStates.Clear();
 
         foreach (Transform child in transform)
         {
             var controller = child.GetComponent<IPlayerController>();
             if (controller != null)
             {
-                playerStates.Add(new PlayerState
+                _playerStates.Add(new PlayerState
                 {
                     Controller = controller,
                     IsAlive = true,
@@ -59,39 +60,22 @@ public class GameManager : Singleton.Singleton<GameManager>
 
     private void StartGameIfReady()
     {
-        if (_gameState.IsRunning || playerStates.Count < 2) return;
-
-        if (playerStates.Count > 2)
-        {
-            Debug.LogWarning("[GameManager] More than 2 players detected. Only the first two will be used.");
-            playerStates.RemoveRange(2, playerStates.Count - 2);
-        }
-
-        if (currentMode == GameMode.AIvsAI)
-        {
-            _gameState.Start();
-            if (debugLogging)
-                Debug.Log($"[GameManager] Game Started! Game Mode: {currentMode}, Players: {string.Join(", ", playerStates.Select(p => p.Controller))}");
-        }
-
-        // TODO: Implement VRvsAI mode
-        if (currentMode == GameMode.VRvsAI)
-        {
-            Debug.LogWarning("[GameManager] VRvsAI mode is not implemented yet.");
-            return;
-        }
+        if(!IsReadyToStart()) return;
+        _gameState.Start();
+        if (debugLogging)
+            Debug.Log($"[GameManager] Game Started! Game Mode: {gameMode}, Players: {string.Join(", ", _playerStates.Select(p => p.Controller))}");
+ 
     }
 
     public void RegisterPlayerHit(IPlayerController hitPlayer)
     {
         if (!_gameState.IsRunning) return;
-
-        var hitState = playerStates.FirstOrDefault(p => p.Controller == hitPlayer);
+        var hitState = _playerStates.FirstOrDefault(p => p.Controller == hitPlayer);
         if (hitState == null || !hitState.IsAlive) return;
 
         hitState.IsAlive = false;
 
-        var alive = playerStates.Where(p => p.IsAlive).ToList();
+        var alive = _playerStates.Where(p => p.IsAlive).ToList();
         if (alive.Count == 1)
         {
             _gameState.End(alive[0].Controller);
@@ -114,12 +98,13 @@ public class GameManager : Singleton.Singleton<GameManager>
 
     public void RegisterPlayerOutOfAmmo(IPlayerController player)
     {
-        var state = playerStates.FirstOrDefault(p => p.Controller == player);
+        if (!_gameState.IsRunning) return;
+        var state = _playerStates.FirstOrDefault(p => p.Controller == player);
         if (state == null || !state.IsAlive) return;
 
         state.IsOutOfAmmo = true;
 
-        bool allAliveOutOfAmmo = playerStates
+        bool allAliveOutOfAmmo = _playerStates
             .Where(p => p.IsAlive)
             .All(p => p.IsOutOfAmmo);
 
@@ -136,7 +121,7 @@ public class GameManager : Singleton.Singleton<GameManager>
     {
         BulletManager.I.Reset();
 
-        foreach (var state in playerStates)
+        foreach (var state in _playerStates)
         {
             state.IsAlive = true;
             state.HasShield = false;
@@ -151,23 +136,76 @@ public class GameManager : Singleton.Singleton<GameManager>
 
     public bool IsRunning() => _gameState.IsRunning;
 
-    public void RegisterPistolPickup()
+    public void RegisterPistolPickup(VRPlayerController vrPlayer)
     {
-        /*
-        var state = playerStates.FirstOrDefault()?;
-        if (state != null)
-        {
-            state.HasPistol = true;
-        }*/
-    }
+        if (_gameState.IsRunning) return;
+        var state = _playerStates.FirstOrDefault(p => ReferenceEquals(p.Controller, vrPlayer));
+        if (state == null) return;
 
-    public void RegisterShieldPickup()
+        state.HasPistol = true;
+        if (debugLogging)
+            Debug.Log("[GameManager] Registered pistol pickup for VR player.");
+        
+        StartGameIfReady();
+    }
+    public void RegisterShieldPickup(VRPlayerController vrPlayer)
     {
-        /*
-        var state = playerStates.FirstOrDefault()?;
-        if (state != null)
+        if (_gameState.IsRunning) return;
+        var state = _playerStates.FirstOrDefault(p => ReferenceEquals(p.Controller, vrPlayer));
+        if (state == null) return;
+        
+        state.HasShield = true;
+        if (debugLogging)
+            Debug.Log("[GameManager] Registered shield pickup for VR player.");
+
+        StartGameIfReady();
+    }
+    
+    private bool IsReadyToStart()
+    {
+        // Check if the game is already running or if there are not enough players
+        if (_gameState.IsRunning || _playerStates.Count < 2) return false;
+
+        // Too many players
+        if (_playerStates.Count > 2)
         {
-            state.HasShield = true;
-        }*/
+            Debug.LogWarning("[GameManager] More than 2 players detected. Only the first two will be used.");
+            _playerStates.RemoveRange(2, _playerStates.Count - 2);
+        }
+        
+        // Based on the game mode...
+        if (gameMode == GameMode.AIvsAI)
+        {
+            // AI vs AI mode requires only AI players
+            if (_playerStates.Any(p => p.Controller.IsHuman))
+            {
+                Debug.LogError("[GameManager] AIvsAI mode requires only AI players. At least one human player detected.");
+                return false;
+            }
+
+            return true;
+        }
+        
+        if (gameMode == GameMode.VRvsAI)
+        {
+            bool exactlyOneHumanAndOneAI = _playerStates.Count(p => p.Controller.IsHuman) == 1
+                                           && _playerStates.Count(p => !p.Controller.IsHuman) == 1;
+            // VR vs AI mode requires exactly one human player and one AI player
+            if (!exactlyOneHumanAndOneAI)
+            {
+                Debug.LogError("[GameManager] VRvsAI mode requires exactly one human player and one AI player. Current players: " + string.Join(", ", _playerStates.Select(p => p.Controller)));
+                return false;
+            }
+            
+            // Ensure human player grabbed the pistol and shield
+            if (!_playerStates.Any(p => p.Controller.IsHuman && p.HasPistol && p.HasShield))
+            {
+                if (debugLogging)
+                    Debug.Log("[GameManager] Human player must have a pistol and shield to start the game.");
+                return false;
+            }
+        }
+
+        return true;
     }
 }

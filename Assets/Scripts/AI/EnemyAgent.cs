@@ -7,11 +7,12 @@ using Unity.MLAgents.Sensors;
 using UnityEngine;
 [RequireComponent(typeof(HandSteering))]
 [RequireComponent(typeof(SteeringTest))]
+[RequireComponent(typeof(AIPlayerController))]
 public class EnemyAgent : Agent
 {
     private HandSteering _handSteering;
     private SteeringTest _steeringTest;
-    private GameManager _gameManager;
+    private AIPlayerController _aiPlayerController;
 
     private double _cumReward = 0;
     
@@ -53,13 +54,11 @@ public class EnemyAgent : Agent
     public bool hitPlayerReward;
     public bool hitPlayerRewardAmount;
     
-    public bool IsActive { get; set; }
     
     public void Awake()
     {
-        var managers = GameObject.Find("GameManager");
-        _gameManager = managers.GetComponent<GameManager>();
         _handSteering = transform.GetComponent<HandSteering>();
+        _aiPlayerController = transform.GetComponent<AIPlayerController>();
     }
 
     public void Start()
@@ -83,6 +82,9 @@ public class EnemyAgent : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
+        if (!GameManager.I.IsRunning())
+            return;
+        
         String detailedObservationLog = "Agent Detailed Observations:";
         foreach (HandObservation hand in _handSteering.GetHandsObservation().Hands) {
             if(handsSpherePosition)
@@ -127,15 +129,11 @@ public class EnemyAgent : Agent
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        HandsDesiredActions handsDesiredActions = CalculateHandDesiredActions(actions);
-        PropagateHandsDesiredActions(handsDesiredActions);
-        // _handSteering.PropagateHandsActions();
-        //     new Vector2(
-        //         _agentInputToPlayerControls[actions.DiscreteActions[0]],
-        //         _agentInputToPlayerControls[actions.DiscreteActions[1]]
-        //         )
-        //     );
-
+        if (!GameManager.I.IsRunning())
+            return;
+        // Take actions from the neural network and apply them to the agent
+        // 18 continuous actions, 2 discrete actions (don't shoot, shoot)
+        _aiPlayerController.ParseNNActions(actions);
         float rewardSum = 0;
 
         String detailedGradeLog = "Detailed Grade Log:";

@@ -24,6 +24,8 @@ public class Hand : MonoBehaviour, IResettable
     [SerializeField]
     private Vector3 globalPositionBoundarySphereCenter;
     
+    [SerializeField] private bool drawGizmo = false;
+    
     // Start variables
     private Vector3 _startPosition;
     private Quaternion _startRotation;
@@ -101,7 +103,7 @@ public class Hand : MonoBehaviour, IResettable
             _rb.velocity = -_rb.velocity;
     }
     private void OnDrawGizmos() {
-        if (!Application.isPlaying) return;
+        if (!Application.isPlaying || !drawGizmo) return;
         Gizmos.color = new Color(0,0,1,0.2f);
         Gizmos.DrawSphere(globalPositionBoundarySphereCenter, boundarySphereRadius);
     }

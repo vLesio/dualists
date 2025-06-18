@@ -7,8 +7,10 @@ public class HandSteering : MonoBehaviour, IResettable
     [SerializeField]
     private Transform sphereCenterPoint;
 
-    [SerializeField][Range(0, 10)] private float sphereRadius;
+    [SerializeField][Range(0, 2)] private float sphereRadius;
+    [SerializeField] [Range(0, 2)] private float minSphereRadius = 0f;
     public Vector3 GlobalPositionSphereCenterPoint => sphereCenterPoint.TransformPoint(Vector3.zero);
+    public Vector2 SphereBounds => new Vector2(minSphereRadius, sphereRadius);
     
     private Hand _leftHand;
     private Sphere3 _leftHandSpherePosition;
@@ -58,6 +60,12 @@ public class HandSteering : MonoBehaviour, IResettable
             if (hand.HandSide == HandSide.right) {
                 _rightHand = hand;
             }
+        }
+
+        if (minSphereRadius >= sphereRadius)
+        {
+            Debug.LogError("[HandSteering] minSphereRadius must be less than sphereRadius. Setting minSphereRadius to 0.");
+            minSphereRadius = 0f;
         }
     }
 
