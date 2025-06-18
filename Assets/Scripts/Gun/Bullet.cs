@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
 {
     public float speed = 1f;
@@ -12,13 +13,24 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float maxDistance = 1000f;
     [SerializeField] private GameObject hitEffect;
     [SerializeField] private GameObject bloodEffect;
+    
+    private Rigidbody _rb;
     private Vector3 startPosition;
 
-    private void Update()
+    private void Awake()
+    {
+        _rb = GetComponent<Rigidbody>();
+        if (_rb == null)
+        {
+            Debug.LogError("[Bullet] Rigidbody component is missing!");
+        }
+    }
+
+    private void FixedUpdate()
     {
         if (_shouldPlay)
         {
-            transform.Translate(_direction * (speed * Time.deltaTime), Space.World);
+            _rb.MovePosition(_rb.position + _direction * (speed * Time.fixedDeltaTime));
         }
 
         if (Vector3.Distance(transform.position, startPosition) > maxDistance)
@@ -88,9 +100,4 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
     
-    //TEST
-    private void Start()
-    {
-        StartBullet(-transform.up);
-    }
 }
