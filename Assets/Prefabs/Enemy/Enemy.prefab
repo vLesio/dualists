@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 2287338811348692732}
   - component: {fileID: 3686093800362386165}
   - component: {fileID: 8156056228528638847}
-  - component: {fileID: 1351009371894894641}
-  - component: {fileID: 6110173124722712512}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Dualist
@@ -90,48 +88,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.40000167, y: 0.4641844, z: 0.40000167}
   m_Center: {x: 0, y: 0.8202339, z: 0}
---- !u!65 &1351009371894894641
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 949803103809812998}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.21226698, y: 0.6757991, z: 0.21644853}
-  m_Center: {x: -0.24386847, y: -0.6721004, z: -0.0137173}
---- !u!65 &6110173124722712512
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 949803103809812998}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.21226698, y: 0.6757991, z: 0.21644853}
-  m_Center: {x: 0.2438685, y: -0.6721004, z: -0.0137173}
 --- !u!1 &1372715615853138785
 GameObject:
   m_ObjectHideFlags: 0

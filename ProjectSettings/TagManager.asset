@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet
   - Dualist
+  - Shield
   layers:
   - Default
   - TransparentFX
