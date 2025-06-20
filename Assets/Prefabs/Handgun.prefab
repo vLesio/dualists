@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputActions:
-    m_Name: 
+    m_Name: Input Actions
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 8da615a2-05a1-40e5-80eb-0ce491f47a33
@@ -285,9 +285,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startAmmo: 20
   cooldownTime: 0.1
-  bulletPrefab: {fileID: 0}
-  bulletStartPosition: {fileID: 0}
-  directionMaker: {fileID: 0}
+  bulletPrefab: {fileID: 1858532122769943178, guid: fd762a183f44eeb4392e78fb4c5e4158, type: 3}
+  bulletStartPosition: {fileID: 358907498894520000}
+  directionMaker: {fileID: 1710787358253027460}
   outOfAmmo:
     m_PersistentCalls:
       m_Calls: []
@@ -539,3 +539,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   show: 0
   gizmoLength: 20
+  gizmoColor: {r: 1, g: 0, b: 0, a: 1}
