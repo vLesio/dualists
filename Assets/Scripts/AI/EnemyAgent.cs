@@ -125,10 +125,14 @@ public class EnemyAgent : Agent
         ResetAgentStateParameters();
     }
 
-    /*public override void CollectObservations(VectorSensor sensor)
+    public override void CollectObservations(VectorSensor sensor)
     {
         if (!GameManager.I.IsRunning())
             return;
+
+        var selfObservations =  _selfObservationCollector.CollectObservations(_handSteering.GlobalPositionSphereCenterPoint);
+        var enemyObservations = _enemyObservationCollector.CollectObservations(_handSteering.GlobalPositionSphereCenterPoint);
+        
         
         String detailedObservationLog = "Agent Detailed Observations:";
         foreach (HandObservation hand in _handSteering.GetHandsObservation().Hands) {
@@ -210,7 +214,7 @@ public class EnemyAgent : Agent
             detailedGradeLog += $"\n\tAgent was rewarded by: {rewardSum}. Got in total: {_cumReward}";
             Debug.Log(detailedGradeLog);
         }
-    }*/
+    }
     
     public override void Heuristic(in ActionBuffers actionsOut)
     {

@@ -23,12 +23,12 @@ public class PlayerObservationCollector : MonoBehaviour, IObservationCollector
         return new PlayerObservations
         {
             AimingAt = _handGun.GetAimingAt() ?? HitType.Other,
-            Hands = _handSteering.GetHandsObservation(),
-            Hitboxes = CollectHitboxObservations()
+            HandObservations = _handSteering.GetHandsObservation(),
+            Hitboxes = CollectHitboxObservations(globalPositionSphereCenterPoint)
         };
     }
 
-    private List<Hitbox> CollectHitboxObservations()
+    private List<Hitbox> CollectHitboxObservations(Vector3 globalPositionSphereCenterPoint)
     {
         var hitboxes = new List<Hitbox>();
         foreach (var collider in _colliders)
@@ -36,13 +36,13 @@ public class PlayerObservationCollector : MonoBehaviour, IObservationCollector
             hitboxes.Add(
                 new Hitbox
                 {
-                    Vertices = GetVertexPositionsFromCollider(collider)
+                    Vertices = GetVertexPositionsFromCollider(collider, globalPositionSphereCenterPoint)
                 });
         }
         return hitboxes;
     }
     
-    private List<Sphere3> GetVertexPositionsFromCollider(BoxCollider box)
+    private List<Sphere3> GetVertexPositionsFromCollider(BoxCollider box, Vector3 globalPositionSphereCenterPoint)
     {
         Vector3 center = box.center;
         Vector3 size = box.size * 0.5f;
@@ -59,7 +59,7 @@ public class PlayerObservationCollector : MonoBehaviour, IObservationCollector
         for (int i = 0; i < 4; i++)
         {
             var worldPos = box.transform.TransformPoint(center + localCorners[i]);
-            sphereCorners.Add(new Sphere3(worldPos, _handSteering.GlobalPositionSphereCenterPoint));
+            sphereCorners.Add(new Sphere3(worldPos, globalPositionSphereCenterPoint));
         }
         
         return sphereCorners;

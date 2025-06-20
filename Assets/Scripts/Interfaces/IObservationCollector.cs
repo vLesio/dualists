@@ -20,7 +20,7 @@ public struct PlayerObservations
     public List<Hitbox> Hitboxes;
     public HitType AimingAt;
 
-    public HandsObservation Hands;
+    public HandsObservation HandObservations;
 }
 
 public interface IObservationCollector
