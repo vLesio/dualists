@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEditor;
 
+#if UNITY_EDITOR
+
 namespace FastMesh_Example
 {
     [ExecuteInEditMode]
@@ -55,4 +57,4 @@ namespace FastMesh_Example
     }
 }
 
-
+#endif

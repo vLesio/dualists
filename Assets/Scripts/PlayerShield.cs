@@ -16,6 +16,7 @@ public class PlayerShield : MonoBehaviour {
         _owner = GetComponentInParent<VRPlayerController>();
         if (_owner == null)
             Debug.LogWarning("[PlayerShield] No VRPlayerController found in parent! The shield will not register pickups in the game.");
+        _eventWrapper = GetComponent<PointableUnityEventWrapper>();
     }
 
     private void Start() {
