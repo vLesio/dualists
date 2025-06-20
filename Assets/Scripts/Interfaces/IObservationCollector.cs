@@ -1,0 +1,29 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.MLAgents.Sensors;
+using UnityEngine;
+
+public enum HitType
+{
+    Player,
+    Shield,
+    Other
+}
+
+public struct Hitbox
+{
+    public List<Sphere3> Vertices;
+}
+
+public struct PlayerObservations
+{
+    public List<Hitbox> Hitboxes;
+    public HitType AimingAt;
+
+    public HandsObservation Hands;
+}
+
+public interface IObservationCollector
+{
+    PlayerObservations CollectObservations(Vector3 globalPositionSphereCenterPoint);
+}

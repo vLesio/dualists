@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerHitbox))]
-[RequireComponent(typeof(HandGun))]
 public class VRPlayerController : MonoBehaviour, IPlayerController
 {
     // TODO: Implement Reset functionality for VRPlayer, especially how the VR player's gun and shield are handled.

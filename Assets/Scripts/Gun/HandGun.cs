@@ -63,4 +63,27 @@ public class HandGun : MonoBehaviour, IResettable {
             BulletManager.I.transform);
         bullet.GetComponent<Bullet>()?.StartBullet(bulletStartPosition.position - directionMaker.position);
     }
+
+    public HitType? GetAimingAt()
+    {
+        
+        if(Physics.Raycast(bulletStartPosition.position, bulletStartPosition.position - directionMaker.position, out var hit))
+        {
+            var col = hit.collider;
+            if (col.CompareTag("Dualist"))
+            {
+                return HitType.Player;
+            }
+            else if (col.CompareTag("Shield"))
+            {
+                return HitType.Shield;
+            }
+            else 
+            {
+                return HitType.Other;
+            }
+        }
+
+        return null;
+    }
 }

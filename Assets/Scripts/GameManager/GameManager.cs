@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -212,5 +213,23 @@ public class GameManager : Singleton.Singleton<GameManager>
         }
 
         return true;
+    }
+    
+    [CanBeNull]
+    public GameObject GetOpponent(IPlayerController player)
+    {
+        if(_playerStates.Count() < 2 || _playerStates.Count() > 2 || _playerStates.All(p => p.Controller != player))
+        {
+            Debug.LogError("[GameManager] Cannot find opponent for player: " + player);
+            return null;
+        }
+
+        var controller = _playerStates.FirstOrDefault(p => p.Controller != player)?.Controller;
+        if (controller is MonoBehaviour monoBehaviour)
+        {
+            return monoBehaviour.gameObject;
+        }
+
+        return null;
     }
 }

@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using JetBrains.Annotations;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
@@ -13,6 +15,10 @@ public class EnemyAgent : Agent
     private HandSteering _handSteering;
     private SteeringTest _steeringTest;
     private AIPlayerController _aiPlayerController;
+    
+    private IObservationCollector _selfObservationCollector;
+    private IObservationCollector _enemyObservationCollector;
+    
 
     private double _cumReward = 0;
     
@@ -29,14 +35,14 @@ public class EnemyAgent : Agent
     public bool handsAngularVelocity;
     
     // player observations
-    public bool playerEuclideanPosition;
+    //public bool playerEuclideanPosition;
     public bool playerSpherePosition;
-    public bool playerShieldEuclideanPosition;
-    public bool playerShieldSpherePosition;
-    public bool playerShieldRotation;    
-    public bool playerGunEuclideanPosition;
+    //public bool playerShieldEuclideanPosition;
+    //public bool playerShieldSpherePosition;
+    //public bool playerGunEuclideanPosition;
     public bool playerGunSpherePosition;
     public bool playerGunRotation;
+    public bool playerAimingAt;
 
     [Header("What agent should be rewarded for")] 
     public bool shieldAimsAtGunReward;
@@ -60,10 +66,49 @@ public class EnemyAgent : Agent
         _handSteering = transform.GetComponent<HandSteering>();
         _aiPlayerController = transform.GetComponent<AIPlayerController>();
     }
-
+    
+    
     public void Start()
     {
         RegisterEvents();
+        
+        _selfObservationCollector = GetComponent<IObservationCollector>();
+        _enemyObservationCollector = FindEnemyObservationCollector();
+        if (_enemyObservationCollector is not null && enableDetailedGradeLogging)
+        {
+            Debug.LogError("[Enemy Agent] Enemy observation collector found!");
+        }
+    }
+
+    [CanBeNull]
+    IObservationCollector FindEnemyObservationCollector()
+    {
+        Transform gameManager = transform.parent; 
+        if(gameManager.name != "GameManager")
+        {
+            Debug.LogError("[Enemy Agent] EnemyAgent must be a child of GameManager!");
+            return null;
+        }
+        var allCollectors = gameManager.GetComponentsInChildren<MonoBehaviour>(true).OfType<IObservationCollector>();
+
+        var observationCollectors = allCollectors.ToList();
+        if (!observationCollectors.Any())
+        {
+            Debug.LogError("[Enemy Agent] No observation collectors found in GameManager!");
+            return null;
+        }
+
+        if (observationCollectors.Count() > 2)
+        {
+            Debug.LogError("[Enemy Agent] More than 2 observation collectors found in GameManager! This is not supported.");
+        }
+        foreach (var collector in observationCollectors)
+        {
+            if (collector != _selfObservationCollector) 
+                return collector;
+        }
+        Debug.LogError("[Enemy Agent] No enemy observation collector found! Please ensure the agent has an observation collector attached.");
+        return null;
     }
 
     private void OnDestroy() {
@@ -80,7 +125,7 @@ public class EnemyAgent : Agent
         ResetAgentStateParameters();
     }
 
-    public override void CollectObservations(VectorSensor sensor)
+    /*public override void CollectObservations(VectorSensor sensor)
     {
         if (!GameManager.I.IsRunning())
             return;
@@ -132,7 +177,7 @@ public class EnemyAgent : Agent
         if (!GameManager.I.IsRunning())
             return;
         // Take actions from the neural network and apply them to the agent
-        // 18 continuous actions, 2 discrete actions (don't shoot, shoot)
+        // 18 continuous actions, 1 discrete action with 2 states (don't shoot, shoot)
         _aiPlayerController.ParseNNActions(actions);
         float rewardSum = 0;
 
@@ -165,11 +210,8 @@ public class EnemyAgent : Agent
             detailedGradeLog += $"\n\tAgent was rewarded by: {rewardSum}. Got in total: {_cumReward}";
             Debug.Log(detailedGradeLog);
         }
-    }
-    private void PropagateHandsDesiredActions(HandsDesiredActions handsDesiredActions)
-    {
-        _handSteering.PropagateHandsActions(handsDesiredActions);
-    }
+    }*/
+    
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         var discreteActions = actionsOut.DiscreteActions;
@@ -183,21 +225,6 @@ public class EnemyAgent : Agent
         continuousActions[4] = 0;
         continuousActions[5] = 0;
         discreteActions[0] = 0;
-    }
-    
-    private HandsDesiredActions CalculateHandDesiredActions(ActionBuffers actions)
-    {
-        HandsDesiredActions returnActions = new HandsDesiredActions();
-
-        //TODO: Exclude agent output mapping logic to other class 18 continuous vars
-        // for (int i = 0; i < 2; i++) {
-        //     HandDesiredActions handDesiredActions = new HandDesiredActions();
-        //     handDesiredActions.handSide = i == 0 ? HandSide.left :  HandSide.right;
-        //     returnActions.Hands.Add();
-        //     
-        // }
-
-        return returnActions;
     }
     
     private void RegisterEvents() {

@@ -6,8 +6,6 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 [RequireComponent(typeof(HandSteering))]
-[RequireComponent(typeof(HandGun))]
-[RequireComponent(typeof(PlayerHitbox))]
 public class AIPlayerController : MonoBehaviour, IPlayerController
 {
     // Components
