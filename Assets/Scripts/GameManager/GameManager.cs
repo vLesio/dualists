@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 
 public enum GameMode { VRvsAI, AIvsAI }
 
-public class PlayerState
+public class PlayerState : IResettable
 {
     public IPlayerController Controller;
     public bool IsAlive = true;
@@ -17,6 +17,15 @@ public class PlayerState
     public override string ToString()
     {
         return $"{Controller} | Alive: {IsAlive}, Ammo: {!IsOutOfAmmo}, Pistol: {HasPistol}, Shield: {HasShield}";
+    }
+
+    public void Reset()
+    {
+        IsAlive = true;
+        HasShield = !Controller.IsHuman; // AI players start with shield
+        HasPistol = !Controller.IsHuman; // AI players start with pistol
+        IsOutOfAmmo = false;
+        Controller.Reset();
     }
 }
 
@@ -123,11 +132,7 @@ public class GameManager : Singleton.Singleton<GameManager>
 
         foreach (var state in _playerStates)
         {
-            state.IsAlive = true;
-            state.HasShield = false;
-            state.HasPistol = false;
-            state.IsOutOfAmmo = false;
-            state.Controller.Reset();
+            state.Reset();
         }
         _gameState = new GameState();
 
