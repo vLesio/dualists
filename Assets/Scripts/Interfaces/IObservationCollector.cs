@@ -19,7 +19,9 @@ public struct PlayerObservations
 {
     public List<Hitbox> Hitboxes;
     public HitType AimingAt;
-
+    public bool IsGunUsable;
+    public float GunAmmoPercentage;
+    
     public HandsObservation HandObservations;
 }
 

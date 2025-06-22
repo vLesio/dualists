@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class HandGun : MonoBehaviour, IResettable {
     [Header("Pistol settings")]
     [SerializeField] private int startAmmo = 20;
-    [SerializeField] private float cooldownTime = 0.1f;
+    [SerializeField] private float cooldownTime = 0.5f;
     
     [Header("References")]
     [SerializeField] private GameObject bulletPrefab;
@@ -41,7 +41,7 @@ public class HandGun : MonoBehaviour, IResettable {
         
         SpawnNewBullet();
         _currentAmmo--;
-        
+        _lastShootTime = Time.time;
         if (_currentAmmo <= 0) { // Notifying IPlayerController that the gun is out of ammo
             if (_owner != null) {
                 _owner.OnOutOfAmmo();
@@ -57,6 +57,9 @@ public class HandGun : MonoBehaviour, IResettable {
         return _currentAmmo <= 0;
     }
 
+    public float AmmoLeft => (float)_currentAmmo /(float)startAmmo;
+    public bool IsUsable => !(IsOnCooldown() || IsOutOfAmmo()); 
+    
     private void SpawnNewBullet()
     {
         var bullet = Instantiate(bulletPrefab, bulletStartPosition.position, bulletStartPosition.rotation,

@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 82
+    VectorObservationSize: 86
     NumStackedVectorObservations: 5
     m_ActionSpec:
       m_NumContinuousActions: 18
@@ -296,6 +296,8 @@ MonoBehaviour:
   enemyGunVelocity: 1
   enemyGunAngularVelocity: 1
   enemyAimingAt: 1
+  enemyGunUsable: 1
+  enemyGunAmmoPercentage: 1
   playerSphereHitboxPositions: 1
   playerShieldSpherePosition: 1
   playerGunSpherePosition: 1
@@ -303,16 +305,24 @@ MonoBehaviour:
   playerGunVelocity: 1
   playerGunAngularVelocity: 1
   playerAimingAt: 1
-  shieldAimsAtGunReward: 0
-  shieldAimsAtGunRewardAmount: 0
-  gunNotAimsAtShieldReward: 0
-  gunNotAimsAtShieldRewardAmount: 0
-  gunAimsAtPlayerReward: 0
-  gunAimsAtPlayerRewardAmount: 0
-  bulletBlockedReward: 0
-  bulletBlockedRewardAmount: 0
-  hitPlayerReward: 0
-  hitPlayerRewardAmount: 0
+  playerGunUsable: 1
+  playerGunAmmoPercentage: 1
+  enemyGunAimsAtShieldReward: 0
+  enemyGunAimsAtShieldRewardAmount: 0
+  playerGunNotAimsAtShieldReward: 0
+  playerGunNotAimsAtShieldRewardAmount: 0
+  playerGunAimsAtEnemyReward: 0
+  playerGunAimsAtEnemyRewardAmount: 0
+  hitEnemyReward: 0
+  hitEnemyRewardAmount: 0
+  playerDeathPenalty: 0
+  playerDeathPenaltyAmount: 0
+  playerOutOfAmmoPenalty: 0
+  playerOutOfAmmoPenaltyAmount: 0
+  playerAmmoPercentageReward: 0
+  playerAmmoPercentageRewardAmount: 0
+  timeoutPenaltyReward: 0
+  timeoutPenaltyRewardAmount: 0
 --- !u!114 &2388153978236475002
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -36,7 +36,9 @@ public class PlayerObservationCollector : MonoBehaviour, IObservationCollector
         {
             AimingAt = _handGun.GetAimingAt() ?? HitType.Other,
             HandObservations = _handSteering.GetHandsObservation(globalPositionSphereCenterPoint),
-            Hitboxes = CollectHitboxObservations(globalPositionSphereCenterPoint)
+            Hitboxes = CollectHitboxObservations(globalPositionSphereCenterPoint),
+            IsGunUsable = _handGun.IsUsable,
+            GunAmmoPercentage = _handGun.AmmoLeft
         };
     }
 

@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
+using Update = UnityEngine.PlayerLoop.Update;
 
 public enum GameMode { VRvsAI, AIvsAI }
 
@@ -48,6 +50,18 @@ public class GameManager : Singleton.Singleton<GameManager>
         StartGameIfReady();
     }
 
+    private void Update()
+    {
+        bool isTimeout = _gameState.IsTimeout;
+        if (isTimeout)
+        {
+            _gameState.End(null);
+            if (debugLogging)
+                Debug.Log("[GameManager] Game Over. Timeout reached.");
+            ResetGame();
+        }
+    }
+    
     private void RegisterPlayers()
     {
         _playerStates.Clear();
@@ -74,7 +88,6 @@ public class GameManager : Singleton.Singleton<GameManager>
         _gameState.Start();
         if (debugLogging)
             Debug.Log($"[GameManager] Game Started! Game Mode: {gameMode}, Players: {string.Join(", ", _playerStates.Select(p => p.Controller))}");
- 
     }
 
     public void RegisterPlayerHit(IPlayerController hitPlayer)

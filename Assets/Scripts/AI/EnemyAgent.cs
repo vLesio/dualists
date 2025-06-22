@@ -42,6 +42,9 @@ public class EnemyAgent : Agent
     
     public bool enemyAimingAt;
     
+    public bool enemyGunUsable;
+    public bool enemyGunAmmoPercentage;
+    
     // player observations
     public bool playerSphereHitboxPositions;
 
@@ -56,24 +59,34 @@ public class EnemyAgent : Agent
     public bool playerGunAngularVelocity;
     
     public bool playerAimingAt;
+    
+    public bool playerGunUsable;
+    public bool playerGunAmmoPercentage;
 
     [Header("What agent should be rewarded for")] 
-    public bool shieldAimsAtGunReward;
-    public bool shieldAimsAtGunRewardAmount;
+    public bool enemyGunAimsAtShieldReward;
+    public float enemyGunAimsAtShieldRewardAmount;
     
-    public bool gunNotAimsAtShieldReward;
-    public bool gunNotAimsAtShieldRewardAmount;
+    public bool playerGunNotAimsAtShieldReward;
+    public bool playerGunNotAimsAtShieldRewardAmount;
     
-    public bool gunAimsAtPlayerReward;
-    public bool gunAimsAtPlayerRewardAmount;
+    public bool playerGunAimsAtEnemyReward;
+    public bool playerGunAimsAtEnemyRewardAmount;
     
-    public bool bulletBlockedReward;
-    public bool bulletBlockedRewardAmount;
+    public bool hitEnemyReward;
+    public bool hitEnemyRewardAmount;
     
-    public bool hitPlayerReward;
-    public bool hitPlayerRewardAmount;
+    public bool playerDeathPenalty;
+    public float playerDeathPenaltyAmount;
     
+    public bool playerOutOfAmmoPenalty;
+    public float playerOutOfAmmoPenaltyAmount;
     
+    public bool playerAmmoPercentageReward;
+    public float playerAmmoPercentageRewardAmount;
+    
+    public bool timeoutPenaltyReward;
+    public float timeoutPenaltyRewardAmount;
     public void Awake()
     {
         _handSteering = transform.GetComponent<HandSteering>();
@@ -204,6 +217,17 @@ public class EnemyAgent : Agent
             sensor.AddObservation((int)enemyObservations.AimingAt);
             enemyObservationLog += $"\n\tEnemy is aiming at: {enemyObservations.AimingAt.ToString()}";
         }
+
+        if (enemyGunUsable)
+        {
+            sensor.AddObservation(enemyObservations.IsGunUsable);
+            enemyObservationLog += $"\n\tEnemy's GUN is usable: {enemyObservations.IsGunUsable}";
+        }
+        if( enemyGunAmmoPercentage)
+        {
+            sensor.AddObservation(enemyObservations.GunAmmoPercentage);
+            enemyObservationLog += $"\n\tEnemy's GUN ammo percentage: {enemyObservations.GunAmmoPercentage}";
+        }
         
         /// PLAYER OBSERVATIONS
         
@@ -263,13 +287,22 @@ public class EnemyAgent : Agent
             sensor.AddObservation((int)selfObservations.AimingAt);
             playerObservationLog += $"\n\tPlayer is aiming at: {selfObservations.AimingAt.ToString()}";
         }
-        
+
+        if (playerGunUsable)
+        {
+            sensor.AddObservation(selfObservations.IsGunUsable);
+            playerObservationLog += $"\n\tPlayer's GUN is usable: {selfObservations.IsGunUsable}";
+        }
+        if (playerGunAmmoPercentage)
+        {
+            sensor.AddObservation(selfObservations.GunAmmoPercentage);
+            playerObservationLog += $"\n\tPlayer's GUN ammo percentage: {selfObservations.GunAmmoPercentage}";
+        }
         
         if (enableDetailedObservationLogging)
         {
             Debug.Log(enemyObservationLog.ToString());
             Debug.Log(playerObservationLog.ToString());
-            
         }
     }
 
@@ -284,21 +317,11 @@ public class EnemyAgent : Agent
 
         String detailedGradeLog = "Detailed Grade Log:";
         
-        // if (distanceToNearestHider) {
-        //     float lowerDistanceToNearestHider = float.MaxValue;
-        //     foreach (var hider in _dataReferenceCollector.GetAllHiders())
-        //     {
-        //         var distance = Vector3.Distance(hider.GetPosition(), _agentMovement.GetPosition());
-        //         if (distance < lowerDistanceToNearestHider)
-        //         {
-        //             lowerDistanceToNearestHider = distance;
-        //         }
-        //     }
-        //
-        //     var distanceToNearestHiderRewardResult =  - (lowerDistanceToNearestHider / _diagonalMapLength) * distanceToNearestHiderReward;
-        //     detailedGradeLog += $"\n\tdistance to nearest hider: {distanceToNearestHiderRewardResult}";
-        //     rewardSum += distanceToNearestHiderRewardResult;
-        // }
+        /*if (distanceToNearestHider) {
+            var distanceToNearestHiderRewardResult =  - (lowerDistanceToNearestHider / _diagonalMapLength) * distanceToNearestHiderReward;
+            detailedGradeLog += $"\n\tdistance to nearest hider: {distanceToNearestHiderRewardResult}";
+            rewardSum += distanceToNearestHiderRewardResult;
+        }*/
         
         AddReward(rewardSum);
         _cumReward +=  rewardSum;

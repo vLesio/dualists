@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startAmmo: 20
-  cooldownTime: 0.1
+  cooldownTime: 0.5
   bulletPrefab: {fileID: 1858532122769943178, guid: fd762a183f44eeb4392e78fb4c5e4158, type: 3}
   bulletStartPosition: {fileID: 358907498894520000}
   directionMaker: {fileID: 1710787358253027460}
