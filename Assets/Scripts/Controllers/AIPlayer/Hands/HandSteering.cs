@@ -28,25 +28,19 @@ public class HandSteering : MonoBehaviour, IResettable
         }
     }
 
-    public HandsObservation GetHandsObservation()
+    public HandsObservation GetHandsObservation(Vector3 globalPositionSphereCenterPoint)
     {
         var handsObservation = new HandsObservation();
         handsObservation.Hands = new List<HandObservation>();
-        handsObservation.Hands.Add(FillMissingHandObservation(_leftHand.GetHandObservation()));
-        handsObservation.Hands.Add(FillMissingHandObservation(_rightHand.GetHandObservation()));
+        handsObservation.Hands.Add(FillMissingHandObservation(_leftHand.GetHandObservation(), globalPositionSphereCenterPoint));
+        handsObservation.Hands.Add(FillMissingHandObservation(_rightHand.GetHandObservation(), globalPositionSphereCenterPoint));
         return handsObservation;
     }
 
-    private HandObservation FillMissingHandObservation(HandObservation handObservation)
+    private HandObservation FillMissingHandObservation(HandObservation handObservation, Vector3 globalPositionSphereCenterPoint)
     {
-        if(handObservation.handSide == HandSide.left)
-            handObservation.position = _leftHandSpherePosition;        
-        if(handObservation.handSide == HandSide.right)
-            handObservation.position = _rightHandSpherePosition;
+        handObservation.position = new Sphere3(handObservation.globalPosition, globalPositionSphereCenterPoint);      
         return handObservation;
-    }
-    void Update()
-    {
     }
     
     void Awake()

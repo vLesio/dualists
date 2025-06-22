@@ -23,7 +23,7 @@ public class PlayerObservationCollector : MonoBehaviour, IObservationCollector
         return new PlayerObservations
         {
             AimingAt = _handGun.GetAimingAt() ?? HitType.Other,
-            HandObservations = _handSteering.GetHandsObservation(),
+            HandObservations = _handSteering.GetHandsObservation(globalPositionSphereCenterPoint),
             Hitboxes = CollectHitboxObservations(globalPositionSphereCenterPoint)
         };
     }

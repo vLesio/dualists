@@ -58,7 +58,7 @@ public class Sphere3 {
         FromVector3(localPos, globalReferencePoint);
         globalPositionReferencePoint = globalReferencePoint;
     }
-    public Vector3 GetPositionObservation()
+    public Vector3 AsSphericalVector()
     {
         return new Vector3(Radius, Theta, Phi);
     }
@@ -81,6 +81,11 @@ public class Sphere3 {
         float phi = normPhi * (Mathf.PI / 2f); // [-π/2, π/2]
 
         return new Sphere3(radius, theta, phi, center);
+    }
+
+    public override string ToString()
+    {
+        return $"Sphere3: Radius={Radius}, Theta={Theta}, Phi={Phi}, GlobalPositionReferencePoint={globalPositionReferencePoint}";
     }
 }
 

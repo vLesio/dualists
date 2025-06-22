@@ -28,20 +28,33 @@ public class EnemyAgent : Agent
 
     [Header("What agent should observe")]
     // enemy observations
-    public bool handsSpherePosition;
-    public bool handsEuclideanGlobalPosition;
-    public bool handsRotation;
-    public bool handsEuclideanVelocity;
-    public bool handsAngularVelocity;
+    public bool enemySphereHitboxPositions;
+    
+    public bool enemyShieldSpherePosition;
+    //public bool enemyShieldRotation; // NOT IMPLEMENTED
+    //public bool enemyShieldVelocity;
+    //public bool enemyShieldAngularVelocity;
+    
+    public bool enemyGunSpherePosition;
+    public bool enemyGunRotation;
+    public bool enemyGunVelocity;
+    public bool enemyGunAngularVelocity;
+    
+    public bool enemyAimingAt;
     
     // player observations
-    //public bool playerEuclideanPosition;
-    public bool playerSpherePosition;
-    //public bool playerShieldEuclideanPosition;
-    //public bool playerShieldSpherePosition;
-    //public bool playerGunEuclideanPosition;
+    public bool playerSphereHitboxPositions;
+
+    public bool playerShieldSpherePosition;
+    //public bool playerShieldRotation; // NOT IMPLEMENTED
+    //public bool playerShieldVelocity;
+    //public bool playerShieldAngularVelocity;
+    
     public bool playerGunSpherePosition;
     public bool playerGunRotation;
+    public bool playerGunVelocity;
+    public bool playerGunAngularVelocity;
+    
     public bool playerAimingAt;
 
     [Header("What agent should be rewarded for")] 
@@ -133,46 +146,129 @@ public class EnemyAgent : Agent
         var selfObservations =  _selfObservationCollector.CollectObservations(_handSteering.GlobalPositionSphereCenterPoint);
         var enemyObservations = _enemyObservationCollector.CollectObservations(_handSteering.GlobalPositionSphereCenterPoint);
         
+        /// ENEMY OBSERVATIONS
         
-        String detailedObservationLog = "Agent Detailed Observations:";
-        foreach (HandObservation hand in _handSteering.GetHandsObservation().Hands) {
-            if(handsSpherePosition)
+        string enemyObservationLog = "Enemy Detailed Observations:";
+
+        if (enemySphereHitboxPositions && enemyObservations.Hitboxes != null)
+        {
+            foreach (var hitbox in enemyObservations.Hitboxes)
             {
-                var observation = hand.position.GetPositionObservation();
-                sensor.AddObservation(observation);
-                detailedObservationLog += $"\n\tAgent's {hand.handSide.ToString()} hand sphere position: {observation}\n";
-            }
-            if(handsEuclideanGlobalPosition)
-            {
-                var observation = hand.globalPosition;
-                sensor.AddObservation(observation);
-                detailedObservationLog += $"\n\tAgent's {hand.handSide.ToString()} hand global position: {observation}\n";
-            }
-            if(handsRotation)
-            {
-                var observation = hand.rotation;
-                sensor.AddObservation(observation);
-                detailedObservationLog += $"\n\tAgent's {hand.handSide.ToString()} hand rotation: {observation}\n";
-            }
-            if(handsEuclideanVelocity)
-            {
-                var observation = hand.velocity;
-                sensor.AddObservation(observation);
-                detailedObservationLog += $"\n\tAgent's {hand.handSide.ToString()} hand euclidean velocity: {observation}\n";
-            }
-            if(handsAngularVelocity)
-            {
-                var observation = hand.angularVelocity;
-                sensor.AddObservation(observation);
-                detailedObservationLog += $"\n\tAgent's {hand.handSide.ToString()} hand angular velocity: {observation}\n";
+                foreach (var vertex in hitbox.Vertices)
+                {
+                    sensor.AddObservation(vertex.AsSphericalVector());
+                    enemyObservationLog += $"\n\tEnemy hitbox vertex position: {vertex}";
+                }
             }
         }
 
-        //TODO: Add player observations
+        foreach (HandObservation hand in enemyObservations.HandObservations.Hands)
+        {
+            if (hand.handSide == HandSide.right) // Gun
+            {
+                if (enemyGunSpherePosition)
+                {
+                    var observation = hand.position.AsSphericalVector();
+                    sensor.AddObservation(observation);
+                    enemyObservationLog += $"\n\tEnemy's GUN (right hand) sphere position: {hand.position}";
+                }
+                if (enemyGunRotation)
+                {
+                    sensor.AddObservation(hand.rotation);
+                    enemyObservationLog += $"\n\tEnemy's GUN (right hand) rotation: {hand.rotation}";
+                }
+                if (enemyGunVelocity)
+                {
+                    sensor.AddObservation(hand.velocity);
+                    enemyObservationLog += $"\n\tEnemy's GUN (right hand) velocity: {hand.velocity}";
+                }
+                if (enemyGunAngularVelocity)
+                {
+                    sensor.AddObservation(hand.angularVelocity);
+                    enemyObservationLog += $"\n\tEnemy's GUN (right hand) angular velocity: {hand.angularVelocity}";
+                }
+            }
+            else if (hand.handSide == HandSide.left) // Shield
+            {
+                if (enemyShieldSpherePosition)
+                {
+                    var observation = hand.position.AsSphericalVector();
+                    sensor.AddObservation(observation);
+                    enemyObservationLog += $"\n\tEnemy's SHIELD (left hand) sphere position: {hand.position}";
+                }
+            }
+        }
 
+        if (enemyAimingAt)
+        {
+            sensor.AddObservation((int)enemyObservations.AimingAt);
+            enemyObservationLog += $"\n\tEnemy is aiming at: {enemyObservations.AimingAt.ToString()}";
+        }
+        
+        /// PLAYER OBSERVATIONS
+        
+        string playerObservationLog = "Player Detailed Observations:";
+
+        if (playerSphereHitboxPositions && selfObservations.Hitboxes != null)
+        {
+            foreach (var hitbox in selfObservations.Hitboxes)
+            {
+                foreach (var vertex in hitbox.Vertices)
+                {
+                    sensor.AddObservation(vertex.AsSphericalVector());
+                    playerObservationLog += $"\n\tPlayer hitbox vertex position (spherical): {vertex}";
+                }
+            }
+        }
+
+        foreach (HandObservation hand in selfObservations.HandObservations.Hands)
+        {
+            if (hand.handSide == HandSide.right) // Gun
+            {
+                if (playerGunSpherePosition)
+                {
+                    var observation = hand.position.AsSphericalVector();
+                    sensor.AddObservation(observation);
+                    playerObservationLog += $"\n\tPlayer's GUN (right hand) sphere position: {hand.position}";
+                }
+                if (playerGunRotation)
+                {
+                    sensor.AddObservation(hand.rotation);
+                    playerObservationLog += $"\n\tPlayer's GUN (right hand) rotation: {hand.rotation}";
+                }
+                if (playerGunVelocity)
+                {
+                    sensor.AddObservation(hand.velocity);
+                    playerObservationLog += $"\n\tPlayer's GUN (right hand) velocity: {hand.velocity}";
+                }
+                if (playerGunAngularVelocity)
+                {
+                    sensor.AddObservation(hand.angularVelocity);
+                    playerObservationLog += $"\n\tPlayer's GUN (right hand) angular velocity: {hand.angularVelocity}";
+                }
+            }
+            else if (hand.handSide == HandSide.left) // Shield
+            {
+                if (playerShieldSpherePosition)
+                {
+                    var observation = hand.position.AsSphericalVector();
+                    sensor.AddObservation(observation);
+                    playerObservationLog += $"\n\tPlayer's SHIELD (left hand) sphere position: {hand.position}";
+                }
+            }
+        }
+
+        if (playerAimingAt)
+        {
+            sensor.AddObservation((int)selfObservations.AimingAt);
+            playerObservationLog += $"\n\tPlayer is aiming at: {selfObservations.AimingAt.ToString()}";
+        }
+        
+        
         if (enableDetailedObservationLogging)
         {
-            Debug.Log(detailedObservationLog);
+            Debug.Log(enemyObservationLog);
+            Debug.Log(playerObservationLog);
         }
     }
 

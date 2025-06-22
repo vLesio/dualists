@@ -66,10 +66,16 @@ public class AIPlayerController : MonoBehaviour, IPlayerController
     // Neural Network Actions Parsing
     
     // All continuous actions are in the range [-1, 1]
-    public void ParseNNActions(ActionBuffers actions)
+    public void ParseNNActions(ActionBuffers? actions)
     {
-        var continuous = actions.ContinuousActions;
-        var discrete = actions.DiscreteActions;
+        if(actions is null) 
+        {
+            Debug.LogError("AIPlayerController: Actions are null. Cannot parse actions.");
+            return;
+        }
+        
+        var continuous = actions.Value.ContinuousActions;
+        var discrete = actions.Value.DiscreteActions;
         if (continuous.Length < 18)
         {
             Debug.LogError($"AIPlayerController: Continuous actions are not set up correctly. Should be 18, but got {continuous.Length}");
@@ -77,11 +83,12 @@ public class AIPlayerController : MonoBehaviour, IPlayerController
         }
         if(discrete.Length != 1)
         {
-            Debug.LogError($"AIPlayerController: Discrete actions are not set up correctly. Should be 1, but got {actions.DiscreteActions.Length}");
+            Debug.LogError($"AIPlayerController: Discrete actions are not set up correctly. Should be 1, but got {actions.Value.DiscreteActions.Length}");
             return;
         }
         
-        HandsDesiredActions handsDesiredActions = new HandsDesiredActions();   
+        HandsDesiredActions handsDesiredActions = new HandsDesiredActions();
+        handsDesiredActions.Hands = new List<HandDesiredActions>();
         
         for(int i = 0; i < 2; i++)
         {
