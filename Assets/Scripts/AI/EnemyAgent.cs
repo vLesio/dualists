@@ -68,13 +68,13 @@ public class EnemyAgent : Agent
     public float enemyGunAimsAtShieldRewardAmount;
     
     public bool playerGunNotAimsAtShieldReward;
-    public bool playerGunNotAimsAtShieldRewardAmount;
+    public float playerGunNotAimsAtShieldRewardAmount;
     
     public bool playerGunAimsAtEnemyReward;
-    public bool playerGunAimsAtEnemyRewardAmount;
+    public float playerGunAimsAtEnemyRewardAmount;
     
     public bool hitEnemyReward;
-    public bool hitEnemyRewardAmount;
+    public float hitEnemyRewardAmount;
     
     public bool playerDeathPenalty;
     public float playerDeathPenaltyAmount;
@@ -317,11 +317,46 @@ public class EnemyAgent : Agent
 
         String detailedGradeLog = "Detailed Grade Log:";
         
-        /*if (distanceToNearestHider) {
-            var distanceToNearestHiderRewardResult =  - (lowerDistanceToNearestHider / _diagonalMapLength) * distanceToNearestHiderReward;
-            detailedGradeLog += $"\n\tdistance to nearest hider: {distanceToNearestHiderRewardResult}";
-            rewardSum += distanceToNearestHiderRewardResult;
-        }*/
+    // TODO: hitEnemyReward
+    // TODO: playerDeathPenalty
+    // TODO: timeoutPenaltyReward
+    
+    var selfObservations =  _selfObservationCollector.CollectObservations(_handSteering.GlobalPositionSphereCenterPoint);
+    var enemyObservations = _enemyObservationCollector.CollectObservations(_handSteering.GlobalPositionSphereCenterPoint);
+        
+        if (enemyGunAimsAtShieldReward) {
+            var enemyGunAimsAtShieldRewardResult = enemyObservations.AimingAt == HitType.Shield ? enemyGunAimsAtShieldRewardAmount : 0;
+            detailedGradeLog += $"\n\tenemy gun aims at shield reward: {enemyGunAimsAtShieldRewardResult}";
+            rewardSum += enemyGunAimsAtShieldRewardResult;
+        }
+
+        if (playerGunNotAimsAtShieldReward)
+        {
+            var playerGunNotAimsAtShieldRewardResult = (selfObservations.AimingAt != HitType.Shield) ? playerGunNotAimsAtShieldRewardAmount : 0;
+            detailedGradeLog += $"\n\tplayer gun not aims at shield reward: {playerGunNotAimsAtShieldRewardResult}";
+            rewardSum += playerGunNotAimsAtShieldRewardResult;
+        }
+        
+        if (playerGunAimsAtEnemyReward)
+        {
+            var playerGunAimsAtEnemyRewardResult = (selfObservations.AimingAt == HitType.Player) ? playerGunAimsAtEnemyRewardAmount : 0;
+            detailedGradeLog += $"\n\tplayer gun aims at enemy reward: {playerGunAimsAtEnemyRewardResult}";
+            rewardSum += playerGunAimsAtEnemyRewardResult;
+        }
+        
+        if (playerOutOfAmmoPenalty)
+        {
+            var playerOutOfAmmoPenaltyResult = (selfObservations.GunAmmoPercentage == 0.0f) ? playerOutOfAmmoPenaltyAmount : 0;
+            detailedGradeLog += $"\n\tplayer runs out of ammo penalty: {playerOutOfAmmoPenaltyResult}";
+            rewardSum -= playerOutOfAmmoPenaltyResult;
+        }
+        
+        if (playerAmmoPercentageReward)
+        {
+            var playerAmmoPercentageRewardResult = selfObservations.GunAmmoPercentage * playerAmmoPercentageRewardAmount;
+            detailedGradeLog += $"\n\tplayer ammo percentage reward: {playerAmmoPercentageRewardResult}";
+            rewardSum += playerAmmoPercentageRewardResult;
+        }
         
         AddReward(rewardSum);
         _cumReward +=  rewardSum;
