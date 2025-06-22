@@ -44,7 +44,12 @@ public class VRPlayerController : MonoBehaviour, IPlayerController
         _isOutOfAmmo = true;
         GameManager.I.RegisterPlayerOutOfAmmo(this);
     }
-    
+
+    public void EndGame(GameResult gameResult)
+    {
+        return;
+    }
+
     public void OnPistolPickup()
     {
         if (!_isAlive) return;

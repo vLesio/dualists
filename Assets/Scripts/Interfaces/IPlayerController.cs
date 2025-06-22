@@ -9,4 +9,5 @@ public interface IPlayerController : IResettable
     bool IsOutOfAmmo { get; }
     void OnHit();
     void OnOutOfAmmo();
+    void EndGame(GameResult gameResult);
 }

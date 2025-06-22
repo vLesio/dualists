@@ -8,6 +8,7 @@ using UnityEngine.Serialization;
 using Update = UnityEngine.PlayerLoop.Update;
 
 public enum GameMode { VRvsAI, AIvsAI }
+public enum GameResult { Win, Draw, Lose }
 
 public class PlayerState : IResettable
 {
@@ -142,6 +143,7 @@ public class GameManager : Singleton.Singleton<GameManager>
 
     private void ResetGame()
     {
+        PropagateGameResult();
         BulletManager.I.Reset();
 
         foreach (var state in _playerStates)
@@ -151,6 +153,23 @@ public class GameManager : Singleton.Singleton<GameManager>
         _gameState = new GameState();
 
         StartGameIfReady();
+    }
+
+    private void PropagateGameResult()
+    {
+        if (!_gameState.IsEnded) return;
+        
+        foreach (var state in _playerStates)
+        {
+            if (_gameState.IsTie) {
+                state.Controller.EndGame(GameResult.Draw);
+            } else if (_gameState.Winner == state.Controller) {
+                state.Controller.EndGame(GameResult.Win);
+            }
+            else {
+                state.Controller.EndGame(GameResult.Lose);
+            }
+        }
     }
 
     public bool IsRunning() => _gameState.IsRunning;

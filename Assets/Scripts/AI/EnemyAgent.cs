@@ -85,8 +85,8 @@ public class EnemyAgent : Agent
     public bool playerAmmoPercentageReward;
     public float playerAmmoPercentageRewardAmount;
     
-    public bool timeoutPenaltyReward;
-    public float timeoutPenaltyRewardAmount;
+    public bool timeoutPenalty;
+    public float timeoutPenaltyAmount;
     public void Awake()
     {
         _handSteering = transform.GetComponent<HandSteering>();
@@ -316,10 +316,6 @@ public class EnemyAgent : Agent
         float rewardSum = 0;
 
         String detailedGradeLog = "Detailed Grade Log:";
-        
-    // TODO: hitEnemyReward
-    // TODO: playerDeathPenalty
-    // TODO: timeoutPenaltyReward
     
     var selfObservations =  _selfObservationCollector.CollectObservations(_handSteering.GlobalPositionSphereCenterPoint);
     var enemyObservations = _enemyObservationCollector.CollectObservations(_handSteering.GlobalPositionSphereCenterPoint);
@@ -346,9 +342,9 @@ public class EnemyAgent : Agent
         
         if (playerOutOfAmmoPenalty)
         {
-            var playerOutOfAmmoPenaltyResult = (selfObservations.GunAmmoPercentage == 0.0f) ? playerOutOfAmmoPenaltyAmount : 0;
+            var playerOutOfAmmoPenaltyResult = (selfObservations.GunAmmoPercentage == 0.0f) ? -playerOutOfAmmoPenaltyAmount : 0;
             detailedGradeLog += $"\n\tplayer runs out of ammo penalty: {playerOutOfAmmoPenaltyResult}";
-            rewardSum -= playerOutOfAmmoPenaltyResult;
+            rewardSum += playerOutOfAmmoPenaltyResult;
         }
         
         if (playerAmmoPercentageReward)
@@ -394,12 +390,50 @@ public class EnemyAgent : Agent
         return;
     }
     
-    private void RegisterGameEnded(bool byTimeout) {
+    public void RegisterGameEnded(GameResult gameResult) {
+        
+        String detailedGradeLog = "Detailed Grade Log (Game Ended):";
+        float rewardSum = 0;
+        
+        switch (gameResult) {
+            case GameResult.Win:
+                if (hitEnemyReward) {
+                    var hitEnemyRewardResult = hitEnemyRewardAmount;
+                    detailedGradeLog += $"\n\tPlayer hit Enemy (Game won): {hitEnemyRewardResult}";
+                    rewardSum += hitEnemyRewardResult;
+                }
+                break;
+            
+            case GameResult.Draw:
+                if (timeoutPenalty) {
+                    var timeoutPenaltyResult = timeoutPenaltyAmount;
+                    detailedGradeLog += $"\n\tBoth players are out of Ammo or draw by timeout (Game draw): {timeoutPenaltyResult}";
+                    rewardSum += timeoutPenaltyResult;
+                }
+                break;
+            
+            case GameResult.Lose:
+                if (playerDeathPenalty) {
+                    var playerDeathPenaltyResult = -playerDeathPenaltyAmount;
+                    detailedGradeLog += $"\n\tEnemy hit Player (Game lost): {playerDeathPenaltyResult}";
+                    rewardSum += playerDeathPenaltyResult;
+                }
+                break;
+        }
+        
+        if (enableGradeLogging) {
+            Debug.Log($"Agent was rewarded by: {rewardSum}. Got in total: {_cumReward}");
+        }
+
+        if (enableDetailedGradeLogging) {
+            Debug.Log($"Episode was ended");
+            detailedGradeLog += $"\n\tAgent was rewarded by: {rewardSum}. Got in total: {_cumReward}";
+            Debug.Log(detailedGradeLog);
+        }
+        
+        _cumReward +=  rewardSum;
+        
         EndEpisode();
         ResetAgentStateParameters();
-        if (enableDetailedGradeLogging)
-        {
-            Debug.Log($"Episode was ended");
-        }
     }
 }

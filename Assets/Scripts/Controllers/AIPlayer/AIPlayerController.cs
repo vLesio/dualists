@@ -13,6 +13,7 @@ public class AIPlayerController : MonoBehaviour, IPlayerController
     public HandSteering handSteering;
     public HandGun handGun;
     public PlayerHitbox playerHitbox;
+    private EnemyAgent _agent;
 
     public bool IsHuman => false;
 
@@ -24,7 +25,12 @@ public class AIPlayerController : MonoBehaviour, IPlayerController
     
     // Debug
     [SerializeField] private bool debugLogging = false;
-    
+
+    private void Start()
+    {
+        _agent = GetComponent<EnemyAgent>();
+    }
+
     public void OnHit()
     {
         if(!_isAlive || !GameManager.I.IsRunning()) return;
@@ -44,6 +50,11 @@ public class AIPlayerController : MonoBehaviour, IPlayerController
             Debug.Log($"[AI Player Controller] Player: {this.ToString()} : Out of ammo!");
         _isOutOfAmmo = true;
         GameManager.I.RegisterPlayerOutOfAmmo(this);
+    }
+
+    public void EndGame(GameResult gameResult)
+    {
+        _agent.RegisterGameEnded(gameResult);
     }
 
     public void Reset()
