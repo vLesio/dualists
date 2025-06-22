@@ -87,6 +87,9 @@ public class EnemyAgent : Agent
     
     public bool timeoutPenalty;
     public float timeoutPenaltyAmount;
+    
+    public bool gameLengthPenalty;
+    public float gameLengthPenaltyAmount;
     public void Awake()
     {
         _handSteering = transform.GetComponent<HandSteering>();
@@ -354,6 +357,13 @@ public class EnemyAgent : Agent
             rewardSum += playerAmmoPercentageRewardResult;
         }
         
+        if (gameLengthPenalty)
+        {
+            var gameLengthPenaltyResult = -(GameManager.I.GetGameTimeProgressPercentage() * gameLengthPenaltyAmount);
+            detailedGradeLog += $"\n\tgame length penalty (it takes too long!): {gameLengthPenaltyResult}";
+            rewardSum += gameLengthPenaltyResult;
+        }
+        
         AddReward(rewardSum);
         _cumReward +=  rewardSum;
         
@@ -406,7 +416,7 @@ public class EnemyAgent : Agent
             
             case GameResult.Draw:
                 if (timeoutPenalty) {
-                    var timeoutPenaltyResult = timeoutPenaltyAmount;
+                    var timeoutPenaltyResult = -timeoutPenaltyAmount;
                     detailedGradeLog += $"\n\tBoth players are out of Ammo or draw by timeout (Game draw): {timeoutPenaltyResult}";
                     rewardSum += timeoutPenaltyResult;
                 }

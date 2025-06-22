@@ -44,6 +44,10 @@ public class GameManager : Singleton.Singleton<GameManager>
     
     // Debugging
     [SerializeField] private bool debugLogging = false;
+    public float GetGameTimeProgressPercentage()
+    {
+        return _gameState.GameTimeProgressPercentage;
+    }
     
     private void Start()
     {

@@ -216,7 +216,7 @@ MonoBehaviour:
     Radius: 0
     Theta: 0
     Phi: 0
-    globalPositionReferencePoint: {x: 0, y: 0.536, z: 3.27}
+    globalPositionReferencePoint: {x: 0.174, y: 0.697, z: -5.787}
   zero: {x: 0, y: 0, z: 0}
   color: {r: 1, g: 0.44250402, b: 0.2999999, a: 1}
   desiredPoint: {fileID: 8781868243929923229}
@@ -236,7 +236,7 @@ MonoBehaviour:
     Radius: 0
     Theta: 0
     Phi: 0
-    globalPositionReferencePoint: {x: 0, y: 0.536, z: 3.27}
+    globalPositionReferencePoint: {x: 0.174, y: 0.697, z: -5.787}
   zero: {x: 0, y: 0, z: 0}
   color: {r: 0.28490567, g: 0.40962517, b: 1, a: 1}
   desiredPoint: {fileID: 4257381129507843669}
@@ -307,22 +307,24 @@ MonoBehaviour:
   playerAimingAt: 1
   playerGunUsable: 1
   playerGunAmmoPercentage: 1
-  enemyGunAimsAtShieldReward: 0
-  enemyGunAimsAtShieldRewardAmount: 0
-  playerGunNotAimsAtShieldReward: 0
-  playerGunNotAimsAtShieldRewardAmount: 0
-  playerGunAimsAtEnemyReward: 0
-  playerGunAimsAtEnemyRewardAmount: 0
-  hitEnemyReward: 0
-  hitEnemyRewardAmount: 0
-  playerDeathPenalty: 0
-  playerDeathPenaltyAmount: 0
-  playerOutOfAmmoPenalty: 0
-  playerOutOfAmmoPenaltyAmount: 0
-  playerAmmoPercentageReward: 0
-  playerAmmoPercentageRewardAmount: 0
-  timeoutPenaltyReward: 0
-  timeoutPenaltyRewardAmount: 0
+  enemyGunAimsAtShieldReward: 1
+  enemyGunAimsAtShieldRewardAmount: 1
+  playerGunNotAimsAtShieldReward: 1
+  playerGunNotAimsAtShieldRewardAmount: 1
+  playerGunAimsAtEnemyReward: 1
+  playerGunAimsAtEnemyRewardAmount: 5
+  hitEnemyReward: 1
+  hitEnemyRewardAmount: 1000
+  playerDeathPenalty: 1
+  playerDeathPenaltyAmount: 1000
+  playerOutOfAmmoPenalty: 1
+  playerOutOfAmmoPenaltyAmount: 300
+  playerAmmoPercentageReward: 1
+  playerAmmoPercentageRewardAmount: 1
+  timeoutPenalty: 1
+  timeoutPenaltyAmount: 800
+  gameLengthPenalty: 1
+  gameLengthPenaltyAmount: 100
 --- !u!114 &2388153978236475002
 MonoBehaviour:
   m_ObjectHideFlags: 0
