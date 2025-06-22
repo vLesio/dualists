@@ -267,8 +267,9 @@ public class EnemyAgent : Agent
         
         if (enableDetailedObservationLogging)
         {
-            Debug.Log(enemyObservationLog);
-            Debug.Log(playerObservationLog);
+            Debug.Log(enemyObservationLog.ToString());
+            Debug.Log(playerObservationLog.ToString());
+            
         }
     }
 

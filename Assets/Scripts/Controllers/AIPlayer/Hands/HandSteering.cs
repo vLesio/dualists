@@ -13,9 +13,7 @@ public class HandSteering : MonoBehaviour, IResettable
     public Vector2 SphereBounds => new Vector2(minSphereRadius, sphereRadius);
     
     private Hand _leftHand;
-    private Sphere3 _leftHandSpherePosition;
     private Hand _rightHand;
-    private Sphere3 _rightHandSpherePosition;
 
     public void PropagateHandsActions(HandsDesiredActions handsActions) {
         foreach (var handAction in handsActions.Hands) {

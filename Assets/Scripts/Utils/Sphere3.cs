@@ -16,11 +16,14 @@ public class Sphere3 {
         Phi = 0;
         globalPositionReferencePoint = Vector3.zero;
     }
+    
+    /// <summary>
+    /// Constructs a Sphere3 object from a position in global coordinates. It transforms the given coordinates into spherical coordinates relative to a global reference point.
+    /// </summary>
+    /// <param name="position"></param>
+    /// <param name="globalReferencePoint"></param>
     public Sphere3(Vector3 position, Vector3 globalReferencePoint) {
-        Radius = position.magnitude;
-        Theta = Mathf.Atan2(position.z, position.x);
-        Phi = Mathf.Acos(position.y / Radius);
-        globalPositionReferencePoint = globalReferencePoint;
+        FromGlobalVector3(position, globalReferencePoint);
     }
     public Sphere3(float radius, float theta, float phi, Vector3 globalReferencePoint) {
         Radius = radius;
