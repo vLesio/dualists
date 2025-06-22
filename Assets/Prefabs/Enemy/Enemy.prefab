@@ -109,7 +109,6 @@ GameObject:
   - component: {fileID: 2574985574849791384}
   - component: {fileID: 3892842201870916919}
   - component: {fileID: 5973642065131044768}
-  - component: {fileID: 7813583938081934228}
   - component: {fileID: 3967394116928243425}
   m_Layer: 0
   m_Name: Enemy
@@ -192,7 +191,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1372715615853138785}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ed9bd8c4a6bfc64388e42702e8d2f0d, type: 3}
   m_Name: 
@@ -200,7 +199,7 @@ MonoBehaviour:
   leftHandTrigger: {fileID: 8781868243929923229}
   rightHandTrigger: {fileID: 4257381129507843669}
   sendDirectMovementInfo: 0
-  sendingIntervalInSeconds: 1
+  sendingIntervalInSeconds: 0
 --- !u!114 &2326816592069710943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,7 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 30
+    VectorObservationSize: 82
     NumStackedVectorObservations: 5
     m_ActionSpec:
       m_NumContinuousActions: 18
@@ -290,15 +289,20 @@ MonoBehaviour:
   enableGradeLogging: 0
   enableDetailedGradeLogging: 0
   enableDetailedObservationLogging: 0
-  handsSpherePosition: 1
-  handsEuclideanGlobalPosition: 1
-  handsRotation: 1
-  handsEuclideanVelocity: 1
-  handsAngularVelocity: 1
-  playerSpherePosition: 0
-  playerGunSpherePosition: 0
-  playerGunRotation: 0
-  playerAimingAt: 0
+  enemySphereHitboxPositions: 1
+  enemyShieldSpherePosition: 1
+  enemyGunSpherePosition: 1
+  enemyGunRotation: 1
+  enemyGunVelocity: 1
+  enemyGunAngularVelocity: 1
+  enemyAimingAt: 1
+  playerSphereHitboxPositions: 1
+  playerShieldSpherePosition: 1
+  playerGunSpherePosition: 1
+  playerGunRotation: 1
+  playerGunVelocity: 1
+  playerGunAngularVelocity: 1
+  playerAimingAt: 1
   shieldAimsAtGunReward: 0
   shieldAimsAtGunRewardAmount: 0
   gunNotAimsAtShieldReward: 0
@@ -401,18 +405,6 @@ MonoBehaviour:
   rayMissColor: {r: 0.5235849, g: 0.816091, b: 1, a: 1}
   m_StartVerticalOffset: -0.5
   m_EndVerticalOffset: -0.5
---- !u!114 &7813583938081934228
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1372715615853138785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ef3865ca3eb813418fe17a4fa0a300b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3967394116928243425
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,9 +12,21 @@ public class PlayerObservationCollector : MonoBehaviour, IObservationCollector
     private HandGun _handGun;
     private void Awake()
     {
-        _colliders = GetComponentsInChildren<BoxCollider>().ToList();
+        _colliders = GetComponentInChildren<PlayerHitbox>().gameObject.GetComponents<BoxCollider>().ToList();
+        if (_colliders.Count == 0)
+        {
+            Debug.LogError("AIPlayerController: There are no colliders in the PlayerHitbox component.");    
+        }
         _handSteering = GetComponentInChildren<HandSteering>();
+        if (_handSteering == null)
+        {
+            Debug.LogError("AIPlayerController: There is no HandSteering component in the object's hierarchy.");
+        }
         _handGun = gameObject. GetComponentInChildren<HandGun>();
+        if (_handGun == null)
+        {
+            Debug.LogError("AIPlayerController: There is no HandGun component in the object's hierarchy.");
+        }
     }
     
 
