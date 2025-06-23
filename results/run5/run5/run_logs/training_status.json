@@ -1,0 +1,48 @@
+{
+    "Dueler": {
+        "checkpoints": [
+            {
+                "steps": 499966,
+                "file_path": "Results/run5\\run5\\Dueler\\Dueler-499966.onnx",
+                "reward": -4460.560889314722,
+                "creation_time": 1750696554.2807689,
+                "auxillary_file_paths": [
+                    "Results/run5\\run5\\Dueler\\Dueler-499966.pt"
+                ]
+            },
+            {
+                "steps": 999986,
+                "file_path": "Results/run5\\run5\\Dueler\\Dueler-999986.onnx",
+                "reward": -6726.634010694559,
+                "creation_time": 1750705630.4337962,
+                "auxillary_file_paths": [
+                    "Results/run5\\run5\\Dueler\\Dueler-999986.pt"
+                ]
+            },
+            {
+                "steps": 1015394,
+                "file_path": "Results/run5\\run5\\Dueler\\Dueler-1015394.onnx",
+                "reward": -6034.368511193419,
+                "creation_time": 1750705928.5504334,
+                "auxillary_file_paths": [
+                    "Results/run5\\run5\\Dueler\\Dueler-1015394.pt"
+                ]
+            }
+        ],
+        "elo": 412.4602426455928,
+        "final_checkpoint": {
+            "steps": 1015394,
+            "file_path": "Results/run5\\run5\\Dueler.onnx",
+            "reward": -6034.368511193419,
+            "creation_time": 1750705928.5504334,
+            "auxillary_file_paths": [
+                "Results/run5\\run5\\Dueler\\Dueler-1015394.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.0.0",
+        "torch_version": "2.3.1+cu118"
+    }
+}

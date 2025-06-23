@@ -89,4 +89,9 @@ public class HandGun : MonoBehaviour, IResettable {
 
         return null;
     }
+
+    public Vector3 GetDirection()
+    {
+        return (bulletStartPosition.position - directionMaker.position).normalized;
+    }
 }

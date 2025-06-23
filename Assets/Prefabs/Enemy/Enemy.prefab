@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 86
+    VectorObservationSize: 87
     NumStackedVectorObservations: 5
     m_ActionSpec:
       m_NumContinuousActions: 18
@@ -232,6 +232,7 @@ MonoBehaviour:
   enableDetailedObservationLogging: 0
   useRandomPositioning: 1
   randomPositioningDistance: 1
+  disableActions: 0
   enemySphereHitboxPositions: 1
   enemyShieldSpherePosition: 1
   enemyGunSpherePosition: 1
@@ -241,6 +242,7 @@ MonoBehaviour:
   enemyAimingAt: 1
   enemyGunUsable: 1
   enemyGunAmmoPercentage: 1
+  angleBetweenPlayerWeaponAndEnemy: 1
   playerSphereHitboxPositions: 1
   playerShieldSpherePosition: 1
   playerGunSpherePosition: 1
@@ -267,7 +269,9 @@ MonoBehaviour:
   timeoutPenalty: 1
   timeoutPenaltyAmount: 800
   gameLengthPenalty: 1
-  gameLengthPenaltyAmount: 100
+  gameLengthPenaltyAmount: 10
+  angleBetweenPlayerWeaponAndEnemyReward: 1
+  angleBetweenPlayerWeaponAndEnemyRewardAmount: 10
 --- !u!114 &2388153978236475002
 MonoBehaviour:
   m_ObjectHideFlags: 0

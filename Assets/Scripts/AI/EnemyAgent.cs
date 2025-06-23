@@ -16,6 +16,7 @@ public class EnemyAgent : Agent
     private HandSteering _handSteering;
     private SteeringTest _steeringTest;
     private AIPlayerController _aiPlayerController;
+    private HandGun _handGun;
     
     private IObservationCollector _selfObservationCollector;
     private IObservationCollector _enemyObservationCollector;
@@ -30,6 +31,7 @@ public class EnemyAgent : Agent
     [Header("Learning Configuration")]
     public bool useRandomPositioning = true;
     public float randomPositioningDistance = 0.5f;
+    public bool disableActions = false;
     // Helper variables
     private Vector3 _initialPosition;
     
@@ -51,6 +53,8 @@ public class EnemyAgent : Agent
     
     public bool enemyGunUsable;
     public bool enemyGunAmmoPercentage;
+    public bool angleBetweenPlayerWeaponAndEnemy;
+
     
     // player observations
     public bool playerSphereHitboxPositions;
@@ -97,11 +101,20 @@ public class EnemyAgent : Agent
     
     public bool gameLengthPenalty;
     public float gameLengthPenaltyAmount;
+    
+    public bool angleBetweenPlayerWeaponAndEnemyReward;
+    public float angleBetweenPlayerWeaponAndEnemyRewardAmount;
+
     public void Awake()
     {
         _handSteering = transform.GetComponent<HandSteering>();
         _aiPlayerController = transform.GetComponent<AIPlayerController>();
         _initialPosition = transform.position;
+        _handGun = GetComponentInChildren<HandGun>();
+        if (_handGun is null)
+        {
+            Debug.LogError("[Enemy Agent] No HandGun component found in the EnemyAgent hierarchy!");
+        }
     }
     
     
@@ -241,6 +254,13 @@ public class EnemyAgent : Agent
             sensor.AddObservation(enemyObservations.GunAmmoPercentage);
             enemyObservationLog += $"\n\tEnemy's GUN ammo percentage: {enemyObservations.GunAmmoPercentage}";
         }
+
+        if (angleBetweenPlayerWeaponAndEnemy)
+        {
+            var angle = _enemyObservationCollector.CalculateAngleBetweenPlayerWeaponAndEnemy(_handGun, transform);
+            sensor.AddObservation(angle);
+            enemyObservationLog += $"\n\tAngle between Enemy's weapon and Player: {angle}";
+        }
         
         /// PLAYER OBSERVATIONS
         
@@ -321,7 +341,7 @@ public class EnemyAgent : Agent
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        if (!GameManager.I.IsRunning())
+        if (!GameManager.I.IsRunning() || disableActions)
             return;
         
         float rewardSum = 0;
@@ -370,6 +390,14 @@ public class EnemyAgent : Agent
             var gameLengthPenaltyResult = -(GameManager.I.GetGameTimeProgressPercentage() * gameLengthPenaltyAmount);
             detailedGradeLog += $"\n\tgame length penalty (it takes too long!): {gameLengthPenaltyResult}";
             rewardSum += gameLengthPenaltyResult;
+        }
+
+        if (angleBetweenPlayerWeaponAndEnemyReward)
+        {
+            var angle = _enemyObservationCollector.CalculateAngleBetweenPlayerWeaponAndEnemy(_handGun, transform);
+            var angleReward = angle * angleBetweenPlayerWeaponAndEnemyRewardAmount;
+            detailedGradeLog += $"\n\tangle reward: {angleReward}";
+            rewardSum += angleReward;
         }
         
         AddReward(rewardSum);

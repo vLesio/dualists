@@ -28,4 +28,5 @@ public struct PlayerObservations
 public interface IObservationCollector
 {
     PlayerObservations CollectObservations(Transform globalSphereCenterPoint);
+    float CalculateAngleBetweenPlayerWeaponAndEnemy(HandGun playerHandGun, Transform playerTransform);
 }

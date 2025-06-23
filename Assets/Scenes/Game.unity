@@ -5408,10 +5408,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyInCowboyPoseTeam1
       objectReference: {fileID: 0}
-    - target: {fileID: 8864502763562232263, guid: 5c7787faabf4a504994461477f448bd9, type: 3}
-      propertyPath: TeamId
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

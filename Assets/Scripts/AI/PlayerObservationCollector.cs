@@ -79,4 +79,21 @@ public class PlayerObservationCollector : MonoBehaviour, IObservationCollector
         return sphereCorners;
     }
     
+    public float CalculateAngleBetweenPlayerWeaponAndEnemy(HandGun playerHandGun, Transform playerTransform)
+    {
+        Vector3 weaponDirection = playerHandGun.GetDirection();
+        weaponDirection.y = 0;
+        weaponDirection.Normalize();
+
+        Vector3 targetDirection = transform.position - playerTransform.position;
+        targetDirection.y = 0;
+        targetDirection.Normalize();
+
+        //Debug.LogError($"Weapon direction: {weaponDirection}, Target direction: {targetDirection}");
+        //float angle = Vector3.SignedAngle(weaponDirection, targetDirection, Vector3.up);
+        //Debug.LogWarning(angle);
+        float angleDot = Vector3.Dot(weaponDirection, targetDirection);
+        //Debug.LogWarning(angleDot);
+        return angleDot;
+    }
 }
