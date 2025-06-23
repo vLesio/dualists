@@ -5406,11 +5406,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7456441715975429072, guid: 5c7787faabf4a504994461477f448bd9, type: 3}
       propertyPath: m_Name
-      value: EnemyInCowboyPoseTeam2
+      value: EnemyInCowboyPoseTeam1
       objectReference: {fileID: 0}
     - target: {fileID: 8864502763562232263, guid: 5c7787faabf4a504994461477f448bd9, type: 3}
       propertyPath: TeamId
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12180,7 +12180,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7456441715975429072, guid: 5c7787faabf4a504994461477f448bd9, type: 3}
       propertyPath: m_Name
-      value: EnemyInCowboyPoseTeam1
+      value: nemyInCowboyPoseTeam0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8864502763562232263, guid: 5c7787faabf4a504994461477f448bd9, type: 3}
+      propertyPath: TeamId
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

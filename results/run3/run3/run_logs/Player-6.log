@@ -1,0 +1,173 @@
+Mono path[0] = 'C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/Managed'
+Mono config path = 'C:/Adrian/Projects/mgu/projekt/dualists/Builds/MonoBleedingEdge/etc'
+[Physics::Module] Initialized MultithreadedJobDispatcher with 11 workers.
+Unity memory allocator detected: MetaXRAudio native memory allocations will be tracked.
+Initialize engine version: 2022.3.28f1 (6bae5ce6b222)
+[Subsystems] Discovering subsystems at path C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/UnitySubsystems
+[Subsystems] No descriptors matched for  examples in UnitySubsystems/UnityOpenXR/UnitySubsystemsManifest.json.
+[Subsystems] 1 'inputs' descriptors matched in UnitySubsystems/UnityOpenXR/UnitySubsystemsManifest.json
+[Subsystems] 1 'displays' descriptors matched in UnitySubsystems/UnityOpenXR/UnitySubsystemsManifest.json
+[Subsystems] No descriptors matched for  meshings in UnitySubsystems/UnityOpenXR/UnitySubsystemsManifest.json.
+Forcing GfxDevice: Null
+GfxDevice: creating device client; threaded=0; jobified=0
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.208 seconds
+- Finished resetting the current domain, in  0.003 seconds
+ERROR: Shader Hidden/Universal Render Pipeline/ObjectMotionVectors shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/LutBuilderLdr shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/CameraMotionBlur shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/Blit shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/TemporalAA shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/Scaling Setup shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/Edge Adaptive Spatial Upsampling shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+WARNING: Shader Unsupported: 'Hidden/Universal Render Pipeline/FallbackError' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+ERROR: Shader Hidden/Universal Render Pipeline/FallbackError shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+WARNING: Shader Unsupported: 'Hidden/Universal Render Pipeline/FallbackError' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Hidden/Universal Render Pipeline/StencilDeferred' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+ERROR: Shader Hidden/Universal Render Pipeline/StencilDeferred shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+WARNING: Shader Unsupported: 'Hidden/Universal Render Pipeline/StencilDeferred' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+ERROR: Shader Hidden/Universal Render Pipeline/GaussianDepthOfField shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/Debug/DebugReplacement shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/LutBuilderHdr shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/Sampling shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/LensFlareDataDriven shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/CameraMotionVectors shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/UberPost shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/Bloom shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/BokehDepthOfField shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/FinalPost shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/CopyDepth shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/SubpixelMorphologicalAntialiasing shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/Stop NaN shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal/HDRDebugView shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/PaniniProjection shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Sprites/Default shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+Microsoft Media Foundation video decoding to texture disabled: graphics device is Null, only Direct3D 11 and Direct3D 12 (only on desktop) are supported for hardware-accelerated video decoding.
+ERROR: Shader Sprites/Mask shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Interaction/OculusHand shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+WARNING: Shader Unsupported: 'Shader Graphs/Shield' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+ERROR: Shader Shader Graphs/Shield shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+WARNING: Shader Unsupported: 'Shader Graphs/Shield' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+ERROR: Shader Skybox/6 Sided shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Unlit/TransparentTexture shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/Lit' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+ERROR: Shader Universal Render Pipeline/Lit shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/Lit' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+ERROR: Shader Meta/Lit shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Oculus Sample/Alpha Hand Outline (SBB) shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/Particles/Unlit' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+ERROR: Shader Universal Render Pipeline/Particles/Unlit shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/Particles/Unlit' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+There is no texture data available to upload.
+UnloadTime: 0.841900 ms
+Applying Acoustic Propagation Settings: [acoustic model = Automatic], [diffraction = True], 
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD
+Meta XR Audio Native Interface initialized with Unity plugin
+Setting spatial voice limit: 64
+[Singleton] Created singleton instance for BulletManager
+[Singleton] Created singleton instance for GameManager
+No Meta XR Audio Room found, setting default room
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD.dll
+Fallback handler could not load library C:/Adrian/Projects/mgu/projekt/dualists/Builds/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD
+Meta XR Audio Native Interface initialized with Unity plugin
+[GameManager] Game Started! Game Mode: AIvsAI, Players: AI[EnemyInCowboyPoseTeam1], AI[nemyInCowboyPoseTeam0]
+[AI Player Controller] Player: AI[nemyInCowboyPoseTeam0] : Hit received!
+[GameManager] Game Over. Winner: AI[EnemyInCowboyPoseTeam1]
+[AI Player Controller] Player: AI[EnemyInCowboyPoseTeam1] : Reset called, player is alive and has ammo.
+[AI Player Controller] Player: AI[nemyInCowboyPoseTeam0] : Reset called, player is alive and has ammo.
+[GameManager] Game Started! Game Mode: AIvsAI, Players: AI[EnemyInCowboyPoseTeam1], AI[nemyInCowboyPoseTeam0]
+[AI Player Controller] Player: AI[nemyInCowboyPoseTeam0] : Hit received!
+[GameManager] Game Over. Winner: AI[EnemyInCowboyPoseTeam1]
+[AI Player Controller] Player: AI[EnemyInCowboyPoseTeam1] : Reset called, player is alive and has ammo.
+[AI Player Controller] Player: AI[nemyInCowboyPoseTeam0] : Reset called, player is alive and has ammo.
+[GameManager] Game Started! Game Mode: AIvsAI, Players: AI[EnemyInCowboyPoseTeam1], AI[nemyInCowboyPoseTeam0]
+[AI Player Controller] Player: AI[EnemyInCowboyPoseTeam1] : Hit received!
+[GameManager] Game Over. Winner: AI[nemyInCowboyPoseTeam0]
+[AI Player Controller] Player: AI[EnemyInCowboyPoseTeam1] : Reset called, player is alive and has ammo.
+[AI Player Controller] Player: AI[nemyInCowboyPoseTeam0] : Reset called, player is alive and has ammo.
+[GameManager] Game Started! Game Mode: AIvsAI, Players: AI[EnemyInCowboyPoseTeam1], AI[nemyInCowboyPoseTeam0]

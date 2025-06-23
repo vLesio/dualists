@@ -26,7 +26,14 @@ behaviors:
       num_layers: 4
       deterministic: False
       goal_conditioning_type: hyper
+
     # !!! END OF DEFAULT VALUES !!!
+
+    self_play:
+      save_steps: 50000
+      team_change: 20000
+      swap_steps: 2000
+      window: 10
 
     # REWARD SIGNALS - more info: https://github.com/yosider/ml-agents-1/blob/master/docs/Reward-Signals.md
     reward_signals:
