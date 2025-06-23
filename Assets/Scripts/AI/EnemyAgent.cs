@@ -7,8 +7,9 @@ using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 [RequireComponent(typeof(HandSteering))]
-[RequireComponent(typeof(SteeringTest))]
 [RequireComponent(typeof(AIPlayerController))]
 public class EnemyAgent : Agent
 {
@@ -26,6 +27,12 @@ public class EnemyAgent : Agent
     [SerializeField] private bool enableDetailedGradeLogging;
     [SerializeField] private bool enableDetailedObservationLogging;
 
+    [Header("Learning Configuration")]
+    public bool useRandomPositioning = true;
+    public float randomPositioningDistance = 0.5f;
+    // Helper variables
+    private Vector3 _initialPosition;
+    
     [Header("What agent should observe")]
     // enemy observations
     public bool enemySphereHitboxPositions;
@@ -94,6 +101,7 @@ public class EnemyAgent : Agent
     {
         _handSteering = transform.GetComponent<HandSteering>();
         _aiPlayerController = transform.GetComponent<AIPlayerController>();
+        _initialPosition = transform.position;
     }
     
     
@@ -147,6 +155,11 @@ public class EnemyAgent : Agent
     public void ResetAgentStateParameters()
     {
         _cumReward = 0;
+        transform.position = _initialPosition;
+        if (useRandomPositioning)
+        {
+            RandomPositioning();
+        }
     }
 
     public override void OnEpisodeBegin()
@@ -156,11 +169,8 @@ public class EnemyAgent : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        if (!GameManager.I.IsRunning())
-            return;
-
-        var selfObservations =  _selfObservationCollector.CollectObservations(_handSteering.GlobalPositionSphereCenterPoint);
-        var enemyObservations = _enemyObservationCollector.CollectObservations(_handSteering.GlobalPositionSphereCenterPoint);
+        var selfObservations =  _selfObservationCollector.CollectObservations(_handSteering.GlobalSphereCenterPoint);
+        var enemyObservations = _enemyObservationCollector.CollectObservations(_handSteering.GlobalSphereCenterPoint);
         
         /// ENEMY OBSERVATIONS
         
@@ -313,15 +323,13 @@ public class EnemyAgent : Agent
     {
         if (!GameManager.I.IsRunning())
             return;
-        // Take actions from the neural network and apply them to the agent
-        // 18 continuous actions, 1 discrete action with 2 states (don't shoot, shoot)
-        _aiPlayerController.ParseNNActions(actions);
+        
         float rewardSum = 0;
 
         String detailedGradeLog = "Detailed Grade Log:";
     
-    var selfObservations =  _selfObservationCollector.CollectObservations(_handSteering.GlobalPositionSphereCenterPoint);
-    var enemyObservations = _enemyObservationCollector.CollectObservations(_handSteering.GlobalPositionSphereCenterPoint);
+        var selfObservations =  _selfObservationCollector.CollectObservations(_handSteering.GlobalSphereCenterPoint);
+        var enemyObservations = _enemyObservationCollector.CollectObservations(_handSteering.GlobalSphereCenterPoint);
         
         if (enemyGunAimsAtShieldReward) {
             var enemyGunAimsAtShieldRewardResult = enemyObservations.AimingAt == HitType.Shield ? enemyGunAimsAtShieldRewardAmount : 0;
@@ -375,6 +383,10 @@ public class EnemyAgent : Agent
             detailedGradeLog += $"\n\tAgent was rewarded by: {rewardSum}. Got in total: {_cumReward}";
             Debug.Log(detailedGradeLog);
         }
+        
+        // Take actions from the neural network and apply them to the agent
+        // 18 continuous actions, 1 discrete action with 2 states (don't shoot, shoot)
+        _aiPlayerController.ParseNNActions(actions);
     }
     
     public override void Heuristic(in ActionBuffers actionsOut)
@@ -445,5 +457,17 @@ public class EnemyAgent : Agent
         
         EndEpisode();
         ResetAgentStateParameters();
+    }
+
+    private void RandomPositioning(int localAxis = 0)
+    {
+        float rand = Random.Range(-1f, 1f);
+        float offset = rand * randomPositioningDistance;
+        var randomPosition = transform.localPosition + new Vector3(
+            localAxis == 0 ? offset : 0,
+            localAxis == 1 ? offset : 0,
+            localAxis == 2 ? offset : 0);
+        
+        transform.localPosition = randomPosition;
     }
 }

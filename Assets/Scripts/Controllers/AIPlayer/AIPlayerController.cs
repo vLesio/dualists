@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.MLAgents.Actuators;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -12,8 +13,8 @@ public class AIPlayerController : MonoBehaviour, IPlayerController
     [Header("Components")]
     public HandSteering handSteering;
     public HandGun handGun;
-    public PlayerHitbox playerHitbox;
-    private EnemyAgent _agent;
+    public PlayerHitbox playerHitbox; 
+    public EnemyAgent agent;
 
     public bool IsHuman => false;
 
@@ -28,7 +29,7 @@ public class AIPlayerController : MonoBehaviour, IPlayerController
 
     private void Start()
     {
-        _agent = GetComponent<EnemyAgent>();
+        agent = GetComponent<EnemyAgent>();
     }
 
     public void OnHit()
@@ -54,7 +55,7 @@ public class AIPlayerController : MonoBehaviour, IPlayerController
 
     public void EndGame(GameResult gameResult)
     {
-        _agent.RegisterGameEnded(gameResult);
+        agent.RegisterGameEnded(gameResult);
     }
 
     public void Reset()
@@ -120,8 +121,16 @@ public class AIPlayerController : MonoBehaviour, IPlayerController
                     continuous[7 + offset], 
                     continuous[8 + offset])
             };
+            //Debug.LogError($"Move speed {desiredActions.moveSpeed}, Rotation speed {desiredActions.rotationSpeed}, Position {desiredActions.position}, Rotation {desiredActions.rotation}");
+            
             handsDesiredActions.Hands.Add(desiredActions);
         }
+
+        /*var goTest = transform.GetComponent<Sphere3Gizmos>().desiredPoint;
+        var position = handsDesiredActions.Hands.Where(x => x.handSide == HandSide.right).Select(x => x)
+            .FirstOrDefault().position;
+        var globalVector3 = position.ToGlobalVector3();
+        goTest.transform.position = globalVector3;*/
         
         bool shoot = ShouldShoot(discrete);
         
@@ -132,7 +141,7 @@ public class AIPlayerController : MonoBehaviour, IPlayerController
     {
         float minR = handSteering.SphereBounds.x;
         float maxR = handSteering.SphereBounds.y;
-        Vector3 center = handSteering.GlobalPositionSphereCenterPoint;
+        Transform center = handSteering.GlobalSphereCenterPoint;
         return Sphere3.FromNormalized(radius, theta, phi, center, maxR, minR);
     }
 

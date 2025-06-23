@@ -42,8 +42,8 @@ public class Hand : MonoBehaviour, IResettable
         transform.localRotation = _startRotation;
     }
     
-    public void SetBoundarySphere(Vector3 globalPositionCenter, float radius) {
-        globalPositionBoundarySphereCenter = globalPositionCenter;
+    public void SetBoundarySphere(Transform globalPositionCenter, float radius) {
+        globalPositionBoundarySphereCenter = globalPositionCenter.position;
         boundarySphereRadius = radius;
     }
 
@@ -58,17 +58,19 @@ public class Hand : MonoBehaviour, IResettable
         _rb.AddForce(CalculateMoveDirection(globalPosition) * (speed * moveBaseSpeed), ForceMode.Force);
     }
     private void AddTorqueToRotation(Quaternion desiredRotation, float speed) {
-        Quaternion currentRotation = transform.rotation; 
+        Quaternion currentRotation = transform.localRotation; 
         Quaternion targetRotation = desiredRotation; 
         Quaternion rotationDifference = targetRotation * Quaternion.Inverse(currentRotation);
 
         rotationDifference.ToAngleAxis(out var rotationAngle, out var rotationAxis);
-
+        
         if (rotationAngle > 180f) {
             rotationAngle -= 360f;
         }
         
-        _rb.AddTorque(rotationAxis * (rotationAngle * speed * rotationBaseSpeed));
+        var localVec = rotationAxis * (rotationAngle * speed * rotationBaseSpeed);
+        var globalVec = transform.TransformDirection(localVec);
+        _rb.AddTorque(globalVec);
     }
     public HandObservation GetHandObservation()
     {

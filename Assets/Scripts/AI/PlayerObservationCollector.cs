@@ -30,19 +30,19 @@ public class PlayerObservationCollector : MonoBehaviour, IObservationCollector
     }
     
 
-    public PlayerObservations CollectObservations(Vector3 globalPositionSphereCenterPoint)
+    public PlayerObservations CollectObservations(Transform globalSphereCenterPoint)
     {
         return new PlayerObservations
         {
             AimingAt = _handGun.GetAimingAt() ?? HitType.Other,
-            HandObservations = _handSteering.GetHandsObservation(globalPositionSphereCenterPoint),
-            Hitboxes = CollectHitboxObservations(globalPositionSphereCenterPoint),
+            HandObservations = _handSteering.GetHandsObservation(globalSphereCenterPoint),
+            Hitboxes = CollectHitboxObservations(globalSphereCenterPoint),
             IsGunUsable = _handGun.IsUsable,
             GunAmmoPercentage = _handGun.AmmoLeft
         };
     }
 
-    private List<Hitbox> CollectHitboxObservations(Vector3 globalPositionSphereCenterPoint)
+    private List<Hitbox> CollectHitboxObservations(Transform globalSphereCenterPoint)
     {
         var hitboxes = new List<Hitbox>();
         foreach (var collider in _colliders)
@@ -50,13 +50,13 @@ public class PlayerObservationCollector : MonoBehaviour, IObservationCollector
             hitboxes.Add(
                 new Hitbox
                 {
-                    Vertices = GetVertexPositionsFromCollider(collider, globalPositionSphereCenterPoint)
+                    Vertices = GetVertexPositionsFromCollider(collider, globalSphereCenterPoint)
                 });
         }
         return hitboxes;
     }
     
-    private List<Sphere3> GetVertexPositionsFromCollider(BoxCollider box, Vector3 globalPositionSphereCenterPoint)
+    private List<Sphere3> GetVertexPositionsFromCollider(BoxCollider box, Transform globalSphereCenterPoint)
     {
         Vector3 center = box.center;
         Vector3 size = box.size * 0.5f;
@@ -73,7 +73,7 @@ public class PlayerObservationCollector : MonoBehaviour, IObservationCollector
         for (int i = 0; i < 4; i++)
         {
             var worldPos = box.transform.TransformPoint(center + localCorners[i]);
-            sphereCorners.Add(new Sphere3(worldPos, globalPositionSphereCenterPoint));
+            sphereCorners.Add(new Sphere3(worldPos, globalSphereCenterPoint));
         }
         
         return sphereCorners;

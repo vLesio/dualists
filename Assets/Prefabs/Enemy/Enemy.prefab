@@ -100,9 +100,6 @@ GameObject:
   - component: {fileID: 4621841367747298691}
   - component: {fileID: 5408466990877197982}
   - component: {fileID: 4943601783850419089}
-  - component: {fileID: 434181023698819511}
-  - component: {fileID: 2326816592069710943}
-  - component: {fileID: 7239870305871072426}
   - component: {fileID: 1113319176166449526}
   - component: {fileID: 245399687472463721}
   - component: {fileID: 2388153978236475002}
@@ -134,8 +131,6 @@ Transform:
   - {fileID: 4418099062280508830}
   - {fileID: 4218503333265543304}
   - {fileID: 4045558645348467668}
-  - {fileID: 2506825553863793470}
-  - {fileID: 8798709551938285842}
   - {fileID: 184728958806861582}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -168,6 +163,7 @@ MonoBehaviour:
   handSteering: {fileID: 4943601783850419089}
   handGun: {fileID: 3029340340362530054}
   playerHitbox: {fileID: 3686093800362386165}
+  agent: {fileID: 245399687472463721}
   debugLogging: 1
 --- !u!114 &4943601783850419089
 MonoBehaviour:
@@ -182,64 +178,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sphereCenterPoint: {fileID: 4045558645348467668}
-  sphereRadius: 1.5
-  minSphereRadius: 0.3
---- !u!114 &434181023698819511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1372715615853138785}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ed9bd8c4a6bfc64388e42702e8d2f0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftHandTrigger: {fileID: 8781868243929923229}
-  rightHandTrigger: {fileID: 4257381129507843669}
-  sendDirectMovementInfo: 0
-  sendingIntervalInSeconds: 0
---- !u!114 &2326816592069710943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1372715615853138785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cf2547ec58c1654891608d5f4166700, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sphere:
-    Radius: 0
-    Theta: 0
-    Phi: 0
-    globalPositionReferencePoint: {x: 0.174, y: 0.697, z: -5.787}
-  zero: {x: 0, y: 0, z: 0}
-  color: {r: 1, g: 0.44250402, b: 0.2999999, a: 1}
-  desiredPoint: {fileID: 8781868243929923229}
---- !u!114 &7239870305871072426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1372715615853138785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cf2547ec58c1654891608d5f4166700, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sphere:
-    Radius: 0
-    Theta: 0
-    Phi: 0
-    globalPositionReferencePoint: {x: 0.174, y: 0.697, z: -5.787}
-  zero: {x: 0, y: 0, z: 0}
-  color: {r: 0.28490567, g: 0.40962517, b: 1, a: 1}
-  desiredPoint: {fileID: 4257381129507843669}
+  sphereRadius: 0.65
+  minSphereRadius: 0.35
+  drawSphereGizmos: 0
 --- !u!114 &1113319176166449526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,7 +207,7 @@ MonoBehaviour:
   m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: Dueler
-  TeamId: 0
+  TeamId: 1
   m_UseChildSensors: 1
   m_UseChildActuators: 1
   m_ObservableAttributeHandling: 0
@@ -289,6 +230,8 @@ MonoBehaviour:
   enableGradeLogging: 0
   enableDetailedGradeLogging: 0
   enableDetailedObservationLogging: 0
+  useRandomPositioning: 1
+  randomPositioningDistance: 1
   enemySphereHitboxPositions: 1
   enemyShieldSpherePosition: 1
   enemyGunSpherePosition: 1
@@ -454,7 +397,7 @@ Transform:
   m_GameObject: {fileID: 2292245512357116727}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -547,37 +490,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8574399691553910934}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4257381129507843669
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8798709551938285842}
-  m_Layer: 0
-  m_Name: '[TEST]RightHandTrigger'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8798709551938285842
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4257381129507843669}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6091319027239903205}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8622266510943639660
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,37 +520,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8593821346928579176}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8781868243929923229
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2506825553863793470}
-  m_Layer: 0
-  m_Name: '[TEST]LeftHandTrigger'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2506825553863793470
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8781868243929923229}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6091319027239903205}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2577812997222140366
 PrefabInstance:
@@ -956,11 +837,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6877264236032491327, guid: 0d747bc534c392748a474c00d1e34a4b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.494
+      value: -0.063
       objectReference: {fileID: 0}
     - target: {fileID: 6877264236032491327, guid: 0d747bc534c392748a474c00d1e34a4b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.291
+      value: 0.631
       objectReference: {fileID: 0}
     - target: {fileID: 6877264236032491327, guid: 0d747bc534c392748a474c00d1e34a4b, type: 3}
       propertyPath: m_LocalPosition.z

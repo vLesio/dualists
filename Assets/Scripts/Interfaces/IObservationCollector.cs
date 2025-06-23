@@ -27,5 +27,5 @@ public struct PlayerObservations
 
 public interface IObservationCollector
 {
-    PlayerObservations CollectObservations(Vector3 globalPositionSphereCenterPoint);
+    PlayerObservations CollectObservations(Transform globalSphereCenterPoint);
 }

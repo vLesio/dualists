@@ -59,8 +59,7 @@ public class SteeringTest : MonoBehaviour
     private HandDesiredActions PrepareLeftHandActions()
     {        
         var handAction = GetDummyHandActions(HandSide.left);
-        var sphere = new Sphere3();
-        sphere.FromGlobalVector3(leftHandTrigger.transform.position, _handSteering.GlobalPositionSphereCenterPoint);
+        var sphere = new Sphere3(leftHandTrigger.transform.position, _handSteering.GlobalSphereCenterPoint);
         handAction.position = sphere;
         handAction.rotation = leftHandTrigger.transform.rotation;
         return handAction;
@@ -68,8 +67,8 @@ public class SteeringTest : MonoBehaviour
     private HandDesiredActions PrepareRightHandActions()
     {
         var handAction = GetDummyHandActions(HandSide.right);
-        var sphere = new Sphere3();
-        sphere.FromGlobalVector3(rightHandTrigger.transform.position, _handSteering.GlobalPositionSphereCenterPoint);
+        var sphere = new Sphere3(rightHandTrigger.transform.position, _handSteering.GlobalSphereCenterPoint);
+        sphere.FromGlobalVector3(rightHandTrigger.transform.position, _handSteering.GlobalSphereCenterPoint);
         handAction.position = sphere;
         handAction.rotation = rightHandTrigger.transform.rotation;
         return handAction;

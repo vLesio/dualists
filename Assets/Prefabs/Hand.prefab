@@ -104,6 +104,7 @@ MonoBehaviour:
   movementForceMode: 0
   boundarySphereRadius: 2
   globalPositionBoundarySphereCenter: {x: 0, y: 0, z: 0}
+  drawGizmo: 0
 --- !u!54 &4321535936764977148
 Rigidbody:
   m_ObjectHideFlags: 0

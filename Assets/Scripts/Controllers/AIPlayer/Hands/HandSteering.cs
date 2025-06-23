@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class HandSteering : MonoBehaviour, IResettable
 {
@@ -9,7 +10,8 @@ public class HandSteering : MonoBehaviour, IResettable
 
     [SerializeField][Range(0, 2)] private float sphereRadius;
     [SerializeField] [Range(0, 2)] private float minSphereRadius = 0f;
-    public Vector3 GlobalPositionSphereCenterPoint => sphereCenterPoint.TransformPoint(Vector3.zero);
+    [SerializeField] private bool drawSphereGizmos = false;
+    public Transform GlobalSphereCenterPoint => sphereCenterPoint;
     public Vector2 SphereBounds => new Vector2(minSphereRadius, sphereRadius);
     
     private Hand _leftHand;
@@ -26,18 +28,18 @@ public class HandSteering : MonoBehaviour, IResettable
         }
     }
 
-    public HandsObservation GetHandsObservation(Vector3 globalPositionSphereCenterPoint)
+    public HandsObservation GetHandsObservation(Transform globalSphereCenterPoint)
     {
         var handsObservation = new HandsObservation();
         handsObservation.Hands = new List<HandObservation>();
-        handsObservation.Hands.Add(FillMissingHandObservation(_leftHand.GetHandObservation(), globalPositionSphereCenterPoint));
-        handsObservation.Hands.Add(FillMissingHandObservation(_rightHand.GetHandObservation(), globalPositionSphereCenterPoint));
+        handsObservation.Hands.Add(FillMissingHandObservation(_leftHand.GetHandObservation(), globalSphereCenterPoint));
+        handsObservation.Hands.Add(FillMissingHandObservation(_rightHand.GetHandObservation(), globalSphereCenterPoint));
         return handsObservation;
     }
 
-    private HandObservation FillMissingHandObservation(HandObservation handObservation, Vector3 globalPositionSphereCenterPoint)
+    private HandObservation FillMissingHandObservation(HandObservation handObservation, Transform globalSphereCenterPoint)
     {
-        handObservation.position = new Sphere3(handObservation.globalPosition, globalPositionSphereCenterPoint);      
+        handObservation.position = new Sphere3(handObservation.globalPosition, globalSphereCenterPoint);      
         return handObservation;
     }
     
@@ -45,7 +47,7 @@ public class HandSteering : MonoBehaviour, IResettable
     {
         foreach (var hand in GetComponentsInChildren<Hand>())
         {
-            hand.SetBoundarySphere(GlobalPositionSphereCenterPoint, sphereRadius);
+            hand.SetBoundarySphere(GlobalSphereCenterPoint, sphereRadius);
             if (hand.HandSide == HandSide.left) {
                 _leftHand = hand;
             }
@@ -65,6 +67,16 @@ public class HandSteering : MonoBehaviour, IResettable
     {
         _leftHand.Reset();
         _rightHand.Reset();
+    }
+    
+    private void OnDrawGizmos() {
+        if (!Application.isPlaying || !drawSphereGizmos) return;
+        
+        
+        Gizmos.color = new Color(1,0,0,0.3f);
+        Gizmos.DrawSphere(GlobalSphereCenterPoint.position, minSphereRadius);
+        Gizmos.color = new Color(0,0,1,0.3f);
+        Gizmos.DrawSphere(GlobalSphereCenterPoint.position, sphereRadius);
     }
 }
 public struct HandsObservation
