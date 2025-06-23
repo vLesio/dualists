@@ -25756,7 +25756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameMode: 1
-  debugLogging: 1
+  debugLogging: 0
 --- !u!4 &1825586147
 Transform:
   m_ObjectHideFlags: 0

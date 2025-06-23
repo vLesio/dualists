@@ -1,0 +1,30 @@
+{
+    "Dueler": {
+        "elo": 1190.440481796247,
+        "checkpoints": [
+            {
+                "steps": 23799,
+                "file_path": "results\\playTest1\\Dueler\\Dueler-23799.onnx",
+                "reward": -601.3488725821177,
+                "creation_time": 1750712834.0422633,
+                "auxillary_file_paths": [
+                    "results\\playTest1\\Dueler\\Dueler-23799.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 23799,
+            "file_path": "results\\playTest1\\Dueler.onnx",
+            "reward": -601.3488725821177,
+            "creation_time": 1750712834.0422633,
+            "auxillary_file_paths": [
+                "results\\playTest1\\Dueler\\Dueler-23799.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.0.0",
+        "torch_version": "2.3.1+cu118"
+    }
+}

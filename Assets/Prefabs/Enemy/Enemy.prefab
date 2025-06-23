@@ -164,7 +164,7 @@ MonoBehaviour:
   handGun: {fileID: 3029340340362530054}
   playerHitbox: {fileID: 3686093800362386165}
   agent: {fileID: 245399687472463721}
-  debugLogging: 1
+  debugLogging: 0
 --- !u!114 &4943601783850419089
 MonoBehaviour:
   m_ObjectHideFlags: 0
