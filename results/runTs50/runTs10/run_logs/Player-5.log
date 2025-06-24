@@ -1,0 +1,483 @@
+Mono path[0] = 'D:/Projects/dualists/Builds/serwer/Dualists_Data/Managed'
+Mono config path = 'D:/Projects/dualists/Builds/serwer/MonoBleedingEdge/etc'
+[Physics::Module] Initialized MultithreadedJobDispatcher with 7 workers.
+Unity memory allocator detected: MetaXRAudio native memory allocations will be tracked.
+Initialize engine version: 2022.3.28f1 (6bae5ce6b222)
+[Subsystems] Discovering subsystems at path D:/Projects/dualists/Builds/serwer/Dualists_Data/UnitySubsystems
+[Subsystems] No descriptors matched for  examples in UnitySubsystems/UnityOpenXR/UnitySubsystemsManifest.json.
+[Subsystems] 1 'inputs' descriptors matched in UnitySubsystems/UnityOpenXR/UnitySubsystemsManifest.json
+[Subsystems] 1 'displays' descriptors matched in UnitySubsystems/UnityOpenXR/UnitySubsystemsManifest.json
+[Subsystems] No descriptors matched for  meshings in UnitySubsystems/UnityOpenXR/UnitySubsystemsManifest.json.
+Forcing GfxDevice: Null
+GfxDevice: creating device client; threaded=0; jobified=0
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.224 seconds
+- Finished resetting the current domain, in  0.003 seconds
+ERROR: Shader Hidden/Universal Render Pipeline/ObjectMotionVectors shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/LutBuilderLdr shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/CameraMotionBlur shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/Blit shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/TemporalAA shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/Scaling Setup shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/Edge Adaptive Spatial Upsampling shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+WARNING: Shader Unsupported: 'Hidden/Universal Render Pipeline/FallbackError' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+ERROR: Shader Hidden/Universal Render Pipeline/FallbackError shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+WARNING: Shader Unsupported: 'Hidden/Universal Render Pipeline/FallbackError' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Hidden/Universal Render Pipeline/StencilDeferred' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Hidden/Universal Render Pipeline/StencilDeferred' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+ERROR: Shader Hidden/Universal Render Pipeline/GaussianDepthOfField shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/Debug/DebugReplacement shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/LutBuilderHdr shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/Sampling shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/LensFlareDataDriven shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/CameraMotionVectors shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/UberPost shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/Bloom shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/BokehDepthOfField shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/FinalPost shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/CopyDepth shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/SubpixelMorphologicalAntialiasing shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/Stop NaN shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal/HDRDebugView shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Hidden/Universal Render Pipeline/PaniniProjection shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Sprites/Default shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+XRGeneral Settings awakening...
+Microsoft Media Foundation video decoding to texture disabled: graphics device is Null, only Direct3D 11 and Direct3D 12 (only on desktop) are supported for hardware-accelerated video decoding.
+[Subsystems] OpenXR XR Plugin successfully registered Provider for OpenXR Display
+[Subsystems] OpenXR XR Plugin successfully registered Provider for OpenXR Input
+[Subsystems] OpenXR XR Plugin successfully registered Provider for OpenXR Display
+[MetaXRFeature] HookGetInstanceProcAddr: 140705802443455
+[MetaXRFeature] SetClientVersion
+[OVRPlugin][ERROR] xrGetInstanceProcAddr is nullptr (arvr\projects\integrations\OVRPlugin\Src\Util\CompositorOpenXR.cpp:1175)[OVRPlugin][ERROR] [XRCMD][failure] [XR_ERROR_FORM_FACTOR_UNAVAILABLE]: xrGetSystem(instance, &systemGetInfo, &systemId), arvr\projects\integrations\OVRPlugin\Src\Util\CompositorOpenXR.cpp:3029 (arvr\projects\integrations\OVRPlugin\Src\Util/CompositorOpenXR.h:350)[OVRPlugin][ERROR] CompositorOpenXR::PreInitialize() returns failure (arvr\projects\integrations\OVRPlugin\Src\OVR_Plugin_UnityOpenXR.cpp:59)[Subsystems] Loading plugin UnityOpenXR for subsystem OpenXR Display...
+[XR] [22628] [02:58:09.226][Info   ] Available Layers: (0)
+[OVRPlugin][INFO] UnityPluginLoad called[OVRPlugin][INFO] UnityOpenXR_SetClientVersion(1, 108, 0) called[OVRPlugin][INFO] ovrp_UnityOpenXR_HookGetInstanceProcAddr(00007FF89F5F5ABF)[OVRPlugin][INFO] [CompositorOpenXR::SetExternalXrGetInstanceProcAddr] xrGetInstanceProcAddr set to 00007FF89F5F5ABF. All OpenXR API Entires unbound.[OVRPlugin][INFO] CompositorOpenXR::PreInitialize(activity = 0000000000000000, apiType = 0, preinitializeFlags=0x1)[OVRPlugin][INFO] Support Non-Oculus runtime: NO[OVRPlugin][INFO]  -- Set xrGetInstanceProcAddr to external function pointer[OVRPlugin][INFO] Available Layers: (0)[OVRPlugin][INFO] Preinitialize: xrCreateInstance() succeeded[OVRPlugin][INFO] OpenXR runtime name: Oculus, version 1.109.0[OVRPlugin][INFO] xrGetSystem() failed, which might be caused by a temporarly HMD connectivity issue. xrInstance to be destroyed[OVRPlugin][INFO] ProfilerSystem: verbose mode 0[OVRPlugin][INFO] OVRPlugin 1.108.0 ... preinitialized[OVRPlugin][INFO] Func_xrGetInstanceProcAddr: override xrCreateInstance[OVRPlugin][INFO] Func_xrCreateInstance(000002AFDB5073D8)[OVRPlugin][INFO] Unity Requested Extensions (22):[OVRPlugin][INFO]   Name=XR_EXT_debug_utils[OVRPlugin][INFO]   Name=XR_EXT_local_floor[OVRPlugin][INFO]   Name=XR_FB_color_space[OVRPlugin][INFO]   Name=XR_FB_display_refresh_rate[OVRPlugin][INFO]   Name=XR_FB_haptic_amplitude_envelope[OVRPlugin][INFO]   Name=XR_FB_haptic_pcm[OVRPlugin][INFO]   Name=XR_FB_touch_controller_pro[OVRPlugin][INFO]   Name=XR_FB_touch_controller_proximity[OVRPlugin][INFO]   Name=XR_KHR_D3D11_enable[OVRPlugin][INFO]   Name=XR_KHR_composition_layer_color_scale_bias[OVRPlugin][INFO]   Name=XR_KHR_composition_layer_cube[OVRPlugin][INFO]   Name=XR_KHR_composition_layer_cylinder[OVRPlugin][INFO]   Name=XR_KHR_composition_layer_depth[OVRPlugin][INFO]   Name=XR_KHR_convert_timespec_time[OVRPlugin][INFO]   Name=XR_KHR_visibility_mask[OVRPlugin][INFO]   Name=XR_KHR_vulkan_enable[OVRPlugin][INFO]   Name=XR_LOGITECH_mx_ink_stylus_interaction[OVRPlugin][INFO]   Name=XR_META_detached_controllers[OVRPlugin][INFO]   Name=XR_META_headset_id[OVRPlugin][INFO]   Name=XR_META_performance_metrics[OVRPlugin][INFO]   Name=XR_META_touch_controller_plus[OVRPlugin][INFO]   Name=XR_OCULUS_audio_device_guid[OVRPlugin][INFO] Unavailable OpenXR extension: XR_KHR_D3D12_enable[OVRPlugin][INFO] Unavailable OpenXR extension: XR_EXT_performance_settings[OVRPlugin][INFO] Unavailable OpenXR extension: XR_EXT_hand_tracking[OVRPlugin][INFO] Unavailable OpenXR extension: XR_FB_hand_tracking_mesh[OVRPlugin][INFO] Unavailable OpenXR extension: XR_FB_hand_tracking_aim[OVRPlugin][INFO] Unavailable OpenXR extension: XR_FB_hand_tracking_capsules[OVRPlugin][INFO] Unavailable OpenXR extension: XR_META_hand_tracking_microgestures[OVRPlugin][INFO] Unavailable OpenXR extension: XR_FB_swapchain_update_state[OVRPlugin][INFO] Unavailable OpenXR extension: XR_FB_swapchain_update_state_vulkan[OVRPlugin][INFO] Unavailable OpenXR extension: XR_FB_foveation[OVRPlugin][INFO] Unavailable OpenXR extension: XR_FB_foveation_configuration[OVRPlugin][INFO] Unavailable OpenXR extension: XR_FB_foveation_vulkan[OVRPlugin][INFO] Unavailable OpenXR extension: XR_META_vulkan_swapchain_create_info[OVRPlugin][INFO] Unavailable OpenXR extension: XR_META_foveation_eye_tracked[OVRPlugin][INFO] Unavailable OpenXR extension: XR_FB_composition_layer_image_layout[OVRPlugin][INFO] Unavailable OpenXR extension: XR_KHR_composition_layer_equirect2[OVRPlugin][INFO] Unavailable OpenXR extension: XR_FB_passthrough[OVRPlugin][INFO] Unavailable OpenXR extension: XR_FB_triangle_mesh[OVRPlugin][INFO] Unavailable OpenXR extension: XR_FB_passthrough_keyboard_hands[OVRPlugin][INFO] Unavailable OpenXR extension: XR_META_passthrough_color_lut[OVRPlugin][INFO] Unavailable OpenXR extension: XR_META_passthrough_preferences[OVRPlugin][INFO] Unavailable OpenXR extension: XR_META_passthrough_layer_resumed_event[OVRPlugin][INFO] Unavailable OpenXR extension: XR_OCULUS_external_camera[OVRPlugin][INFO] Unavailable OpenXR extension: XR_FB_common_events[OVRPlugin][INFO] Unavailable Ope[MetaXRFeature] OpenXR runtime supports XR_META_headset_id extension. MetaXRFeature is enabled.
+[MetaXRFeature] OnInstanceCreate: 1
+[OVRPlugin][ERROR] Unsupported Graphics API: 4 (arvr\projects\integrations\OVRPlugin\Src\OVR_Plugin_UnityOpenXR.cpp:108)[MetaXRFeature] OnInstanceCreate returned an error. If you are using Quest Link, please verify if it's started.
+[XR] [22628] [02:58:09.243][Error  ] xrGetSystem: XR_ERROR_FORM_FACTOR_UNAVAILABLE
+[XR] [22628] [02:58:09.243][Info   ] 
+
+==== Start Unity OpenXR Diagnostic Report ====
+
+
+[XR] [22628] [02:58:09.243][Info   ] ==== Report Reason: Uncaught Exception ====
+
+
+[XR] [22628] [02:58:09.243][Info   ] ==== OpenXR Init Info ====
+[XR] [22628] [02:58:09.243][Info   ] 
+[XR] [22628] [02:58:09.243][Info   ] Stage 1 Missing Entry Points: (1)
+[XR] [22628] [02:58:09.243][Info   ]   xrInitializeLoaderKHR
+[XR] [22628] [02:58:09.243][Info   ] 
+[XR] [22628] [02:58:09.243][Info   ] ==== OpenXR Provider Info ====
+[XR] [22628] [02:58:09.244][Info   ] 
+[XR] [22628] [02:58:09.244][Info   ] Spec Version: 1.0.29
+[XR] [22628] [02:58:09.244][Info   ] Provider Version: 1.10.0
+[XR] [22628] [02:58:09.244][Info   ] App: Dualists #3159629941
+[XR] [22628] [02:58:09.244][Info   ] Engine: 2022.3.28f1 #53593089
+[XR] [22628] [02:58:09.244][Info   ] 
+[XR] [22628] [02:58:09.244][Info   ] ==== OpenXR Runtime Info ====
+[XR] [22628] [02:58:09.244][Info   ] 
+[XR] [22628] [02:58:09.244][Info   ] Features requested to be enabled: (3)
+[XR] [22628] [02:58:09.244][Info   ]   Meta XR Feature: Version=0.0.1, Company="Meta", Extensions="XR_KHR_vulkan_enable XR_KHR_D3D11_enable XR_OCULUS_common_reference_spaces XR_FB_display_refresh_rate XR_EXT_performance_settings XR_FB_composition_layer_image_layout XR_KHR_android_surface_swapchain XR_FB_android_surface_swapchain_create XR_KHR_composition_layer_color_scale_bias XR_FB_color_space XR_EXT_hand_tracking XR_FB_swapchain_update_state XR_FB_swapchain_update_state_opengl_es XR_FB_swapchain_update_state_vulkan XR_FB_composition_layer_alpha_blend XR_KHR_composition_layer_depth XR_KHR_composition_layer_cylinder XR_KHR_composition_layer_cube XR_KHR_composition_layer_equirect2 XR_KHR_convert_timespec_time XR_KHR_visibility_mask XR_FB_render_model XR_FB_spatial_entity XR_FB_spatial_entity_user XR_FB_spatial_entity_query XR_FB_spatial_entity_storage XR_FB_spatial_entity_storage_batch XR_META_spatial_entity_mesh XR_META_performance_metrics XR_FB_spatial_entity_sharing XR_FB_scene XR_FB_spatial_entity_container XR[XR] [22628] [02:58:09.244][Info   ]   Meta XR Foveation: Version=1.0.0, Company="Meta", Extensions="XR_FB_foveation XR_FB_foveation_configuration XR_FB_foveation_vulkan "
+[XR] [22628] [02:58:09.244][Info   ]   Oculus Touch Controller Profile: Version=0.0.1, Company="Unity"
+[XR] [22628] [02:58:09.244][Info   ] 
+[XR] [22628] [02:58:09.244][Info   ] Requested feature extensions not supported by runtime: (68)
+[XR] [22628] [02:58:09.244][Info   ]   XR_OCULUS_common_reference_spaces: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_EXT_performance_settings: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_composition_layer_image_layout: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_KHR_android_surface_swapchain: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_android_surface_swapchain_create: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_EXT_hand_tracking: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_swapchain_update_state: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_swapchain_update_state_opengl_es: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_swapchain_update_state_vulkan: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_composition_layer_alpha_blend: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_KHR_composition_layer_equirect2: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_render_model: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_spatial_entity: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_spatial_entity_user: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_spatial_entity_query: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_spatial_entity_storage: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_spatial_entity_storage_batch: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_META_spatial_entity_mesh: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_spatial_entity_sharing: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_scene: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_spatial_entity_container: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_scene_capture: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_face_tracking: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_face_tracking2: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_eye_tracking: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_eye_tracking_social: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_body_tracking: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_META_body_tracking_full_body: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_META_body_tracking_calibration: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_META_body_tracking_fidelity: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_keyboard_tracking: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_META_virtual_keyboard: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_passthrough: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_triangle_mesh: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_passthrough_keyboard_hands: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_META_passthrough_layer_resumed_event: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_META_passthrough_color_lut: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_META_passthrough_preferences: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_common_events: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_hand_tracking_capsules: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_hand_tracking_mesh: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_hand_tracking_aim: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_composition_layer_depth_test: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_META_local_dimming: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_META_hand_tracking_wide_motion_mode: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_EXT_hand_tracking_data_source: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_EXT_hand_joints_motion_range: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_META_simultaneous_hands_and_controllers: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_MSFT_hand_interaction: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_EXT_hand_interaction: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_hand_tracking_confidence: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_META_colocation_discovery: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_META_spatial_entity_sharing: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_META_spatial_entity_group_sharing: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_META_dynamic_object_tracker: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_META_dynamic_object_keyboard: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_META_hand_tracking_microgestures: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_META_spatial_entity_persistence: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_META_spatial_entity_discovery: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_META_boundary_visibility: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_METAX1_face_tracking_visemes: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.244][Info   ]   XR_FB_composition_layer_settings: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.245][Info   ]   XR_META_automatic_layer_filter: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.245][Info   ]   XR_EXT_future: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.245][Info   ]   XR_META_recommended_layer_resolution: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.245][Info   ]   XR_FB_foveation: Feature="Meta XR Foveation": Version=1.0.0, Company="Meta"
+[XR] [22628] [02:58:09.245][Info   ]   XR_FB_foveation_configuration: Feature="Meta XR Foveation": Version=1.0.0, Company="Meta"
+[XR] [22628] [02:58:09.245][Info   ]   XR_FB_foveation_vulkan: Feature="Meta XR Foveation": Version=1.0.0, Company="Meta"
+[XR] [22628] [02:58:09.245][Info   ] 
+[XR] [22628] [02:58:09.245][Info   ] Available Runtime Extensions: (32)
+[XR] [22628] [02:58:09.245][Info   ]   XR_KHR_D3D11_enable: Version=9
+[XR] [22628] [02:58:09.245][Info   ]   XR_KHR_D3D12_enable: Version=9
+[XR] [22628] [02:58:09.245][Info   ]   XR_KHR_opengl_enable: Version=10
+[XR] [22628] [02:58:09.245][Info   ]   XR_KHR_vulkan_enable: Version=8
+[XR] [22628] [02:58:09.245][Info   ]   XR_KHR_vulkan_enable2: Version=2
+[XR] [22628] [02:58:09.245][Info   ]   XR_KHR_composition_layer_depth: Version=6
+[XR] [22628] [02:58:09.245][Info   ]   XR_KHR_win32_convert_performance_counter_time: Version=1
+[XR] [22628] [02:58:09.245][Info   ]   XR_KHR_convert_timespec_time: Version=1
+[XR] [22628] [02:58:09.245][Info   ]   XR_KHR_composition_layer_cube: Version=8
+[XR] [22628] [02:58:09.245][Info   ]   XR_KHR_composition_layer_cylinder: Version=4
+[XR] [22628] [02:58:09.245][Info   ]   XR_KHR_composition_layer_equirect: Version=3
+[XR] [22628] [02:58:09.245][Info   ]   XR_KHR_visibility_mask: Version=2
+[XR] [22628] [02:58:09.245][Info   ]   XR_KHR_composition_layer_color_scale_bias: Version=5
+[XR] [22628] [02:58:09.245][Info   ]   XR_EXT_win32_appcontainer_compatible: Version=1
+[XR] [22628] [02:58:09.245][Info   ]   XR_EXT_debug_utils: Version=5
+[XR] [22628] [02:58:09.245][Info   ]   XR_OCULUS_recenter_event: Version=1
+[XR] [22628] [02:58:09.245][Info   ]   XR_OCULUS_audio_device_guid: Version=1
+[XR] [22628] [02:58:09.245][Info   ]   XR_FB_color_space: Version=3
+[XR] [22628] [02:58:09.245][Info   ]   XR_FB_display_refresh_rate: Version=1
+[XR] [22628] [02:58:09.245][Info   ]   XR_META_performance_metrics: Version=2
+[XR] [22628] [02:58:09.245][Info   ]   XR_META_headset_id: Version=2
+[XR] [22628] [02:58:09.245][Info   ]   XR_OCULUS_ovrsession_handle: Version=1
+[XR] [22628] [02:58:09.245][Info   ]   XR_EXT_local_floor: Version=1
+[XR] [22628] [02:58:09.245][Info   ]   XR_EXT_active_action_set_priority: Version=1
+[XR] [22628] [02:58:09.245][Info   ]   XR_FB_haptic_amplitude_envelope: Version=1
+[XR] [22628] [02:58:09.245][Info   ]   XR_FB_haptic_pcm: Version=1
+[XR] [22628] [02:58:09.245][Info   ]   XR_FB_touch_controller_pro: Version=1
+[XR] [22628] [02:58:09.245][Info   ]   XR_META_touch_controller_plus: Version=1
+[XR] [22628] [02:58:09.245][Info   ]   XR_FB_touch_controller_proximity: Version=1
+[XR] [22628] [02:58:09.245][Info   ]   XR_OCULUS_external_camera: Version=1
+[XR] [22628] [02:58:09.245][Info   ]   XR_META_detached_controllers: Version=1
+[XR] [22628] [02:58:09.245][Info   ]   XR_LOGITECH_mx_ink_stylus_interaction: Version=1
+[XR] [22628] [02:58:09.245][Info   ] 
+[XR] [22628] [02:58:09.245][Info   ] Available Layers: (0)
+[XR] [22628] [02:58:09.245][Info   ] 
+[XR] [22628] [02:58:09.245][Info   ] Runtime Name: Oculus
+[XR] [22628] [02:58:09.245][Info   ] Runtime Version: 1.109.0
+[XR] [22628] [02:58:09.245][Info   ] 
+[XR] [22628] [02:58:09.245][Info   ] ==== OpenXR Exception Thrown ====
+[XR] [22628] [02:58:09.245][Info   ] 
+[XR] [22628] [02:58:09.245][Info   ] Error: XrResult failure [XR_ERROR_FORM_FACTOR_UNAVAILABLE]
+[XR] [22628] [02:58:09.245][Info   ]     Origin: result
+[XR] [22628] [02:58:09.245][Info   ]     Source: C:\build\output\unity\xr.sdk.openxr\NativePlugin\Source\unity_session.cpp:266
+[XR] [22628] [02:58:09.245][Info   ] 
+[XR] [22628] [02:58:09.245][Info   ] 
+[XR] [22628] [02:58:09.245][Info   ] ==== Std Exception Thrown ====
+[XR] [22628] [02:58:09.245][Info   ] 
+[XR] [22628] [02:58:09.245][Info   ] Function: Display_Initialize
+[XR] [22628] [02:58:09.245][Info   ] Message: XrResult failure [XR_ERROR_FORM_FACTOR_UNAVAILABLE]
+[XR] [22628] [02:58:09.245][Info   ]     Origin: result
+[XR] [22628] [02:58:09.245][Info   ]     Source: C:\build\output\unity\xr.sdk.openxr\NativePlugin\Source\unity_session.cpp:266
+[XR] [22628] [02:58:09.245][Info   ] 
+[XR] [22628] [02:58:09.245][Info   ] ==== Last 20 non-XR_SUCCESS returns ====
+[XR] [22628] [02:58:09.245][Info   ] [FAILURE] xrGetSystem: XR_ERROR_FORM_FACTOR_UNAVAILABLE (1x)
+[XR] [22628] [02:58:09.245][Info   ] 
+[XR] [22628] [02:58:09.245][Info   ] ==== Last 20 Events ====
+[XR] [22628] [02:58:09.245][Info   ] 
+
+==== End Unity OpenXR Diagnostic Report ====
+
+
+[Subsystems] Failed to initialize subsystem OpenXR Display [error: 1]
+[XR] [22628] [02:58:09.251][Info   ] 
+
+==== Start Unity OpenXR Diagnostic Report ====
+
+
+[XR] [22628] [02:58:09.251][Info   ] ==== Report Reason: System Shutdown ====
+
+
+[XR] [22628] [02:58:09.251][Info   ] ==== OpenXR Init Info ====
+[XR] [22628] [02:58:09.251][Info   ] 
+[XR] [22628] [02:58:09.251][Info   ] Stage 1 Missing Entry Points: (1)
+[XR] [22628] [02:58:09.251][Info   ]   xrInitializeLoaderKHR
+[XR] [22628] [02:58:09.251][Info   ] 
+[XR] [22628] [02:58:09.251][Info   ] ==== OpenXR Provider Info ====
+[XR] [22628] [02:58:09.251][Info   ] 
+[XR] [22628] [02:58:09.251][Info   ] Spec Version: 1.0.29
+[XR] [22628] [02:58:09.251][Info   ] Provider Version: 1.10.0
+[XR] [22628] [02:58:09.251][Info   ] App: Dualists #3159629941
+[XR] [22628] [02:58:09.251][Info   ] Engine: 2022.3.28f1 #53593089
+[XR] [22628] [02:58:09.251][Info   ] 
+[XR] [22628] [02:58:09.251][Info   ] ==== OpenXR Runtime Info ====
+[XR] [22628] [02:58:09.251][Info   ] 
+[XR] [22628] [02:58:09.251][Info   ] Features requested to be enabled: (3)
+[XR] [22628] [02:58:09.251][Info   ]   Meta XR Feature: Version=0.0.1, Company="Meta", Extensions="XR_KHR_vulkan_enable XR_KHR_D3D11_enable XR_OCULUS_common_reference_spaces XR_FB_display_refresh_rate XR_EXT_performance_settings XR_FB_composition_layer_image_layout XR_KHR_android_surface_swapchain XR_FB_android_surface_swapchain_create XR_KHR_composition_layer_color_scale_bias XR_FB_color_space XR_EXT_hand_tracking XR_FB_swapchain_update_state XR_FB_swapchain_update_state_opengl_es XR_FB_swapchain_update_state_vulkan XR_FB_composition_layer_alpha_blend XR_KHR_composition_layer_depth XR_KHR_composition_layer_cylinder XR_KHR_composition_layer_cube XR_KHR_composition_layer_equirect2 XR_KHR_convert_timespec_time XR_KHR_visibility_mask XR_FB_render_model XR_FB_spatial_entity XR_FB_spatial_entity_user XR_FB_spatial_entity_query XR_FB_spatial_entity_storage XR_FB_spatial_entity_storage_batch XR_META_spatial_entity_mesh XR_META_performance_metrics XR_FB_spatial_entity_sharing XR_FB_scene XR_FB_spatial_entity_container XR[XR] [22628] [02:58:09.251][Info   ]   Meta XR Foveation: Version=1.0.0, Company="Meta", Extensions="XR_FB_foveation XR_FB_foveation_configuration XR_FB_foveation_vulkan "
+[XR] [22628] [02:58:09.251][Info   ]   Oculus Touch Controller Profile: Version=0.0.1, Company="Unity"
+[XR] [22628] [02:58:09.251][Info   ] 
+[XR] [22628] [02:58:09.251][Info   ] Requested feature extensions not supported by runtime: (68)
+[XR] [22628] [02:58:09.251][Info   ]   XR_OCULUS_common_reference_spaces: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.251][Info   ]   XR_EXT_performance_settings: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.251][Info   ]   XR_FB_composition_layer_image_layout: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.251][Info   ]   XR_KHR_android_surface_swapchain: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.251][Info   ]   XR_FB_android_surface_swapchain_create: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.251][Info   ]   XR_EXT_hand_tracking: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.251][Info   ]   XR_FB_swapchain_update_state: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.251][Info   ]   XR_FB_swapchain_update_state_opengl_es: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.251][Info   ]   XR_FB_swapchain_update_state_vulkan: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.251][Info   ]   XR_FB_composition_layer_alpha_blend: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.251][Info   ]   XR_KHR_composition_layer_equirect2: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.251][Info   ]   XR_FB_render_model: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.251][Info   ]   XR_FB_spatial_entity: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.251][Info   ]   XR_FB_spatial_entity_user: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.251][Info   ]   XR_FB_spatial_entity_query: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.251][Info   ]   XR_FB_spatial_entity_storage: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.251][Info   ]   XR_FB_spatial_entity_storage_batch: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_spatial_entity_mesh: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_spatial_entity_sharing: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_scene: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_spatial_entity_container: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_scene_capture: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_face_tracking: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_face_tracking2: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_eye_tracking: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_eye_tracking_social: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_body_tracking: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_body_tracking_full_body: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_body_tracking_calibration: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_body_tracking_fidelity: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_keyboard_tracking: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_virtual_keyboard: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_passthrough: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_triangle_mesh: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_passthrough_keyboard_hands: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_passthrough_layer_resumed_event: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_passthrough_color_lut: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_passthrough_preferences: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_common_events: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_hand_tracking_capsules: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_hand_tracking_mesh: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_hand_tracking_aim: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_composition_layer_depth_test: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_local_dimming: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_hand_tracking_wide_motion_mode: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_EXT_hand_tracking_data_source: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_EXT_hand_joints_motion_range: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_simultaneous_hands_and_controllers: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_MSFT_hand_interaction: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_EXT_hand_interaction: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_hand_tracking_confidence: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_colocation_discovery: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_spatial_entity_sharing: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_spatial_entity_group_sharing: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_dynamic_object_tracker: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_dynamic_object_keyboard: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_hand_tracking_microgestures: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_spatial_entity_persistence: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_spatial_entity_discovery: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_boundary_visibility: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_METAX1_face_tracking_visemes: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_composition_layer_settings: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_automatic_layer_filter: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_EXT_future: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_recommended_layer_resolution: Feature="Meta XR Feature": Version=0.0.1, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_foveation: Feature="Meta XR Foveation": Version=1.0.0, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_foveation_configuration: Feature="Meta XR Foveation": Version=1.0.0, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_foveation_vulkan: Feature="Meta XR Foveation": Version=1.0.0, Company="Meta"
+[XR] [22628] [02:58:09.252][Info   ] 
+[XR] [22628] [02:58:09.252][Info   ] Available Runtime Extensions: (32)
+[XR] [22628] [02:58:09.252][Info   ]   XR_KHR_D3D11_enable: Version=9
+[XR] [22628] [02:58:09.252][Info   ]   XR_KHR_D3D12_enable: Version=9
+[XR] [22628] [02:58:09.252][Info   ]   XR_KHR_opengl_enable: Version=10
+[XR] [22628] [02:58:09.252][Info   ]   XR_KHR_vulkan_enable: Version=8
+[XR] [22628] [02:58:09.252][Info   ]   XR_KHR_vulkan_enable2: Version=2
+[XR] [22628] [02:58:09.252][Info   ]   XR_KHR_composition_layer_depth: Version=6
+[XR] [22628] [02:58:09.252][Info   ]   XR_KHR_win32_convert_performance_counter_time: Version=1
+[XR] [22628] [02:58:09.252][Info   ]   XR_KHR_convert_timespec_time: Version=1
+[XR] [22628] [02:58:09.252][Info   ]   XR_KHR_composition_layer_cube: Version=8
+[XR] [22628] [02:58:09.252][Info   ]   XR_KHR_composition_layer_cylinder: Version=4
+[XR] [22628] [02:58:09.252][Info   ]   XR_KHR_composition_layer_equirect: Version=3
+[XR] [22628] [02:58:09.252][Info   ]   XR_KHR_visibility_mask: Version=2
+[XR] [22628] [02:58:09.252][Info   ]   XR_KHR_composition_layer_color_scale_bias: Version=5
+[XR] [22628] [02:58:09.252][Info   ]   XR_EXT_win32_appcontainer_compatible: Version=1
+[XR] [22628] [02:58:09.252][Info   ]   XR_EXT_debug_utils: Version=5
+[XR] [22628] [02:58:09.252][Info   ]   XR_OCULUS_recenter_event: Version=1
+[XR] [22628] [02:58:09.252][Info   ]   XR_OCULUS_audio_device_guid: Version=1
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_color_space: Version=3
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_display_refresh_rate: Version=1
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_performance_metrics: Version=2
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_headset_id: Version=2
+[XR] [22628] [02:58:09.252][Info   ]   XR_OCULUS_ovrsession_handle: Version=1
+[XR] [22628] [02:58:09.252][Info   ]   XR_EXT_local_floor: Version=1
+[XR] [22628] [02:58:09.252][Info   ]   XR_EXT_active_action_set_priority: Version=1
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_haptic_amplitude_envelope: Version=1
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_haptic_pcm: Version=1
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_touch_controller_pro: Version=1
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_touch_controller_plus: Version=1
+[XR] [22628] [02:58:09.252][Info   ]   XR_FB_touch_controller_proximity: Version=1
+[XR] [22628] [02:58:09.252][Info   ]   XR_OCULUS_external_camera: Version=1
+[XR] [22628] [02:58:09.252][Info   ]   XR_META_detached_controllers: Version=1
+[XR] [22628] [02:58:09.252][Info   ]   XR_LOGITECH_mx_ink_stylus_interaction: Version=1
+[XR] [22628] [02:58:09.253][Info   ] 
+[XR] [22628] [02:58:09.253][Info   ] Available Layers: (0)
+[XR] [22628] [02:58:09.253][Info   ] 
+[XR] [22628] [02:58:09.253][Info   ] Runtime Name: Oculus
+[XR] [22628] [02:58:09.253][Info   ] Runtime Version: 1.109.0
+[XR] [22628] [02:58:09.253][Info   ] 
+[XR] [22628] [02:58:09.253][Info   ] ==== OpenXR Exception Thrown ====
+[XR] [22628] [02:58:09.253][Info   ] 
+[XR] [22628] [02:58:09.253][Info   ] Error: XrResult failure [XR_ERROR_FORM_FACTOR_UNAVAILABLE]
+[XR] [22628] [02:58:09.253][Info   ]     Origin: result
+[XR] [22628] [02:58:09.253][Info   ]     Source: C:\build\output\unity\xr.sdk.openxr\NativePlugin\Source\unity_session.cpp:266
+[XR] [22628] [02:58:09.253][Info   ] 
+[XR] [22628] [02:58:09.253][Info   ] 
+[XR] [22628] [02:58:09.253][Info   ] ==== Std Exception Thrown ====
+[XR] [22628] [02:58:09.253][Info   ] 
+[XR] [22628] [02:58:09.253][Info   ] Function: Display_Initialize
+[XR] [22628] [02:58:09.253][Info   ] Message: XrResult failure [XR_ERROR_FORM_FACTOR_UNAVAILABLE]
+[XR] [22628] [02:58:09.253][Info   ]     Origin: result
+[XR] [22628] [02:58:09.253][Info   ]     Source: C:\build\output\unity\xr.sdk.openxr\NativePlugin\Source\unity_session.cpp:266
+[XR] [22628] [02:58:09.253][Info   ] 
+[XR] [22628] [02:58:09.253][Info   ] ==== Last 20 non-XR_SUCCESS returns ====
+[XR] [22628] [02:58:09.253][Info   ] [FAILURE] xrGetSystem: XR_ERROR_FORM_FACTOR_UNAVAILABLE (1x)
+[XR] [22628] [02:58:09.253][Info   ] 
+[XR] [22628] [02:58:09.253][Info   ] ==== Last 20 Events ====
+[XR] [22628] [02:58:09.253][Info   ] 
+
+==== End Unity OpenXR Diagnostic Report ====
+
+
+ERROR: Shader Sprites/Mask shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+WARNING: Shader Unsupported: 'Shader Graphs/Shield' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+ERROR: Shader Shader Graphs/Shield shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+WARNING: Shader Unsupported: 'Shader Graphs/Shield' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+WARNING: Shader Unsupported: 'Universal Render Pipeline/Lit' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+ERROR: Shader Universal Render Pipeline/Lit shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/Lit' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+ERROR: Shader Meta/Lit shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/Particles/Unlit' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+ERROR: Shader Universal Render Pipeline/Particles/Unlit shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+WARNING: Shader Unsupported: 'Universal Render Pipeline/Particles/Unlit' - All subshaders removed
+WARNING: Shader Did you use #pragma only_renderers and omit this platform?
+WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
+ERROR: Shader Skybox/6 Sided shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Unlit/TransparentTexture shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Interaction/OculusHand shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+ERROR: Shader Oculus Sample/Alpha Hand Outline (SBB) shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
+There is no texture data available to upload.
+UnloadTime: 0.881500 ms
+Applying Acoustic Propagation Settings: [acoustic model = Automatic], [diffraction = True], 
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD
+Meta XR Audio Native Interface initialized with Unity plugin
+Setting spatial voice limit: 64
+No Meta XR Audio Room found, setting default room
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioWwise
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioWwise
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/MetaXRAudioFMOD
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD.dll
+Fallback handler could not load library D:/Projects/dualists/Builds/serwer/Dualists_Data/MonoBleedingEdge/libMetaXRAudioFMOD
+Meta XR Audio Native Interface initialized with Unity plugin
