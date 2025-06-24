@@ -4,7 +4,7 @@
 
 # https://unity-technologies.github.io/ml-agents/Training-Configuration-File/#extrinsic-rewards
 engine_settings:
-  time_scale: 10 # in game time scale, 1 means real time (for the purpose of physics simulation keep it 1)
+  time_scale: 50 # in game time scale, 1 means real time (for the purpose of physics simulation keep it 1)
 behaviors:
   Dueler:
     # !!! DEFAULT VALUES for ppo trainer, in order to make tests more reliable, we must keep the same values !!!
