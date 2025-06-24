@@ -105,6 +105,12 @@ public class EnemyAgent : Agent
     public bool angleBetweenPlayerWeaponAndEnemyReward;
     public float angleBetweenPlayerWeaponAndEnemyRewardAmount;
     public AnimationCurve angleBetweenPlayerWeaponAndEnemyRewardCurve;
+    
+    public bool velocityPenalty;
+    public float velocityPenaltyAmount;
+    
+    public bool angularVelocityPenalty;
+    public float angularVelocityPenaltyAmount;
 
     public void Awake()
     {
@@ -401,6 +407,32 @@ public class EnemyAgent : Agent
             var biasReward = endBias * angleBetweenPlayerWeaponAndEnemyRewardAmount;
             detailedGradeLog += $"\n\tAngle Bias reward: {biasReward}";
             rewardSum += biasReward;
+        }
+
+        if (velocityPenalty)
+        {
+            var velocityRightHand = selfObservations.HandObservations.Hands.Where(x => x.handSide == HandSide.right)
+                .Select(x => x.velocity).First();
+            var velocityLeftHand = selfObservations.HandObservations.Hands.Where(x => x.handSide == HandSide.left)
+                .Select(x => x.velocity).First();
+            var velocityRightPenalty = -velocityRightHand.magnitude * velocityPenaltyAmount;
+            var velocityLeftPenalty = -velocityLeftHand.magnitude * velocityPenaltyAmount;
+            detailedGradeLog += $"\n\tVelocity penalty for right hand: {velocityRightPenalty}";
+            detailedGradeLog += $"\n\tVelocity penalty for left hand: {velocityLeftPenalty}";
+            rewardSum += velocityRightPenalty + velocityLeftPenalty;
+        }
+
+        if (angularVelocityPenalty)
+        {
+            var angularVelocityRightHand = selfObservations.HandObservations.Hands.Where(x => x.handSide == HandSide.right)
+                .Select(x => x.angularVelocity).First();
+            var angularVelocityLeftHand = selfObservations.HandObservations.Hands.Where(x => x.handSide == HandSide.left)
+                .Select(x => x.angularVelocity).First();
+            var angularVelocityRightPenalty = -angularVelocityRightHand.magnitude * angularVelocityPenaltyAmount;
+            var angularVelocityLeftPenalty = -angularVelocityLeftHand.magnitude * angularVelocityPenaltyAmount;
+            detailedGradeLog += $"\n\tAngular Velocity penalty for right hand: {angularVelocityRightPenalty}";
+            detailedGradeLog += $"\n\tAngular Velocity penalty for left hand: {angularVelocityLeftPenalty}";
+            rewardSum += angularVelocityRightPenalty + angularVelocityLeftPenalty;
         }
         
         AddReward(rewardSum);

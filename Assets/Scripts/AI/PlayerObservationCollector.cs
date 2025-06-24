@@ -39,6 +39,7 @@ public class PlayerObservationCollector : MonoBehaviour, IObservationCollector
             Hitboxes = CollectHitboxObservations(globalSphereCenterPoint),
             IsGunUsable = _handGun.IsUsable,
             GunAmmoPercentage = _handGun.AmmoLeft
+            
         };
     }
 

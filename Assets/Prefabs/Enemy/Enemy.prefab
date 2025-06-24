@@ -259,7 +259,7 @@ MonoBehaviour:
   playerGunAimsAtEnemyReward: 1
   playerGunAimsAtEnemyRewardAmount: 15
   hitEnemyReward: 1
-  hitEnemyRewardAmount: 1000
+  hitEnemyRewardAmount: 30000
   playerDeathPenalty: 1
   playerDeathPenaltyAmount: 1000
   playerOutOfAmmoPenalty: 1
@@ -268,7 +268,7 @@ MonoBehaviour:
   playerAmmoPercentageRewardAmount: 1
   timeoutPenalty: 1
   timeoutPenaltyAmount: 800
-  gameLengthPenalty: 1
+  gameLengthPenalty: 0
   gameLengthPenaltyAmount: 10
   angleBetweenPlayerWeaponAndEnemyReward: 1
   angleBetweenPlayerWeaponAndEnemyRewardAmount: 10
@@ -323,6 +323,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  velocityPenalty: 1
+  velocityPenaltyAmount: 1
+  angularVelocityPenalty: 1
+  angularVelocityPenaltyAmount: 0.14
 --- !u!114 &2388153978236475002
 MonoBehaviour:
   m_ObjectHideFlags: 0
