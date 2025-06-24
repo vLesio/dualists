@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handSide: 0
-  moveBaseSpeed: 10
-  rotationBaseSpeed: 10
+  moveBaseSpeed: 5
+  rotationBaseSpeed: 5
   rotationForceMode: 0
   movementForceMode: 0
   boundarySphereRadius: 2

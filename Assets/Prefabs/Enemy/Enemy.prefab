@@ -253,11 +253,11 @@ MonoBehaviour:
   playerGunUsable: 1
   playerGunAmmoPercentage: 1
   enemyGunAimsAtShieldReward: 1
-  enemyGunAimsAtShieldRewardAmount: 1
+  enemyGunAimsAtShieldRewardAmount: 5
   playerGunNotAimsAtShieldReward: 1
   playerGunNotAimsAtShieldRewardAmount: 1
   playerGunAimsAtEnemyReward: 1
-  playerGunAimsAtEnemyRewardAmount: 5
+  playerGunAimsAtEnemyRewardAmount: 15
   hitEnemyReward: 1
   hitEnemyRewardAmount: 1000
   playerDeathPenalty: 1
@@ -272,6 +272,57 @@ MonoBehaviour:
   gameLengthPenaltyAmount: 10
   angleBetweenPlayerWeaponAndEnemyReward: 1
   angleBetweenPlayerWeaponAndEnemyRewardAmount: 10
+  angleBetweenPlayerWeaponAndEnemyRewardCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -1
+      value: -1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0
+      value: -0.2
+      inSlope: 0.8843529
+      outSlope: 0.8843529
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 0
+      inSlope: 0.4
+      outSlope: 0.50000006
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9
+      value: 0.2
+      inSlope: 0.50000006
+      outSlope: 7.999998
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.518102
+      outWeight: 1
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 7.999998
+      outSlope: 2
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &2388153978236475002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -834,6 +885,14 @@ PrefabInstance:
     - target: {fileID: 908798949542379451, guid: 0d747bc534c392748a474c00d1e34a4b, type: 3}
       propertyPath: handSide
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 908798949542379451, guid: 0d747bc534c392748a474c00d1e34a4b, type: 3}
+      propertyPath: moveBaseSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 908798949542379451, guid: 0d747bc534c392748a474c00d1e34a4b, type: 3}
+      propertyPath: rotationBaseSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1911243020300234260, guid: 0d747bc534c392748a474c00d1e34a4b, type: 3}
       propertyPath: m_Name

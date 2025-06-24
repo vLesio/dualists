@@ -104,6 +104,7 @@ public class EnemyAgent : Agent
     
     public bool angleBetweenPlayerWeaponAndEnemyReward;
     public float angleBetweenPlayerWeaponAndEnemyRewardAmount;
+    public AnimationCurve angleBetweenPlayerWeaponAndEnemyRewardCurve;
 
     public void Awake()
     {
@@ -257,9 +258,10 @@ public class EnemyAgent : Agent
 
         if (angleBetweenPlayerWeaponAndEnemy)
         {
-            var angle = _enemyObservationCollector.CalculateAngleBetweenPlayerWeaponAndEnemy(_handGun, transform);
-            sensor.AddObservation(angle);
-            enemyObservationLog += $"\n\tAngle between Enemy's weapon and Player: {angle}";
+            var bias = _enemyObservationCollector.CalculateAngleBetweenPlayerWeaponAndEnemy(_handGun, transform);
+            var endBias = angleBetweenPlayerWeaponAndEnemyRewardCurve.Evaluate(bias);
+            sensor.AddObservation(endBias);
+            enemyObservationLog += $"\n\tAngle Bias between Enemy's weapon and Player: {endBias}";
         }
         
         /// PLAYER OBSERVATIONS
@@ -341,7 +343,7 @@ public class EnemyAgent : Agent
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        if (!GameManager.I.IsRunning() || disableActions)
+        if (!GameManager.I.IsRunning())
             return;
         
         float rewardSum = 0;
@@ -394,10 +396,11 @@ public class EnemyAgent : Agent
 
         if (angleBetweenPlayerWeaponAndEnemyReward)
         {
-            var angle = _enemyObservationCollector.CalculateAngleBetweenPlayerWeaponAndEnemy(_handGun, transform);
-            var angleReward = angle * angleBetweenPlayerWeaponAndEnemyRewardAmount;
-            detailedGradeLog += $"\n\tangle reward: {angleReward}";
-            rewardSum += angleReward;
+            var bias = _enemyObservationCollector.CalculateAngleBetweenPlayerWeaponAndEnemy(_handGun, transform);
+            var endBias = angleBetweenPlayerWeaponAndEnemyRewardCurve.Evaluate(bias);
+            var biasReward = endBias * angleBetweenPlayerWeaponAndEnemyRewardAmount;
+            detailedGradeLog += $"\n\tAngle Bias reward: {biasReward}";
+            rewardSum += biasReward;
         }
         
         AddReward(rewardSum);
@@ -414,6 +417,10 @@ public class EnemyAgent : Agent
         
         // Take actions from the neural network and apply them to the agent
         // 18 continuous actions, 1 discrete action with 2 states (don't shoot, shoot)
+        if(disableActions){
+            //Debug.LogWarning("[Enemy Agent] Actions are disabled. Skipping action parsing.");
+            return;
+        }
         _aiPlayerController.ParseNNActions(actions);
     }
     

@@ -92,8 +92,21 @@ public class PlayerObservationCollector : MonoBehaviour, IObservationCollector
         //Debug.LogError($"Weapon direction: {weaponDirection}, Target direction: {targetDirection}");
         //float angle = Vector3.SignedAngle(weaponDirection, targetDirection, Vector3.up);
         //Debug.LogWarning(angle);
-        float angleDot = Vector3.Dot(weaponDirection, targetDirection);
+        //float angleDot = Vector3.Dot(weaponDirection, targetDirection);
         //Debug.LogWarning(angleDot);
-        return angleDot;
+        float angle = Vector3.Angle(weaponDirection, targetDirection); // 0–180
+
+      
+        float bias;
+        if (angle <= 90f)
+        {
+            bias = Mathf.Lerp(1f, 0f, angle / 90f); // 0 -> 1, 90° -> 0
+        }
+        else
+        {
+            bias = Mathf.Lerp(0f, -1f, (angle - 90f) / 90f); // 90° -> 0, 180° -> -1
+        }
+
+        return bias;
     }
 }
